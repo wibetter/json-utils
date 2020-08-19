@@ -1579,7 +1579,7 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@wibetter/json-editor@^3.3.5", "@wibetter/json-editor@^3.3.6":
+"@wibetter/json-editor@^3.3.5":
   version "3.3.5"
   resolved "https://registry.yarnpkg.com/@wibetter/json-editor/-/json-editor-3.3.5.tgz#93caa09b0baab9990b3f7f35920ab726341f638c"
   integrity sha512-vtlSAwW8uaD/PBhoinQ+14fR1Jj4ia57pfIK6WHxjhvVzZrXo4ythDUbNs0lwW7KWiF/utW7B7aB6E2gh20puQ==
@@ -1695,10 +1695,10 @@ ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.2, ajv@^6.12.3:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-akfun@^1.3.21:
-  version "1.3.21"
-  resolved "https://registry.yarnpkg.com/akfun/-/akfun-1.3.21.tgz#1063df3d3400e14a7c1814ce06c22970a5503249"
-  integrity sha512-9H7lKWbUJ999rNHddQjULhYJwIhj8B+lQryMo/HSB9eXglBSyc+xb3yxptjd5blzy3iam2uGiX97eInyj369KQ==
+akfun@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/akfun/-/akfun-1.5.1.tgz#22798036a1178009d269cb02716341e19d3afdbf"
+  integrity sha512-uhyJz9lfdsnO5cnHev+kx1+ZWSgQ8FRzBhaJkXwxfXkKxRoeqy+U20E8C7ZmFCVFC29qGRk+QnO/xuVQRGNS5Q==
   dependencies:
     "@babel/cli" "^7.10.1"
     "@babel/core" "^7.10.2"

@@ -16,51 +16,15 @@ export const initDynamicData = {
   properties: {
     type: {
       type: 'string',
-      default: 'local',
-      format: 'typeSelect',
-      enum: ['local', 'remote'],
-      enumextra: ['local', 'remote'],
-      title: '数据类型',
-    },
-    data: {
-      type: 'string',
-      title: '本地静态数据',
-      format: 'json',
-      default: '{}', // 默认值
-      description: '用于存放本地静态数据内容',
-      isRequired: true,
-    },
-    filter: {
-      type: 'string',
-      title: '过滤器',
-      format: 'codearea',
-      default: '(resp) => { return resp.data; }',
-      description: '用于定义过滤当前静态数据的函数',
-      isRequired: true,
-    },
-  },
-  required: ['type', 'data', 'filter'],
-  propertyOrder: ['type', 'data', 'filter'],
-};
-
-// 默认是用于展示remote接口动态数据，如果展示接口动态数据请使用initDynamicDataV2
-export const initDynamicDataV2 = {
-  type: 'object',
-  format: 'dynamic-data',
-  title: '动态数据',
-  readOnly: false,
-  properties: {
-    type: {
-      type: 'string',
       default: 'remote',
       format: 'typeSelect',
       enum: ['local', 'remote'],
-      enumextra: ['local', 'remote'],
+      enumextra: ['本地数据', '接口数据'],
       title: '数据类型',
     },
     data: {
       type: 'string',
-      title: '接口动态数据',
+      title: '数据内容',
       format: 'json',
       default: '{}', // 默认值
       description: '用于存放接口动态数据内容',

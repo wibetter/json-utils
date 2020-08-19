@@ -142,7 +142,7 @@ var KeyWordList = ['key', 'enum', 'enumextra', 'items', 'input', 'boolean', 'num
 /*!**********************************!*\
   !*** ./src/data/TypeDataList.js ***!
   \**********************************/
-/*! exports provided: TypeDataList, EventTypeDataList, DataSourceTypeList, DynamicDataList */
+/*! exports provided: TypeDataList, EventTypeDataList, DataSourceTypeList */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -150,7 +150,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TypeDataList", function() { return TypeDataList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventTypeDataList", function() { return EventTypeDataList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataSourceTypeList", function() { return DataSourceTypeList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DynamicDataList", function() { return DynamicDataList; });
 /* harmony import */ var $data_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! $data/index */ "./src/data/index.js");
  // 类型数据清单
 
@@ -189,11 +188,6 @@ var EventTypeDataList = {
 var DataSourceTypeList = {
   local: $data_index__WEBPACK_IMPORTED_MODULE_0__["initDataSourceData"],
   remote: $data_index__WEBPACK_IMPORTED_MODULE_0__["initDataSourceDataV2"]
-}; // 动态数据源类型
-
-var DynamicDataList = {
-  local: $data_index__WEBPACK_IMPORTED_MODULE_0__["initDynamicData"],
-  remote: $data_index__WEBPACK_IMPORTED_MODULE_0__["initDynamicDataV2"]
 };
 
 /***/ }),
@@ -202,7 +196,7 @@ var DynamicDataList = {
 /*!***************************!*\
   !*** ./src/data/index.js ***!
   \***************************/
-/*! exports provided: initJSONSchemaData, initInputData, initBooleanData, initTextareaData, initNumberData, initRadioData, initSelectData, initDateTimeData, initDateData, initTimeData, initColorData, initURLData, initIMGData, initArrayData, initObjectData, EmptyArray, EmptyObject, initQuantityData, initJsonData, initCodeAreaData, initHtmlAreaData, initEventDataV1, initEventData, initEventDataTypeON, initDataSourceData, initDataSourceDataV2, initDynamicData, initDynamicDataV2 */
+/*! exports provided: initJSONSchemaData, initInputData, initBooleanData, initTextareaData, initNumberData, initRadioData, initSelectData, initDateTimeData, initDateData, initTimeData, initColorData, initURLData, initIMGData, initArrayData, initObjectData, EmptyArray, EmptyObject, initQuantityData, initJsonData, initCodeAreaData, initHtmlAreaData, initEventDataV1, initEventData, initEventDataTypeON, initDataSourceData, initDataSourceDataV2, initDynamicData */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -284,8 +278,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _initSchemaEntity_DynamicData__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./initSchemaEntity/DynamicData */ "./src/data/initSchemaEntity/DynamicData.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initDynamicData", function() { return _initSchemaEntity_DynamicData__WEBPACK_IMPORTED_MODULE_23__["initDynamicData"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initDynamicDataV2", function() { return _initSchemaEntity_DynamicData__WEBPACK_IMPORTED_MODULE_23__["initDynamicDataV2"]; });
 
 
 
@@ -655,13 +647,12 @@ var initDateTimeData = {
 /*!**************************************************!*\
   !*** ./src/data/initSchemaEntity/DynamicData.js ***!
   \**************************************************/
-/*! exports provided: initDynamicData, initDynamicDataV2 */
+/*! exports provided: initDynamicData */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initDynamicData", function() { return initDynamicData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initDynamicDataV2", function() { return initDynamicDataV2; });
 /** dynamic-data: 动态数据
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -680,51 +671,15 @@ var initDynamicData = {
   properties: {
     type: {
       type: 'string',
-      default: 'local',
-      format: 'typeSelect',
-      enum: ['local', 'remote'],
-      enumextra: ['local', 'remote'],
-      title: '数据类型'
-    },
-    data: {
-      type: 'string',
-      title: '本地静态数据',
-      format: 'json',
-      default: '{}',
-      // 默认值
-      description: '用于存放本地静态数据内容',
-      isRequired: true
-    },
-    filter: {
-      type: 'string',
-      title: '过滤器',
-      format: 'codearea',
-      default: '(resp) => { return resp.data; }',
-      description: '用于定义过滤当前静态数据的函数',
-      isRequired: true
-    }
-  },
-  required: ['type', 'data', 'filter'],
-  propertyOrder: ['type', 'data', 'filter']
-}; // 默认是用于展示remote接口动态数据，如果展示接口动态数据请使用initDynamicDataV2
-
-var initDynamicDataV2 = {
-  type: 'object',
-  format: 'dynamic-data',
-  title: '动态数据',
-  readOnly: false,
-  properties: {
-    type: {
-      type: 'string',
       default: 'remote',
       format: 'typeSelect',
       enum: ['local', 'remote'],
-      enumextra: ['local', 'remote'],
+      enumextra: ['本地数据', '接口数据'],
       title: '数据类型'
     },
     data: {
       type: 'string',
-      title: '接口动态数据',
+      title: '数据内容',
       format: 'json',
       default: '{}',
       // 默认值
@@ -2598,7 +2553,7 @@ var schemaMetaList = $data_TypeDataList__WEBPACK_IMPORTED_MODULE_0__["TypeDataLi
 /*!*********************!*\
   !*** ./src/main.js ***!
   \*********************/
-/*! exports provided: getJsonDataByKeyRoute, getSchemaByIndexRoute, indexRoute2keyRoute, json2schema, metaElemAnalyzer, oldSchemaToNewSchema, schema2json, schemaMetaList, dynamicDataAnalyzer, objClone, isEqual, exitPropertie, getParentKeyRoute, getParentKeyRoute_CurKey, getCurrentFormat, isEmptySchema, isEmptyWidgetSchema, isUsedToWidgetConfig, isNewSchemaData, isBoxSchemaData, isFirstSchemaData, isSameParent, getCurPosition, getParentIndexRoute, getNextIndexRoute, getParentIndexRoute_CurIndex, moveForward, moveBackward, isURL, isString, isNumber, isBoolean, isDateStr, isDateTimeStr, isTimeStr, isArray, isSelect, isObject, isQuantity, isColor, isFunction, KeyWordList, TypeDataList, EventTypeDataList, DataSourceTypeList, DynamicDataList */
+/*! exports provided: getJsonDataByKeyRoute, getSchemaByIndexRoute, indexRoute2keyRoute, json2schema, metaElemAnalyzer, oldSchemaToNewSchema, schema2json, schemaMetaList, dynamicDataAnalyzer, objClone, isEqual, exitPropertie, getParentKeyRoute, getParentKeyRoute_CurKey, getCurrentFormat, isEmptySchema, isEmptyWidgetSchema, isUsedToWidgetConfig, isNewSchemaData, isBoxSchemaData, isFirstSchemaData, isSameParent, getCurPosition, getParentIndexRoute, getNextIndexRoute, getParentIndexRoute_CurIndex, moveForward, moveBackward, isURL, isString, isNumber, isBoolean, isDateStr, isDateTimeStr, isTimeStr, isArray, isSelect, isObject, isQuantity, isColor, isFunction, KeyWordList, TypeDataList, EventTypeDataList, DataSourceTypeList */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2707,8 +2662,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EventTypeDataList", function() { return _data_TypeDataList__WEBPACK_IMPORTED_MODULE_14__["EventTypeDataList"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DataSourceTypeList", function() { return _data_TypeDataList__WEBPACK_IMPORTED_MODULE_14__["DataSourceTypeList"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DynamicDataList", function() { return _data_TypeDataList__WEBPACK_IMPORTED_MODULE_14__["DynamicDataList"]; });
 
 /**
  * json-utils: json工具集合

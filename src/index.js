@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import { metaElemAnalyzer } from './main';
+import JSONUtils from '../dist/index.umd'; // './main';
 import JSONEditor from '@wibetter/json-editor';
 import '@wibetter/json-editor/dist/index.css';
 import './index.scss';
@@ -1396,6 +1396,8 @@ class IndexDemo extends React.PureComponent {
 
   render() {
     const { jsonSchema, jsonData, wideScreen, jsonView } = this.state;
+
+    const metaElemAnalyzer = JSONUtils.metaElemAnalyzer;
 
     const testData = metaElemAnalyzer(jsonSchema);
 

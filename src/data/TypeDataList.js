@@ -35,6 +35,7 @@ export const TypeDataList = {
   jsonschema: initJSONSchemaData,
   input: initInputData,
   boolean: initBooleanData,
+
   object: initObjectData,
   array: initArrayData,
   'empty-array': EmptyArray,
@@ -68,10 +69,4 @@ export const EventTypeDataList = {
 export const DataSourceTypeList = {
   local: initDataSourceData,
   remote: initDataSourceDataV2,
-};
-
-// 动态数据源类型
-export const DynamicDataList = {
-  local: initDynamicData,
-  remote: initDynamicDataV2,
 };
