@@ -1,4 +1,4 @@
-# json-utils.git
+# json-utils
 
 > 提供JSON相关的各类工具方法，比如schema转json、json转schema、json元数据分析等
 
