@@ -1,28 +1,33 @@
 import {
   initJSONSchemaData,
+  /* 12种基础类型 */
   initInputData,
-  initArrayData,
-  EmptyArray,
-  EmptyObject,
   initBooleanData,
-  initColorData,
-  initDataSourceData,
-  initDataSourceDataV2,
+  initURLData,
   initDateData,
   initDateTimeData,
-  initEventData,
-  initEventDataTypeON,
-  initJsonData,
-  initCodeAreaData,
-  initHtmlAreaData,
-  initNumberData,
-  initObjectData,
-  initQuantityData,
+  initTimeData,
   initRadioData,
   initSelectData,
   initTextareaData,
-  initTimeData,
-  initURLData,
+  initNumberData,
+  initColorData,
+  initIMGData,
+  /* 9种特殊类型 */
+  initQuantityData,
+  initJsonData,
+  initCodeAreaData,
+  initHtmlAreaData,
+  initObjectData,
+  EmptyObject,
+  initArrayData,
+  EmptyArray,
+  initEventData,
+  initEventDataTypeON,
+  initDataSourceData,
+  initDataSourceDataV2,
+  initDynamicData,
+  initDynamicDataV2
 } from '$data/index';
 
 // 类型数据清单
@@ -37,6 +42,7 @@ export const TypeDataList = {
   url: initURLData,
   textarea: initTextareaData,
   color: initColorData,
+  img: initIMGData,
   number: initNumberData,
   json: initJsonData,
   codearea: initCodeAreaData,
@@ -47,6 +53,7 @@ export const TypeDataList = {
   quantity: initQuantityData,
   radio: initRadioData,
   select: initSelectData,
+  'dynamic-data': initDynamicData,
   datasource: initDataSourceData,
   event: initEventData,
 };
@@ -61,4 +68,10 @@ export const EventTypeDataList = {
 export const DataSourceTypeList = {
   local: initDataSourceData,
   remote: initDataSourceDataV2,
+};
+
+// 动态数据源类型
+export const DynamicDataList = {
+  local: initDynamicData,
+  remote: initDynamicDataV2,
 };

@@ -19,6 +19,7 @@ export const KeyWordList = [
   'codearea',
   'htmlarea',
   'quantity',
+  'dynamic-data',
   'datasource',
   'event',
   'array',

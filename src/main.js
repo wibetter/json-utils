@@ -71,5 +71,12 @@ export * from './function/dynamicDataAnalyzer';
 export * from './utils/index'; // 纯工具方法
 export * from './utils/jsonData'; // json数据内容相关的操作方法
 export * from './utils/jsonSchema'; // json数据结构相关的操作方法
-// 基础元数据类型判断
+
+// 数值判断
 export * from './utils/typeof';
+
+// JSON关键字：用于规避key的命名
+export * from './data/KeyWordList';
+
+// 所有类型对应的json对象
+export * from './data/TypeDataList'; // TypeDataList、EventTypeDataList、DataSourceTypeList、DynamicDataList
