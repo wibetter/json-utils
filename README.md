@@ -4,16 +4,14 @@
 
 ## json工具集合 / json工具方法清单
 
-### 9个主要的json工具方法
+### 7个通用的json工具方法
 - getJsonDataByKeyRoute: 根据key索引路径获取对应的数值
 - getSchemaByIndexRoute: 根据index索引路径获取对应的schema数据
 - indexRoute2keyRoute: 根据index索引路径获取对应的key值路径
 - json2schema: 根据json数据内容获取对应的schema数据
-- oldSchemaToNewSchema: 旧版jsonSchema转新版jsonSchema
 - schema2json: 根据schema数据内容生成一份对应的json数据
 - schemaMetaList: 当前JSON数据可视化提供的元数据清单
 - metaElemAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的元数据情况
-- dynamicDataAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的动态数据源情况
 
 ### json数据内容相关的操作方法
 - getParentKeyRoute: 获取父元素的key路径值
@@ -22,9 +20,6 @@
 ### schema相关的操作方法
 - getCurrentFormat: 获取当前字段的类型（format）
 - isEmptySchema: 判断是否为空的Schema
-- isEmptyWidgetSchema: 判断是否为空的WidgetSchema
-- isUsedToWidgetConfig: 判断是否为用于区块配置的jsonSchema数据
-- isNewSchemaData: 判断是否是最新版的schema数据
 - isBoxSchemaData: 根据format判断是否是容器类型字段
 - isFirstSchemaData: 根据format判断是否是一级类型字段(func、style、data)
 - isSameParent: 判断是否是同一个父元素
@@ -39,6 +34,13 @@
 - objClone: js对象数据深拷贝，避免数据联动
 - isEqual: 对比两个json数据是否相等
 - exitPropertie: 判断当前属性是否存在(识别数值为false、0、null)
+
+### 业务相关的json工具方法
+- isEmptyWidgetSchema: 判断是否为空的WidgetSchema
+- isUsedToWidgetConfig: 判断是否为用于区块配置的jsonSchema数据
+- isNewSchemaData: 判断是否是最新版的schema数据
+- oldSchemaToNewSchema: 旧版jsonSchema转新版jsonSchema
+- dynamicDataAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的动态数据源情况
 
 ### 基础元数据类型判断
 - isURL
