@@ -9,6 +9,7 @@
 import { exitPropertie } from '$utils/index';
 import { getCurrentFormat } from '$utils/jsonSchema';
 import { isArray, isObject, isFunction } from '$utils/typeof';
+import { EmptyDynamicDataCont } from '$data/index';
 /**
  * 基础类型的schema转jsonData
  * 根据jsonSchema和旧版的jsonData生成一份对应的jsonData
@@ -101,7 +102,13 @@ function objectSchema2JsonData(jsonSchema, jsonData) {
     /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
     const curValue = exitPropertie(oldValue) ? oldValue : jsonItem.default;
 
-    if (curType === 'datasource') {
+    if (curType === 'dynamic-data') {
+      // 动态数据源类型（固定格式的Object类型）
+      curJsonData = EmptyDynamicDataCont;
+      if (curValue && isObject(curValue) && JSON.stringify(curValue) !== '{}') {
+        curJsonData = Object.assign(curJsonData, curValue);
+      }
+    } else if (curType === 'datasource') {
       // 数据源类型（固定格式的Object类型）
       if (
         jsonItem.properties &&

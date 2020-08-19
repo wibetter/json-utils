@@ -47,7 +47,7 @@ export const initDynamicData = {
 const DynamicDataCont = {
   type: 'remote',
   config: {
-    id: 11, // 动态数据源id
+    id: 0, // 动态数据源id
     dataName: 'data-12',  // 动态数据源名称
     title: 'xxx数据源', // 数据源中文名称
     desc: 'xxx数据源描述', //  数据源中文描述
@@ -92,6 +92,17 @@ const DynamicDataCont = {
       },
     },
     mock: '{}',
+  },
+  filter: `(resp) => { return resp.data; }`,
+  data: '{}', // 用于存储结果数据
+};
+
+// 动态数据对应的空json数据内容
+export const EmptyDynamicDataCont = {
+  type: 'local',
+  config: {
+    dataName: '',  // 动态数据源名称
+    body: {}, // 请求参数相关
   },
   filter: `(resp) => { return resp.data; }`,
   data: '{}', // 用于存储结果数据
