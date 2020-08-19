@@ -63,7 +63,13 @@ npm install --save @wibetter/json-utils
 
 ```js
 // 获取schema转json的方法
-const { schema2json } = require('../dist/index.umd');
+const { schema2json } = require('.@wibetter/json-utils');
+const jsonSchema = {
+  ...
+};
+const curJsonData = {
+  ...
+}
 
 const jsonData = schema2json(jsonSchema, curJsonData); // schema2json
 ``
