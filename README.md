@@ -5,7 +5,7 @@
 ## json工具集合 / json工具方法清单
 
 ### 7个通用的json工具方法
-- getJsonDataByKeyRoute: 根据key索引路径获取对应的数值
+- getJsonDataByKeyRoute: 根据key索引路径获取对应的json数值
 - getSchemaByIndexRoute: 根据index索引路径获取对应的schema数据
 - indexRoute2keyRoute: 根据index索引路径获取对应的key值路径
 - json2schema: 根据json数据内容获取对应的schema数据
