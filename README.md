@@ -35,7 +35,7 @@
 - isEqual: 对比两个json数据是否相等
 - exitPropertie: 判断当前属性是否存在(识别数值为false、0、null)
 
-### 基础元数据类型判断
+### 数值类型判断
 - isURL
 - isString
 - isNumber
