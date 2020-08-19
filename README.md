@@ -35,13 +35,6 @@
 - isEqual: 对比两个json数据是否相等
 - exitPropertie: 判断当前属性是否存在(识别数值为false、0、null)
 
-### 业务相关的json工具方法
-- isEmptyWidgetSchema: 判断是否为空的WidgetSchema
-- isUsedToWidgetConfig: 判断是否为用于区块配置的jsonSchema数据
-- isNewSchemaData: 判断是否是最新版的schema数据
-- oldSchemaToNewSchema: 旧版jsonSchema转新版jsonSchema
-- dynamicDataAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的动态数据源情况
-
 ### 基础元数据类型判断
 - isURL
 - isString
@@ -56,6 +49,13 @@
 - isQuantity
 - isColor
 - isFunction
+
+### 业务相关的json工具方法
+- isEmptyWidgetSchema: 判断是否为空的WidgetSchema
+- isUsedToWidgetConfig: 判断是否为用于区块配置的jsonSchema数据
+- isNewSchemaData: 判断是否是最新版的schema数据
+- oldSchemaToNewSchema: 旧版jsonSchema转新版jsonSchema
+- dynamicDataAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的动态数据源情况
 
 ## 快速使用
 
