@@ -3,7 +3,7 @@
  * 11种基础类型组件（input、boolean、 date、date-time、 time、 url、 textarea、number、color、img、radio、 select）
  * 9个特殊类型组件（Object、Array、Json、datasource、DynamicData、Event、CodeArea、htmlArea、quantity）
  */
-import { TypeDataList } from '$utils/TypeDataList';
+import { TypeDataList } from '$data/TypeDataList';
 
 // 类型数据清单
 export const schemaMetaList = TypeDataList;

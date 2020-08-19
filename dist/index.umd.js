@@ -123,11 +123,26 @@ module.exports = _typeof;
 
 /***/ }),
 
+/***/ "./src/data/KeyWordList.js":
+/*!*********************************!*\
+  !*** ./src/data/KeyWordList.js ***!
+  \*********************************/
+/*! exports provided: KeyWordList */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "KeyWordList", function() { return KeyWordList; });
+// JSONSchema关键字清单
+var KeyWordList = ['key', 'enum', 'enumextra', 'items', 'input', 'boolean', 'number', 'color', 'url', 'textarea', 'radio', 'select', 'date', 'date-time', 'time', 'json', 'codearea', 'htmlarea', 'quantity', 'dynamic-data', 'datasource', 'event', 'array', 'object'];
+
+/***/ }),
+
 /***/ "./src/data/TypeDataList.js":
 /*!**********************************!*\
   !*** ./src/data/TypeDataList.js ***!
   \**********************************/
-/*! exports provided: TypeDataList, EventTypeDataList, DataSourceTypeList */
+/*! exports provided: TypeDataList, EventTypeDataList, DataSourceTypeList, DynamicDataList */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -135,6 +150,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TypeDataList", function() { return TypeDataList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventTypeDataList", function() { return EventTypeDataList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataSourceTypeList", function() { return DataSourceTypeList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DynamicDataList", function() { return DynamicDataList; });
 /* harmony import */ var $data_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! $data/index */ "./src/data/index.js");
  // 类型数据清单
 
@@ -149,6 +165,7 @@ var TypeDataList = {
   url: $data_index__WEBPACK_IMPORTED_MODULE_0__["initURLData"],
   textarea: $data_index__WEBPACK_IMPORTED_MODULE_0__["initTextareaData"],
   color: $data_index__WEBPACK_IMPORTED_MODULE_0__["initColorData"],
+  img: $data_index__WEBPACK_IMPORTED_MODULE_0__["initIMGData"],
   number: $data_index__WEBPACK_IMPORTED_MODULE_0__["initNumberData"],
   json: $data_index__WEBPACK_IMPORTED_MODULE_0__["initJsonData"],
   codearea: $data_index__WEBPACK_IMPORTED_MODULE_0__["initCodeAreaData"],
@@ -159,6 +176,7 @@ var TypeDataList = {
   quantity: $data_index__WEBPACK_IMPORTED_MODULE_0__["initQuantityData"],
   radio: $data_index__WEBPACK_IMPORTED_MODULE_0__["initRadioData"],
   select: $data_index__WEBPACK_IMPORTED_MODULE_0__["initSelectData"],
+  'dynamic-data': $data_index__WEBPACK_IMPORTED_MODULE_0__["initDynamicData"],
   datasource: $data_index__WEBPACK_IMPORTED_MODULE_0__["initDataSourceData"],
   event: $data_index__WEBPACK_IMPORTED_MODULE_0__["initEventData"]
 }; // 事件类型数据
@@ -171,6 +189,11 @@ var EventTypeDataList = {
 var DataSourceTypeList = {
   local: $data_index__WEBPACK_IMPORTED_MODULE_0__["initDataSourceData"],
   remote: $data_index__WEBPACK_IMPORTED_MODULE_0__["initDataSourceDataV2"]
+}; // 动态数据源类型
+
+var DynamicDataList = {
+  local: $data_index__WEBPACK_IMPORTED_MODULE_0__["initDynamicData"],
+  remote: $data_index__WEBPACK_IMPORTED_MODULE_0__["initDynamicDataV2"]
 };
 
 /***/ }),
@@ -179,7 +202,7 @@ var DataSourceTypeList = {
 /*!***************************!*\
   !*** ./src/data/index.js ***!
   \***************************/
-/*! exports provided: initJSONSchemaData, initInputData, initBooleanData, initTextareaData, initNumberData, initRadioData, initSelectData, initColorData, initURLData, initQuantityData, initArrayData, initObjectData, EmptyArray, EmptyObject, initDateTimeData, initDateData, initTimeData, initEventDataV1, initEventData, initEventDataTypeON, initDataSourceData, initDataSourceDataV2, initJsonData, initCodeAreaData, initHtmlAreaData */
+/*! exports provided: initJSONSchemaData, initInputData, initBooleanData, initTextareaData, initNumberData, initRadioData, initSelectData, initDateTimeData, initDateData, initTimeData, initColorData, initURLData, initIMGData, initArrayData, initObjectData, EmptyArray, EmptyObject, initQuantityData, initJsonData, initCodeAreaData, initHtmlAreaData, initEventDataV1, initEventData, initEventDataTypeON, initDataSourceData, initDataSourceDataV2, initDynamicData, initDynamicDataV2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -205,63 +228,67 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _initSchemaEntity_Select__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./initSchemaEntity/Select */ "./src/data/initSchemaEntity/Select.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initSelectData", function() { return _initSchemaEntity_Select__WEBPACK_IMPORTED_MODULE_6__["initSelectData"]; });
 
-/* harmony import */ var _initSchemaEntity_Color__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./initSchemaEntity/Color */ "./src/data/initSchemaEntity/Color.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initColorData", function() { return _initSchemaEntity_Color__WEBPACK_IMPORTED_MODULE_7__["initColorData"]; });
+/* harmony import */ var _initSchemaEntity_DateTime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./initSchemaEntity/DateTime */ "./src/data/initSchemaEntity/DateTime.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initDateTimeData", function() { return _initSchemaEntity_DateTime__WEBPACK_IMPORTED_MODULE_7__["initDateTimeData"]; });
 
-/* harmony import */ var _initSchemaEntity_URL__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./initSchemaEntity/URL */ "./src/data/initSchemaEntity/URL.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initURLData", function() { return _initSchemaEntity_URL__WEBPACK_IMPORTED_MODULE_8__["initURLData"]; });
+/* harmony import */ var _initSchemaEntity_Date__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./initSchemaEntity/Date */ "./src/data/initSchemaEntity/Date.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initDateData", function() { return _initSchemaEntity_Date__WEBPACK_IMPORTED_MODULE_8__["initDateData"]; });
 
-/* harmony import */ var _initSchemaEntity_Quantity__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./initSchemaEntity/Quantity */ "./src/data/initSchemaEntity/Quantity.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initQuantityData", function() { return _initSchemaEntity_Quantity__WEBPACK_IMPORTED_MODULE_9__["initQuantityData"]; });
+/* harmony import */ var _initSchemaEntity_Time__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./initSchemaEntity/Time */ "./src/data/initSchemaEntity/Time.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initTimeData", function() { return _initSchemaEntity_Time__WEBPACK_IMPORTED_MODULE_9__["initTimeData"]; });
 
-/* harmony import */ var _initSchemaEntity_Array__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./initSchemaEntity/Array */ "./src/data/initSchemaEntity/Array.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initArrayData", function() { return _initSchemaEntity_Array__WEBPACK_IMPORTED_MODULE_10__["initArrayData"]; });
+/* harmony import */ var _initSchemaEntity_Color__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./initSchemaEntity/Color */ "./src/data/initSchemaEntity/Color.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initColorData", function() { return _initSchemaEntity_Color__WEBPACK_IMPORTED_MODULE_10__["initColorData"]; });
 
-/* harmony import */ var _initSchemaEntity_Object__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./initSchemaEntity/Object */ "./src/data/initSchemaEntity/Object.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initObjectData", function() { return _initSchemaEntity_Object__WEBPACK_IMPORTED_MODULE_11__["initObjectData"]; });
+/* harmony import */ var _initSchemaEntity_URL__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./initSchemaEntity/URL */ "./src/data/initSchemaEntity/URL.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initURLData", function() { return _initSchemaEntity_URL__WEBPACK_IMPORTED_MODULE_11__["initURLData"]; });
 
-/* harmony import */ var _initSchemaEntity_EmptyArray__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./initSchemaEntity/EmptyArray */ "./src/data/initSchemaEntity/EmptyArray.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EmptyArray", function() { return _initSchemaEntity_EmptyArray__WEBPACK_IMPORTED_MODULE_12__["EmptyArray"]; });
+/* harmony import */ var _initSchemaEntity_IMG__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./initSchemaEntity/IMG */ "./src/data/initSchemaEntity/IMG.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initIMGData", function() { return _initSchemaEntity_IMG__WEBPACK_IMPORTED_MODULE_12__["initIMGData"]; });
 
-/* harmony import */ var _initSchemaEntity_EmptyObject__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./initSchemaEntity/EmptyObject */ "./src/data/initSchemaEntity/EmptyObject.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EmptyObject", function() { return _initSchemaEntity_EmptyObject__WEBPACK_IMPORTED_MODULE_13__["EmptyObject"]; });
+/* harmony import */ var _initSchemaEntity_Array__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./initSchemaEntity/Array */ "./src/data/initSchemaEntity/Array.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initArrayData", function() { return _initSchemaEntity_Array__WEBPACK_IMPORTED_MODULE_13__["initArrayData"]; });
 
-/* harmony import */ var _initSchemaEntity_DateTime__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./initSchemaEntity/DateTime */ "./src/data/initSchemaEntity/DateTime.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initDateTimeData", function() { return _initSchemaEntity_DateTime__WEBPACK_IMPORTED_MODULE_14__["initDateTimeData"]; });
+/* harmony import */ var _initSchemaEntity_Object__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./initSchemaEntity/Object */ "./src/data/initSchemaEntity/Object.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initObjectData", function() { return _initSchemaEntity_Object__WEBPACK_IMPORTED_MODULE_14__["initObjectData"]; });
 
-/* harmony import */ var _initSchemaEntity_Date__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./initSchemaEntity/Date */ "./src/data/initSchemaEntity/Date.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initDateData", function() { return _initSchemaEntity_Date__WEBPACK_IMPORTED_MODULE_15__["initDateData"]; });
+/* harmony import */ var _initSchemaEntity_EmptyArray__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./initSchemaEntity/EmptyArray */ "./src/data/initSchemaEntity/EmptyArray.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EmptyArray", function() { return _initSchemaEntity_EmptyArray__WEBPACK_IMPORTED_MODULE_15__["EmptyArray"]; });
 
-/* harmony import */ var _initSchemaEntity_Time__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./initSchemaEntity/Time */ "./src/data/initSchemaEntity/Time.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initTimeData", function() { return _initSchemaEntity_Time__WEBPACK_IMPORTED_MODULE_16__["initTimeData"]; });
+/* harmony import */ var _initSchemaEntity_EmptyObject__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./initSchemaEntity/EmptyObject */ "./src/data/initSchemaEntity/EmptyObject.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EmptyObject", function() { return _initSchemaEntity_EmptyObject__WEBPACK_IMPORTED_MODULE_16__["EmptyObject"]; });
 
-/* harmony import */ var _initSchemaEntity_Event__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./initSchemaEntity/Event */ "./src/data/initSchemaEntity/Event.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initEventDataV1", function() { return _initSchemaEntity_Event__WEBPACK_IMPORTED_MODULE_17__["initEventDataV1"]; });
+/* harmony import */ var _initSchemaEntity_Quantity__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./initSchemaEntity/Quantity */ "./src/data/initSchemaEntity/Quantity.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initQuantityData", function() { return _initSchemaEntity_Quantity__WEBPACK_IMPORTED_MODULE_17__["initQuantityData"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initEventData", function() { return _initSchemaEntity_Event__WEBPACK_IMPORTED_MODULE_17__["initEventData"]; });
+/* harmony import */ var _initSchemaEntity_Json__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./initSchemaEntity/Json */ "./src/data/initSchemaEntity/Json.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initJsonData", function() { return _initSchemaEntity_Json__WEBPACK_IMPORTED_MODULE_18__["initJsonData"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initEventDataTypeON", function() { return _initSchemaEntity_Event__WEBPACK_IMPORTED_MODULE_17__["initEventDataTypeON"]; });
+/* harmony import */ var _initSchemaEntity_CodeArea__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./initSchemaEntity/CodeArea */ "./src/data/initSchemaEntity/CodeArea.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initCodeAreaData", function() { return _initSchemaEntity_CodeArea__WEBPACK_IMPORTED_MODULE_19__["initCodeAreaData"]; });
 
-/* harmony import */ var _initSchemaEntity_DataSource__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./initSchemaEntity/DataSource */ "./src/data/initSchemaEntity/DataSource.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initDataSourceData", function() { return _initSchemaEntity_DataSource__WEBPACK_IMPORTED_MODULE_18__["initDataSourceData"]; });
+/* harmony import */ var _initSchemaEntity_HtmlArea__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./initSchemaEntity/HtmlArea */ "./src/data/initSchemaEntity/HtmlArea.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initHtmlAreaData", function() { return _initSchemaEntity_HtmlArea__WEBPACK_IMPORTED_MODULE_20__["initHtmlAreaData"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initDataSourceDataV2", function() { return _initSchemaEntity_DataSource__WEBPACK_IMPORTED_MODULE_18__["initDataSourceDataV2"]; });
+/* harmony import */ var _initSchemaEntity_Event__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./initSchemaEntity/Event */ "./src/data/initSchemaEntity/Event.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initEventDataV1", function() { return _initSchemaEntity_Event__WEBPACK_IMPORTED_MODULE_21__["initEventDataV1"]; });
 
-/* harmony import */ var _initSchemaEntity_Json__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./initSchemaEntity/Json */ "./src/data/initSchemaEntity/Json.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initJsonData", function() { return _initSchemaEntity_Json__WEBPACK_IMPORTED_MODULE_19__["initJsonData"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initEventData", function() { return _initSchemaEntity_Event__WEBPACK_IMPORTED_MODULE_21__["initEventData"]; });
 
-/* harmony import */ var _initSchemaEntity_CodeArea__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./initSchemaEntity/CodeArea */ "./src/data/initSchemaEntity/CodeArea.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initCodeAreaData", function() { return _initSchemaEntity_CodeArea__WEBPACK_IMPORTED_MODULE_20__["initCodeAreaData"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initEventDataTypeON", function() { return _initSchemaEntity_Event__WEBPACK_IMPORTED_MODULE_21__["initEventDataTypeON"]; });
 
-/* harmony import */ var _initSchemaEntity_HtmlArea__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./initSchemaEntity/HtmlArea */ "./src/data/initSchemaEntity/HtmlArea.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initHtmlAreaData", function() { return _initSchemaEntity_HtmlArea__WEBPACK_IMPORTED_MODULE_21__["initHtmlAreaData"]; });
+/* harmony import */ var _initSchemaEntity_DataSource__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./initSchemaEntity/DataSource */ "./src/data/initSchemaEntity/DataSource.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initDataSourceData", function() { return _initSchemaEntity_DataSource__WEBPACK_IMPORTED_MODULE_22__["initDataSourceData"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initDataSourceDataV2", function() { return _initSchemaEntity_DataSource__WEBPACK_IMPORTED_MODULE_22__["initDataSourceDataV2"]; });
+
+/* harmony import */ var _initSchemaEntity_DynamicData__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./initSchemaEntity/DynamicData */ "./src/data/initSchemaEntity/DynamicData.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initDynamicData", function() { return _initSchemaEntity_DynamicData__WEBPACK_IMPORTED_MODULE_23__["initDynamicData"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initDynamicDataV2", function() { return _initSchemaEntity_DynamicData__WEBPACK_IMPORTED_MODULE_23__["initDynamicDataV2"]; });
 
 
-/*
-   基本类型组件
-   input、boolean、 date、date-time、 time、 url、
-   textarea、number、 radio、 select、color、quantity
- */
+
 
 
 
@@ -624,6 +651,147 @@ var initDateTimeData = {
 
 /***/ }),
 
+/***/ "./src/data/initSchemaEntity/DynamicData.js":
+/*!**************************************************!*\
+  !*** ./src/data/initSchemaEntity/DynamicData.js ***!
+  \**************************************************/
+/*! exports provided: initDynamicData, initDynamicDataV2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initDynamicData", function() { return initDynamicData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initDynamicDataV2", function() { return initDynamicDataV2; });
+/** dynamic-data: 动态数据
+ * 【字段属性说明】
+ *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
+ *  title：字段项的label值
+ *  properties：存放所有的子字段数据内容
+ *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  readOnly：字段项可设置是否可编辑
+ *  required：存放所有子字段的key值，用于验证子字段项是否存在，同时required可充当排序功能
+ *  propertyOrder：按序存放所有子字段的key值（排序功能）
+ * */
+var initDynamicData = {
+  type: 'object',
+  format: 'dynamic-data',
+  title: '动态数据',
+  readOnly: false,
+  properties: {
+    type: {
+      type: 'string',
+      default: 'local',
+      format: 'typeSelect',
+      enum: ['local', 'remote'],
+      enumextra: ['local', 'remote'],
+      title: '数据类型'
+    },
+    data: {
+      type: 'string',
+      title: '本地静态数据',
+      format: 'json',
+      default: '{}',
+      // 默认值
+      description: '用于存放本地静态数据内容',
+      isRequired: true
+    },
+    filter: {
+      type: 'string',
+      title: '过滤器',
+      format: 'codearea',
+      default: '(resp) => { return resp.data; }',
+      description: '用于定义过滤当前静态数据的函数',
+      isRequired: true
+    }
+  },
+  required: ['type', 'data', 'filter'],
+  propertyOrder: ['type', 'data', 'filter']
+}; // 默认是用于展示remote接口动态数据，如果展示接口动态数据请使用initDynamicDataV2
+
+var initDynamicDataV2 = {
+  type: 'object',
+  format: 'dynamic-data',
+  title: '动态数据',
+  readOnly: false,
+  properties: {
+    type: {
+      type: 'string',
+      default: 'remote',
+      format: 'typeSelect',
+      enum: ['local', 'remote'],
+      enumextra: ['local', 'remote'],
+      title: '数据类型'
+    },
+    data: {
+      type: 'string',
+      title: '接口动态数据',
+      format: 'json',
+      default: '{}',
+      // 默认值
+      description: '用于存放接口动态数据内容',
+      isRequired: true
+    },
+    filter: {
+      type: 'string',
+      title: '过滤器',
+      format: 'codearea',
+      default: '(resp) => { return resp.data; }',
+      description: '用于定义过滤当前动态数据的函数',
+      isRequired: true
+    }
+  },
+  required: ['type', 'data', 'filter'],
+  propertyOrder: ['type', 'data', 'filter']
+}; // 动态数据对应的json数据内容
+
+var DynamicDataCont = {
+  type: 'remote',
+  config: {
+    dataName: 'data-12',
+    // 动态数据源名称
+    title: 'xxx数据源',
+    // 数据源中文名称
+    desc: 'xxx数据源描述',
+    //  数据源中文描述
+    url: 'https://api.thecatapi.com/v1/images/search',
+    // 动态数据源请求地址
+    method: 'get',
+    option: {},
+    header: {},
+    // 请求头
+    body: {
+      // 请求参数相关
+      param1: {
+        title: '参数名称',
+        scope: 'static',
+        // 固定参数
+        value: '111' // 固定值
+
+      },
+      param2: {
+        title: '参数名称',
+        scope: 'window',
+        name: 'PARAM1',
+        value: '111' // 默认值
+
+      },
+      pageId: {
+        title: '页面id',
+        scope: 'hash',
+        name: 'pId',
+        value: '111' // 默认值
+
+      }
+    },
+    mock: '{}'
+  },
+  filter: "(resp) => { return resp.data; }",
+  data: '{}' // 用于存储结果数据
+
+};
+
+/***/ }),
+
 /***/ "./src/data/initSchemaEntity/EmptyArray.js":
 /*!*************************************************!*\
   !*** ./src/data/initSchemaEntity/EmptyArray.js ***!
@@ -843,6 +1011,41 @@ var initHtmlAreaData = {
   // 默认值
   description: '用于放置html代码片段',
   // 字段项的说明和描述
+  isRequired: false,
+  readOnly: false
+};
+
+/***/ }),
+
+/***/ "./src/data/initSchemaEntity/IMG.js":
+/*!******************************************!*\
+  !*** ./src/data/initSchemaEntity/IMG.js ***!
+  \******************************************/
+/*! exports provided: initIMGData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initIMGData", function() { return initIMGData; });
+/** image图片类型字段
+ *  用户可以使用此组件上传图片，最后返回对应的图片资源地址
+ * */
+var initIMGData = {
+  type: 'string',
+  title: 'IMG',
+  format: 'image',
+  default: '',
+  // 默认值
+  description: '点击上传图片',
+  // 字段项的说明和描述
+  imgWidth: 200,
+  // 图片默认的宽度，单位默认px
+  imgHeight: 200,
+  // 图片默认的高度，单位默认px
+  imgRatio: 1,
+  // 图片宽高比例是否可调整
+  imgRatioReadOnly: false,
+  // 图片宽高比例是否可调整
   isRequired: false,
   readOnly: false
 };
@@ -2379,37 +2582,15 @@ function schema2json(jsonSchema, jsonData) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "schemaMetaList", function() { return schemaMetaList; });
-/* harmony import */ var $data_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! $data/index */ "./src/data/index.js");
+/* harmony import */ var $data_TypeDataList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! $data/TypeDataList */ "./src/data/TypeDataList.js");
 /**
  * schemaMetaList: 当前JSON数据可视化提供的元数据清单
- * 11种基础类型组件（input、boolean、 date、date-time、 time、 url、 textarea、number、color、radio、 select）
- * 8个特殊类型组件（Object、Array、Json、datasource、Event、CodeArea、htmlArea、quantity）
+ * 11种基础类型组件（input、boolean、 date、date-time、 time、 url、 textarea、number、color、img、radio、 select）
+ * 9个特殊类型组件（Object、Array、Json、datasource、DynamicData、Event、CodeArea、htmlArea、quantity）
  */
  // 类型数据清单
 
-var schemaMetaList = {
-  input: $data_index__WEBPACK_IMPORTED_MODULE_0__["initInputData"],
-  boolean: $data_index__WEBPACK_IMPORTED_MODULE_0__["initBooleanData"],
-  date: $data_index__WEBPACK_IMPORTED_MODULE_0__["initDateData"],
-  'date-time': $data_index__WEBPACK_IMPORTED_MODULE_0__["initDateTimeData"],
-  time: $data_index__WEBPACK_IMPORTED_MODULE_0__["initTimeData"],
-  url: $data_index__WEBPACK_IMPORTED_MODULE_0__["initURLData"],
-  textarea: $data_index__WEBPACK_IMPORTED_MODULE_0__["initTextareaData"],
-  color: $data_index__WEBPACK_IMPORTED_MODULE_0__["initColorData"],
-  number: $data_index__WEBPACK_IMPORTED_MODULE_0__["initNumberData"],
-  radio: $data_index__WEBPACK_IMPORTED_MODULE_0__["initRadioData"],
-  select: $data_index__WEBPACK_IMPORTED_MODULE_0__["initSelectData"],
-  object: $data_index__WEBPACK_IMPORTED_MODULE_0__["initObjectData"],
-  array: $data_index__WEBPACK_IMPORTED_MODULE_0__["initArrayData"],
-  json: $data_index__WEBPACK_IMPORTED_MODULE_0__["initJsonData"],
-  datasource: $data_index__WEBPACK_IMPORTED_MODULE_0__["initDataSourceData"],
-  // 默认为本地数据源
-  event: $data_index__WEBPACK_IMPORTED_MODULE_0__["initEventData"],
-  // 默认为触发事件
-  codearea: $data_index__WEBPACK_IMPORTED_MODULE_0__["initCodeAreaData"],
-  htmlarea: $data_index__WEBPACK_IMPORTED_MODULE_0__["initHtmlAreaData"],
-  quantity: $data_index__WEBPACK_IMPORTED_MODULE_0__["initQuantityData"]
-};
+var schemaMetaList = $data_TypeDataList__WEBPACK_IMPORTED_MODULE_0__["TypeDataList"];
 
 /***/ }),
 
@@ -2417,7 +2598,7 @@ var schemaMetaList = {
 /*!*********************!*\
   !*** ./src/main.js ***!
   \*********************/
-/*! exports provided: getJsonDataByKeyRoute, getSchemaByIndexRoute, indexRoute2keyRoute, json2schema, metaElemAnalyzer, oldSchemaToNewSchema, schema2json, schemaMetaList, dynamicDataAnalyzer, objClone, isEqual, exitPropertie, getParentKeyRoute, getParentKeyRoute_CurKey, getCurrentFormat, isEmptySchema, isEmptyWidgetSchema, isUsedToWidgetConfig, isNewSchemaData, isBoxSchemaData, isFirstSchemaData, isSameParent, getCurPosition, getParentIndexRoute, getNextIndexRoute, getParentIndexRoute_CurIndex, moveForward, moveBackward, isURL, isString, isNumber, isBoolean, isDateStr, isDateTimeStr, isTimeStr, isArray, isSelect, isObject, isQuantity, isColor, isFunction */
+/*! exports provided: getJsonDataByKeyRoute, getSchemaByIndexRoute, indexRoute2keyRoute, json2schema, metaElemAnalyzer, oldSchemaToNewSchema, schema2json, schemaMetaList, dynamicDataAnalyzer, objClone, isEqual, exitPropertie, getParentKeyRoute, getParentKeyRoute_CurKey, getCurrentFormat, isEmptySchema, isEmptyWidgetSchema, isUsedToWidgetConfig, isNewSchemaData, isBoxSchemaData, isFirstSchemaData, isSameParent, getCurPosition, getParentIndexRoute, getNextIndexRoute, getParentIndexRoute_CurIndex, moveForward, moveBackward, isURL, isString, isNumber, isBoolean, isDateStr, isDateTimeStr, isTimeStr, isArray, isSelect, isObject, isQuantity, isColor, isFunction, KeyWordList, TypeDataList, EventTypeDataList, DataSourceTypeList, DynamicDataList */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2517,6 +2698,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isFunction", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_12__["isFunction"]; });
 
+/* harmony import */ var _data_KeyWordList__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./data/KeyWordList */ "./src/data/KeyWordList.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "KeyWordList", function() { return _data_KeyWordList__WEBPACK_IMPORTED_MODULE_13__["KeyWordList"]; });
+
+/* harmony import */ var _data_TypeDataList__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./data/TypeDataList */ "./src/data/TypeDataList.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TypeDataList", function() { return _data_TypeDataList__WEBPACK_IMPORTED_MODULE_14__["TypeDataList"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EventTypeDataList", function() { return _data_TypeDataList__WEBPACK_IMPORTED_MODULE_14__["EventTypeDataList"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DataSourceTypeList", function() { return _data_TypeDataList__WEBPACK_IMPORTED_MODULE_14__["DataSourceTypeList"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DynamicDataList", function() { return _data_TypeDataList__WEBPACK_IMPORTED_MODULE_14__["DynamicDataList"]; });
+
 /**
  * json-utils: json工具集合
  * 【提供的工具方法清单】
@@ -2544,7 +2737,6 @@ __webpack_require__.r(__webpack_exports__);
  * isEmptyWidgetSchema: 判断是否为空的WidgetSchema
  * isUsedToWidgetConfig: 判断是否为用于区块配置的jsonSchema数据
  * isNewSchemaData: 判断是否是最新版的schema数据
- *
  * isBoxSchemaData: 根据format判断是否是容器类型字段
  * isFirstSchemaData: 根据format判断是否是一级类型字段(func、style、data)
  * isSameParent: 判断是否是同一个父元素
@@ -2591,9 +2783,13 @@ __webpack_require__.r(__webpack_exports__);
  // json数据内容相关的操作方法
 
  // json数据结构相关的操作方法
-// 基础元数据类型判断
+// 数值判断
 
+ // JSON关键字：用于规避key的命名
 
+ // 所有类型对应的json对象
+
+ // TypeDataList、EventTypeDataList、DataSourceTypeList、DynamicDataList
 
 /***/ }),
 
