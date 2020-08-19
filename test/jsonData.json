@@ -1,0 +1,103 @@
+[
+  {
+    "dataName": "data-12",
+    "body": {
+      "param1": {
+        "title": "参数名称",
+        "scope": "static",
+        "value": "111"
+      },
+      "param2": {
+        "title": "参数名称",
+        "scope": "window",
+        "name": "PARAM1",
+        "value": "111"
+      },
+      "pageId": {
+        "title": "页面id",
+        "scope": "hash",
+        "name": "pId",
+        "value": "111"
+      }
+    }
+  },
+  {
+    "dataName": "data-12",
+    "body": {
+      "param1": {
+        "title": "参数名称",
+        "scope": "static",
+        "value": "111"
+      },
+      "param2": {
+        "title": "参数名称",
+        "scope": "window",
+        "name": "PARAM1",
+        "value": "111"
+      },
+      "pageId": {
+        "title": "页面id",
+        "scope": "hash",
+        "name": "pId",
+        "value": "111"
+      },
+      "param4": {
+        "title": "参数名称",
+        "scope": "hash",
+        "name": "pageId",
+        "value": "111"
+      },
+      "param5": {
+        "title": "参数名称",
+        "scope": "url",
+        "name": "pageId",
+        "value": "111"
+      },
+      "param6": {
+        "title": "参数名称",
+        "scope": "window",
+        "name": "pageId",
+        "value": "111"
+      },
+      "param7": {
+        "title": "参数名称",
+        "scope": "dynamic",
+        "dataName": "api3",
+        "body": {
+          "param2": {
+            "title": "参数名称",
+            "scope": "static",
+            "value": "222"
+          },
+          "param3": {
+            "title": "参数名称",
+            "scope": "static",
+            "value": "333"
+          }
+        }
+      }
+    }
+  },
+  {
+    "dataName": "data-12",
+    "body": {
+      "param1": {
+        "title": "参数名称",
+        "scope": "static",
+        "value": "111"
+      },
+      "param2": {
+        "title": "参数名称",
+        "scope": "window",
+        "name": "PARAM1",
+        "value": "111"
+      },
+      "pageId": {
+        "title": "页面id",
+        "scope": "hash",
+        "name": "pId",
+        "value": "111"
+      }
+    }
+  }
+]

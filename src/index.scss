@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+body {
+  padding: 20px 10px;
+}
+
+.title-container {
+  display: flex;
+
+  .title1-box {
+    flex: 0 1 700px;
+    padding: 8px 10px;
+    box-sizing: border-box;
+  }
+
+  .title2-box {
+    flex: 1 1 600px;
+    box-sizing: border-box;
+    padding: 8px 10px;
+  }
+}
+
+.json-action-container {
+  display: flex;
+
+  .json-schema-box {
+    flex: 0 1 700px;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .json-editor-box {
+    flex: 1 1 600px;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+/* 外层轨道 */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: rgba(255, 0, 0, 0.3);
+
+  background: rgba(255, 255, 255, 0.1);
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(0, 0, 0, 0.2);
+}
