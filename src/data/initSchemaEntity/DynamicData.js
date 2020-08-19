@@ -47,6 +47,7 @@ export const initDynamicData = {
 const DynamicDataCont = {
   type: 'remote',
   config: {
+    id: 11, // 动态数据源id
     dataName: 'data-12',  // 动态数据源名称
     title: 'xxx数据源', // 数据源中文名称
     desc: 'xxx数据源描述', //  数据源中文描述
@@ -71,6 +72,23 @@ const DynamicDataCont = {
         scope: 'hash',
         name: 'pId',
         value: '111' // 默认值
+      },
+      param7: {
+        title: '参数名称',
+        scope: 'dynamic', // 接口下发
+        dataName: 'api3',
+        body: {
+          param2: {
+            title: '参数名称',
+            scope: 'static',
+            value: '222',
+          },
+          param3: {
+            title: '参数名称',
+            scope: 'static',
+            value: '333',
+          },
+        },
       },
     },
     mock: '{}',
