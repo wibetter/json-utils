@@ -2,7 +2,7 @@
 
 > 提供JSON相关的各类工具方法，比如schema转json、json转schema、json元数据分析等
 
-## json工具集合 / 工具方法清单
+## json工具集合 / json工具方法清单
 
 ### 9个主要的json工具方法
 - getJsonDataByKeyRoute: 根据key索引路径获取对应的数值
