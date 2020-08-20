@@ -700,9 +700,23 @@ var initDynamicData = {
   },
   required: ['type', 'data', 'filter'],
   propertyOrder: ['type', 'data', 'filter']
-}; // 动态数据对应的json数据内容
+}; // 动态数据对应的空json数据内容
 
-var DynamicDataCont = {
+var EmptyDynamicDataCont = {
+  type: 'local',
+  config: {
+    dataName: '',
+    // 动态数据源名称
+    body: {},
+    // 请求参数相关
+    filter: "(resp) => { return resp.data; }"
+  },
+  data: '{}',
+  // 用于存储结果数据
+  localFilter: "(resp) => { return resp.data; }"
+}; // 示例对象: 动态数据类型-接口数据 对应的json数据内容
+
+var DynamicDataContDemo = {
   type: 'remote',
   config: {
     id: 0,
@@ -761,24 +775,12 @@ var DynamicDataCont = {
         }
       }
     },
-    mock: '{}'
+    mock: '{}',
+    filter: "(resp) => { return resp.data; }"
   },
-  filter: "(resp) => { return resp.data; }",
-  data: '{}' // 用于存储结果数据
-
-}; // 动态数据对应的空json数据内容
-
-var EmptyDynamicDataCont = {
-  type: 'local',
-  config: {
-    dataName: '',
-    // 动态数据源名称
-    body: {} // 请求参数相关
-
-  },
-  filter: "(resp) => { return resp.data; }",
-  data: '{}' // 用于存储结果数据
-
+  data: '{}',
+  // 用于存储结果数据
+  localFilter: "(resp) => { return resp.data; }"
 };
 
 /***/ }),
@@ -2385,10 +2387,7 @@ function objectSchema2JsonData(jsonSchema, jsonData) {
       curJsonData = Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["objClone"])($data_index__WEBPACK_IMPORTED_MODULE_4__["EmptyDynamicDataCont"]);
 
       if (curValue && Object($utils_typeof__WEBPACK_IMPORTED_MODULE_3__["isObject"])(curValue) && JSON.stringify(curValue) !== '{}') {
-        console.log('EmptyDynamicDataCont:' + JSON.stringify($data_index__WEBPACK_IMPORTED_MODULE_4__["EmptyDynamicDataCont"]));
-        console.log('curValue:' + JSON.stringify(curValue));
         curJsonData = Object.assign(curJsonData, curValue);
-        console.log('curJsonData:' + JSON.stringify(curJsonData));
       }
     } else if (curType === 'datasource') {
       // 数据源类型（固定格式的Object类型）
