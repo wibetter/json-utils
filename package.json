@@ -1,6 +1,6 @@
 {
   "name": "@wibetter/json-utils",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "提供JSON相关的各类工具方法，比如schema转json、json转schema、json元数据分析等",
   "keywords": [
     "json工具包",
@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "akfun dev",
     "build2lib": "akfun build2lib",
-    "format": "prettier --write \"test/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\""
+    "format": "prettier --write \"src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\""
   },
   "files": [
     "dist/*"

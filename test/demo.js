@@ -620,7 +620,7 @@ const jsonTestData = {
           },
           mock: '{}',
         },
-        filter: `(resp) => { return resp.data; }`,
+        localFilter: `(resp) => { return resp.data; }`,
         data: '{}', // 用于存储结果数据
       },
       field_7: 'hello.world!',
@@ -718,7 +718,7 @@ const jsonTestData = {
           },
           mock: '{}',
         },
-        filter: `(resp) => { return resp.data; }`,
+        localFilter: `(resp) => { return resp.data; }`,
         data: '{}', // 用于存储结果数据
       },
       field_29: {
@@ -759,7 +759,7 @@ const jsonTestData = {
           },
           mock: '{}',
         },
-        filter: `(resp) => { return resp.data; }`,
+        localFilter: `(resp) => { return resp.data; }`,
         data: '{}', // 用于存储结果数据
       },
       field_30: {
@@ -773,7 +773,7 @@ const jsonTestData = {
         actionFunc: '() => {}',
       },
     },
-  }
+  },
 };
 
 const { dynamicDataAnalyzer } = require('../dist/index.umd');

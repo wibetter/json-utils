@@ -2,7 +2,8 @@
 export const postDynamicAnalyzer = {
   pageDataId: 'xxx',
   widgets: {
-    widget1: [ // 区块id
+    widget1: [
+      // 区块id
       {
         id: 11, // 动态数据源id
         dataName: 'api1',
@@ -130,5 +131,5 @@ export const postDynamicAnalyzer = {
         },
       },
     ],
-  }
+  },
 };

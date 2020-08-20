@@ -22,12 +22,46 @@ export const initDynamicData = {
       enumextra: ['本地数据', '接口数据'],
       title: '数据类型',
     },
+    config: {
+      type: 'object',
+      title: '接口配置',
+      format: 'object',
+      description: '用于存放接口的配置数据(url、请求参数等)',
+      isRequired: true,
+      properties: {
+        dataName: {
+          type: 'string',
+          default: 'local',
+          format: 'typeSelect',
+          enum: ['local', 'remote'],
+          enumextra: ['本地数据', '接口数据'],
+          title: '数据类型',
+        },
+        body: {
+          type: 'object',
+          title: '请求参数配置',
+          format: 'object',
+          description: '用于配置当前接口的请求参数数值',
+          isRequired: true,
+        },
+        filter: {
+          type: 'string',
+          title: '过滤器',
+          format: 'codearea',
+          default: '(resp) => { return resp.data; }',
+          description: '用于定义过滤接口数据',
+          isRequired: true,
+        },
+      },
+      required: ['dataName', 'body', 'filter'],
+      propertyOrder: ['dataName', 'body', 'filter'],
+    },
     data: {
       type: 'string',
       title: '数据内容',
       format: 'json',
       default: '{}', // 默认值
-      description: '用于存放接口动态数据内容',
+      description: '用于存放DynamicData的数据内容',
       isRequired: true,
     },
     filter: {
@@ -35,21 +69,21 @@ export const initDynamicData = {
       title: '过滤器',
       format: 'codearea',
       default: '(resp) => { return resp.data; }',
-      description: '用于定义过滤当前动态数据的函数',
+      description: '用于定义过滤本地数据',
       isRequired: true,
     },
   },
-  required: ['type', 'data', 'filter'],
-  propertyOrder: ['type', 'data', 'filter'],
+  required: ['type', 'config', 'data', 'localFilter'],
+  propertyOrder: ['type', 'config', 'data', 'localFilter'],
 };
 
 // 动态数据对应的空json数据内容
 export const EmptyDynamicDataCont = {
   type: 'local',
   config: {
-    dataName: '',  // 动态数据源名称
+    dataName: '', // 动态数据源名称
     body: {}, // 请求参数相关
-    filter: `(resp) => { return resp.data; }`
+    filter: `(resp) => { return resp.data; }`,
   },
   data: '{}', // 用于存储结果数据
   localFilter: `(resp) => { return resp.data; }`,
@@ -60,30 +94,31 @@ const DynamicDataContDemo = {
   type: 'remote',
   config: {
     id: 0, // 动态数据源id
-    dataName: 'data-12',  // 动态数据源名称
+    dataName: 'data-12', // 动态数据源名称
     title: 'xxx数据源', // 数据源中文名称
     desc: 'xxx数据源描述', //  数据源中文描述
     url: 'https://api.thecatapi.com/v1/images/search', // 动态数据源请求地址
     method: 'get',
     option: {},
     header: {}, // 请求头
-    body: { // 请求参数相关
+    body: {
+      // 请求参数相关
       param1: {
         title: '参数名称',
-        scope: 'static',  // 固定参数
-        value: '111'  // 固定值
+        scope: 'static', // 固定参数
+        value: '111', // 固定值
       },
       param2: {
         title: '参数名称',
         scope: 'window',
         name: 'PARAM1',
-        value: '111' // 默认值
+        value: '111', // 默认值
       },
       pageId: {
         title: '页面id',
         scope: 'hash',
         name: 'pId',
-        value: '111' // 默认值
+        value: '111', // 默认值
       },
       param7: {
         title: '参数名称',

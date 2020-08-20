@@ -9,7 +9,7 @@ import { exitPropertie } from '$utils/index';
 import { getCurrentFormat } from '$utils/jsonSchema';
 import { isArray, isObject, isFunction } from '$utils/typeof';
 import { EmptyDynamicDataCont } from '$data/index';
-import {objClone} from "../utils";
+import { objClone } from '../utils';
 /**
  * 基础类型的schema转jsonData
  * 根据jsonSchema和旧版的jsonData生成一份对应的jsonData

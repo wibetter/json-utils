@@ -78,22 +78,29 @@ export function dynamicDataAnalyzer(curJsonData, analyzerResult) {
   // 根据当前schem数据分析使用到的元数据情况
   if (curJsonData && JSON.stringify(curJsonData) !== '{}') {
     if (isObject(curJsonData)) {
+      const curJsonMap = Object.keys(curJsonData); // 动态数据类型的jsonData包含四个数值：type、config（dataName/body/filter）、data、localFilter
       // 判断是否是动态数据类型
-      if (curJsonData.type && curJsonData.type === 'remote' && curJsonData.config && isObject(curJsonData.config)) {
+      if (
+        curJsonData.type &&
+        curJsonData.type === 'remote' &&
+        curJsonData.config &&
+        isObject(curJsonData.config) &&
+        (curJsonMap.length === 3 || curJsonMap.length === 4)
+      ) {
         curAnalyzerResult.push({
-          'dataName': curJsonData.config.dataName,
-          'body': curJsonData.config.body,
+          dataName: curJsonData.config.dataName,
+          body: curJsonData.config.body,
         });
       } else {
         const curJsonDataList = Object.keys(curJsonData);
         curJsonDataList.map((jsonKey) => {
-          dynamicDataAnalyzer(curJsonData[jsonKey], curAnalyzerResult)
-        })
+          dynamicDataAnalyzer(curJsonData[jsonKey], curAnalyzerResult);
+        });
       }
     } else if (isArray(curJsonData)) {
       curJsonData.map((jsonDataItem) => {
-        dynamicDataAnalyzer(jsonDataItem, curAnalyzerResult)
-      })
+        dynamicDataAnalyzer(jsonDataItem, curAnalyzerResult);
+      });
     }
   }
   return curAnalyzerResult;
