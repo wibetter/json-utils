@@ -196,7 +196,7 @@ var DataSourceTypeList = {
 /*!***************************!*\
   !*** ./src/data/index.js ***!
   \***************************/
-/*! exports provided: initJSONSchemaData, initInputData, initBooleanData, initTextareaData, initNumberData, initRadioData, initSelectData, initDateTimeData, initDateData, initTimeData, initColorData, initURLData, initIMGData, initArrayData, initObjectData, EmptyArray, EmptyObject, initQuantityData, initJsonData, initCodeAreaData, initHtmlAreaData, initEventDataV1, initEventData, initEventDataTypeON, initDataSourceData, initDataSourceDataV2, initDynamicData */
+/*! exports provided: initJSONSchemaData, initInputData, initBooleanData, initTextareaData, initNumberData, initRadioData, initSelectData, initDateTimeData, initDateData, initTimeData, initColorData, initURLData, initIMGData, initArrayData, initObjectData, EmptyArray, EmptyObject, initQuantityData, initJsonData, initCodeAreaData, initHtmlAreaData, initEventDataV1, initEventData, initEventDataTypeON, initDataSourceData, initDataSourceDataV2, initDynamicData, EmptyDynamicDataCont */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -278,6 +278,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _initSchemaEntity_DynamicData__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./initSchemaEntity/DynamicData */ "./src/data/initSchemaEntity/DynamicData.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "initDynamicData", function() { return _initSchemaEntity_DynamicData__WEBPACK_IMPORTED_MODULE_23__["initDynamicData"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EmptyDynamicDataCont", function() { return _initSchemaEntity_DynamicData__WEBPACK_IMPORTED_MODULE_23__["EmptyDynamicDataCont"]; });
 
 
 
@@ -647,12 +649,13 @@ var initDateTimeData = {
 /*!**************************************************!*\
   !*** ./src/data/initSchemaEntity/DynamicData.js ***!
   \**************************************************/
-/*! exports provided: initDynamicData */
+/*! exports provided: initDynamicData, EmptyDynamicDataCont */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initDynamicData", function() { return initDynamicData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmptyDynamicDataCont", function() { return EmptyDynamicDataCont; });
 /** dynamic-data: 动态数据
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -671,7 +674,7 @@ var initDynamicData = {
   properties: {
     type: {
       type: 'string',
-      default: 'remote',
+      default: 'local',
       format: 'typeSelect',
       enum: ['local', 'remote'],
       enumextra: ['本地数据', '接口数据'],
@@ -702,6 +705,8 @@ var initDynamicData = {
 var DynamicDataCont = {
   type: 'remote',
   config: {
+    id: 0,
+    // 动态数据源id
     dataName: 'data-12',
     // 动态数据源名称
     title: 'xxx数据源',
@@ -736,9 +741,40 @@ var DynamicDataCont = {
         name: 'pId',
         value: '111' // 默认值
 
+      },
+      param7: {
+        title: '参数名称',
+        scope: 'dynamic',
+        // 接口下发
+        dataName: 'api3',
+        body: {
+          param2: {
+            title: '参数名称',
+            scope: 'static',
+            value: '222'
+          },
+          param3: {
+            title: '参数名称',
+            scope: 'static',
+            value: '333'
+          }
+        }
       }
     },
     mock: '{}'
+  },
+  filter: "(resp) => { return resp.data; }",
+  data: '{}' // 用于存储结果数据
+
+}; // 动态数据对应的空json数据内容
+
+var EmptyDynamicDataCont = {
+  type: 'local',
+  config: {
+    dataName: '',
+    // 动态数据源名称
+    body: {} // 请求参数相关
+
   },
   filter: "(resp) => { return resp.data; }",
   data: '{}' // 用于存储结果数据
@@ -2229,6 +2265,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! $utils/index */ "./src/utils/index.js");
 /* harmony import */ var $utils_jsonSchema__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! $utils/jsonSchema */ "./src/utils/jsonSchema.js");
 /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! $utils/typeof */ "./src/utils/typeof.js");
+/* harmony import */ var $data_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! $data/index */ "./src/data/index.js");
 
 
 /**
@@ -2238,6 +2275,8 @@ __webpack_require__.r(__webpack_exports__);
  * jsonSchema: schema数据对象，主要根据此对象生成对应的json数据
  * jsonData: json数据对象，会优先使用此jsonData对应的数值
  * */
+
+
 
 
 
@@ -2341,7 +2380,17 @@ function objectSchema2JsonData(jsonSchema, jsonData) {
 
     var curValue = Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(oldValue) ? oldValue : jsonItem.default;
 
-    if (curType === 'datasource') {
+    if (curType === 'dynamic-data') {
+      // 动态数据源类型（固定格式的Object类型）
+      curJsonData = Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["objClone"])($data_index__WEBPACK_IMPORTED_MODULE_4__["EmptyDynamicDataCont"]);
+
+      if (curValue && Object($utils_typeof__WEBPACK_IMPORTED_MODULE_3__["isObject"])(curValue) && JSON.stringify(curValue) !== '{}') {
+        console.log('EmptyDynamicDataCont:' + JSON.stringify($data_index__WEBPACK_IMPORTED_MODULE_4__["EmptyDynamicDataCont"]));
+        console.log('curValue:' + JSON.stringify(curValue));
+        curJsonData = Object.assign(curJsonData, curValue);
+        console.log('curJsonData:' + JSON.stringify(curJsonData));
+      }
+    } else if (curType === 'datasource') {
       // 数据源类型（固定格式的Object类型）
       if (jsonItem.properties && jsonItem.properties.type && jsonItem.properties.type.default && jsonItem.properties.type.default === 'local') {
         // 本地数据源类型

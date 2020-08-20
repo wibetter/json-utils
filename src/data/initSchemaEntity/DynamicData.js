@@ -16,7 +16,7 @@ export const initDynamicData = {
   properties: {
     type: {
       type: 'string',
-      default: 'remote',
+      default: 'local',
       format: 'typeSelect',
       enum: ['local', 'remote'],
       enumextra: ['本地数据', '接口数据'],
@@ -43,8 +43,20 @@ export const initDynamicData = {
   propertyOrder: ['type', 'data', 'filter'],
 };
 
-// 动态数据对应的json数据内容
-const DynamicDataCont = {
+// 动态数据对应的空json数据内容
+export const EmptyDynamicDataCont = {
+  type: 'local',
+  config: {
+    dataName: '',  // 动态数据源名称
+    body: {}, // 请求参数相关
+    filter: `(resp) => { return resp.data; }`
+  },
+  data: '{}', // 用于存储结果数据
+  localFilter: `(resp) => { return resp.data; }`,
+};
+
+// 示例对象: 动态数据类型-接口数据 对应的json数据内容
+const DynamicDataContDemo = {
   type: 'remote',
   config: {
     id: 0, // 动态数据源id
@@ -92,18 +104,8 @@ const DynamicDataCont = {
       },
     },
     mock: '{}',
+    filter: `(resp) => { return resp.data; }`,
   },
-  filter: `(resp) => { return resp.data; }`,
   data: '{}', // 用于存储结果数据
-};
-
-// 动态数据对应的空json数据内容
-export const EmptyDynamicDataCont = {
-  type: 'local',
-  config: {
-    dataName: '',  // 动态数据源名称
-    body: {}, // 请求参数相关
-  },
-  filter: `(resp) => { return resp.data; }`,
-  data: '{}', // 用于存储结果数据
+  localFilter: `(resp) => { return resp.data; }`,
 };

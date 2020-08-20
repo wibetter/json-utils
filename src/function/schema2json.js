@@ -5,11 +5,11 @@
  * jsonSchema: schema数据对象，主要根据此对象生成对应的json数据
  * jsonData: json数据对象，会优先使用此jsonData对应的数值
  * */
-
 import { exitPropertie } from '$utils/index';
 import { getCurrentFormat } from '$utils/jsonSchema';
 import { isArray, isObject, isFunction } from '$utils/typeof';
 import { EmptyDynamicDataCont } from '$data/index';
+import {objClone} from "../utils";
 /**
  * 基础类型的schema转jsonData
  * 根据jsonSchema和旧版的jsonData生成一份对应的jsonData
@@ -104,7 +104,7 @@ function objectSchema2JsonData(jsonSchema, jsonData) {
 
     if (curType === 'dynamic-data') {
       // 动态数据源类型（固定格式的Object类型）
-      curJsonData = EmptyDynamicDataCont;
+      curJsonData = objClone(EmptyDynamicDataCont);
       if (curValue && isObject(curValue) && JSON.stringify(curValue) !== '{}') {
         curJsonData = Object.assign(curJsonData, curValue);
       }
