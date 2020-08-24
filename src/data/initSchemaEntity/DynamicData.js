@@ -46,9 +46,9 @@ export const initDynamicData = {
         },
         filter: {
           type: 'string',
-          title: '过滤器',
+          title: '过滤器函数体',
           format: 'codearea',
-          default: '(resp) => { return resp.data; }',
+          default: 'return data;',
           description: '用于定义过滤接口数据',
           isRequired: true,
         },
@@ -64,11 +64,11 @@ export const initDynamicData = {
       description: '用于存放DynamicData的数据内容',
       isRequired: true,
     },
-    filter: {
+    localFilter: {
       type: 'string',
       title: '过滤器',
       format: 'codearea',
-      default: '(resp) => { return resp.data; }',
+      default: 'return data;',
       description: '用于定义过滤本地数据',
       isRequired: true,
     },
@@ -83,10 +83,10 @@ export const EmptyDynamicDataCont = {
   config: {
     dataName: '', // 动态数据源名称
     body: {}, // 请求参数相关
-    filter: `(resp) => { return resp.data; }`,
+    filter: 'return data;',
   },
   data: '{}', // 用于存储结果数据
-  localFilter: `(resp) => { return resp.data; }`,
+  localFilter: 'return data;',
 };
 
 // 示例对象: 动态数据类型-接口数据 对应的json数据内容
@@ -139,8 +139,8 @@ const DynamicDataContDemo = {
       },
     },
     mock: '{}',
-    filter: `(resp) => { return resp.data; }`,
+    filter: 'return data;',
   },
   data: '{}', // 用于存储结果数据
-  localFilter: `(resp) => { return resp.data; }`,
+  localFilter: 'return data;',
 };

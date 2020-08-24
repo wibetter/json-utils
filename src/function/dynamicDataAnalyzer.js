@@ -85,11 +85,21 @@ export function dynamicDataAnalyzer(curJsonData, analyzerResult) {
         curJsonData.type === 'remote' &&
         curJsonData.config &&
         isObject(curJsonData.config) &&
-        (curJsonMap.length === 3 || curJsonMap.length === 4)
+        curJsonData.localFilter &&
+        curJsonData.data
       ) {
+        let apiParams = curJsonData.config.body;
+        if (apiParams && !isObject(apiParams)) {
+          try {
+            apiParams = JSON.parse(apiParams);
+          } catch (e) {
+            apiParams = {};
+          }
+        }
         curAnalyzerResult.push({
+          id: curJsonData.config.id,
           dataName: curJsonData.config.dataName,
-          body: curJsonData.config.body,
+          body: apiParams,
         });
       } else {
         const curJsonDataList = Object.keys(curJsonData);

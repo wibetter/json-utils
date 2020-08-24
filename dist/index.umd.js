@@ -704,9 +704,9 @@ var initDynamicData = {
         },
         filter: {
           type: 'string',
-          title: '过滤器',
+          title: '过滤器函数体',
           format: 'codearea',
-          default: '(resp) => { return resp.data; }',
+          default: 'return data;',
           description: '用于定义过滤接口数据',
           isRequired: true
         }
@@ -723,11 +723,11 @@ var initDynamicData = {
       description: '用于存放DynamicData的数据内容',
       isRequired: true
     },
-    filter: {
+    localFilter: {
       type: 'string',
       title: '过滤器',
       format: 'codearea',
-      default: '(resp) => { return resp.data; }',
+      default: 'return data;',
       description: '用于定义过滤本地数据',
       isRequired: true
     }
@@ -743,11 +743,11 @@ var EmptyDynamicDataCont = {
     // 动态数据源名称
     body: {},
     // 请求参数相关
-    filter: "(resp) => { return resp.data; }"
+    filter: 'return data;'
   },
   data: '{}',
   // 用于存储结果数据
-  localFilter: "(resp) => { return resp.data; }"
+  localFilter: 'return data;'
 }; // 示例对象: 动态数据类型-接口数据 对应的json数据内容
 
 var DynamicDataContDemo = {
@@ -810,11 +810,11 @@ var DynamicDataContDemo = {
       }
     },
     mock: '{}',
-    filter: "(resp) => { return resp.data; }"
+    filter: 'return data;'
   },
   data: '{}',
   // 用于存储结果数据
-  localFilter: "(resp) => { return resp.data; }"
+  localFilter: 'return data;'
 };
 
 /***/ }),
@@ -1680,10 +1680,21 @@ function dynamicDataAnalyzer(curJsonData, analyzerResult) {
       var curJsonMap = Object.keys(curJsonData); // 动态数据类型的jsonData包含四个数值：type、config（dataName/body/filter）、data、localFilter
       // 判断是否是动态数据类型
 
-      if (curJsonData.type && curJsonData.type === 'remote' && curJsonData.config && Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isObject"])(curJsonData.config) && (curJsonMap.length === 3 || curJsonMap.length === 4)) {
+      if (curJsonData.type && curJsonData.type === 'remote' && curJsonData.config && Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isObject"])(curJsonData.config) && curJsonData.localFilter && curJsonData.data) {
+        var apiParams = curJsonData.config.body;
+
+        if (apiParams && !Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isObject"])(apiParams)) {
+          try {
+            apiParams = JSON.parse(apiParams);
+          } catch (e) {
+            apiParams = {};
+          }
+        }
+
         curAnalyzerResult.push({
+          id: curJsonData.config.id,
           dataName: curJsonData.config.dataName,
-          body: curJsonData.config.body
+          body: apiParams
         });
       } else {
         var curJsonDataList = Object.keys(curJsonData);
