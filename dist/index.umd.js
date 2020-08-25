@@ -2064,7 +2064,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "json2treeData", function() { return json2treeData; });
 /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! $utils/typeof */ "./src/utils/typeof.js");
 /**
- * mockData2treeData: 根据当前的json数据，转换成treeData（供antd的TreeSelect使用）
+ * json2treeData: 根据当前的json数据，转换成treeData（供antd的TreeSelect使用）
  * 【方法参数说明】
  * mockData: json数据，必填项。
  * 【返回数据格式说明】
