@@ -2051,6 +2051,120 @@ function json2schema(jsonData) {
 
 /***/ }),
 
+/***/ "./src/function/json2treeData.js":
+/*!***************************************!*\
+  !*** ./src/function/json2treeData.js ***!
+  \***************************************/
+/*! exports provided: dataRoute2dataPath, json2treeData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dataRoute2dataPath", function() { return dataRoute2dataPath; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "json2treeData", function() { return json2treeData; });
+/* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! $utils/typeof */ "./src/utils/typeof.js");
+/**
+ * mockData2treeData: 根据当前的json数据，转换成treeData（供antd的TreeSelect使用）
+ * 【方法参数说明】
+ * mockData: json数据，必填项。
+ * 【返回数据格式说明】
+ * [
+ {
+    title: 'Node1',
+    value: '0-0',
+    key: '0-0',
+    children: [
+      {
+        title: 'Child Node1',
+        value: '0-0-1',
+        key: '0-0-1',
+      },
+      {
+        title: 'Child Node2',
+        value: '0-0-2',
+        key: '0-0-2',
+      },
+    ],
+  },
+ {
+    title: 'Node2',
+    value: '0-1',
+    key: '0-1',
+  },
+ ];
+ */
+
+/**
+ *  DataRoute转真实数据路径
+ * */
+
+function dataRoute2dataPath(dataRoute, baseDataPath) {
+  var dataPath = baseDataPath || 'data'; // 默认数据根路径值为data
+
+  var dataRouteArr = dataRoute.split('-');
+  dataRouteArr.map(function (path) {
+    if (/^\d+$/.test(path)) {
+      dataPath = "".concat(dataPath, "[").concat(path, "]");
+    } else {
+      dataPath = "".concat(dataPath, ".").concat(path);
+    }
+  });
+  return dataPath;
+}
+/**
+ *  mockData转treeData
+ * */
+
+function json2treeData(mockData, parentDataRoute) {
+  var treeData = [];
+
+  if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isObject"])(mockData)) {
+    var mockDataProps = Object.keys(mockData);
+    mockDataProps.map(function (propKey) {
+      var mockDataItem = mockData[propKey];
+      var curDataRoute = parentDataRoute ? "".concat(parentDataRoute, "-").concat(propKey) : propKey;
+
+      if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isObject"])(mockDataItem) || Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isArray"])(mockDataItem)) {
+        treeData.push({
+          title: propKey,
+          value: curDataRoute,
+          key: curDataRoute,
+          children: json2treeData(mockDataItem, curDataRoute)
+        });
+      } else {
+        treeData.push({
+          title: propKey,
+          value: curDataRoute,
+          key: curDataRoute
+        });
+      }
+    });
+  } else if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isArray"])(mockData)) {
+    mockData.map(function (mockDataItem, index) {
+      var curDataRoute = parentDataRoute ? "".concat(parentDataRoute, "-").concat(index) : index;
+
+      if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isObject"])(mockDataItem) || Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isArray"])(mockDataItem)) {
+        treeData.push({
+          title: index,
+          value: curDataRoute,
+          key: curDataRoute,
+          children: json2treeData(mockDataItem, curDataRoute)
+        });
+      } else {
+        treeData.push({
+          title: index,
+          value: curDataRoute,
+          key: curDataRoute
+        });
+      }
+    });
+  }
+
+  return treeData;
+}
+
+/***/ }),
+
 /***/ "./src/function/metaElemAnalyzer.js":
 /*!******************************************!*\
   !*** ./src/function/metaElemAnalyzer.js ***!
@@ -2648,7 +2762,7 @@ var schemaMetaList = $data_TypeDataList__WEBPACK_IMPORTED_MODULE_0__["TypeDataLi
 /*!*********************!*\
   !*** ./src/main.js ***!
   \*********************/
-/*! exports provided: getJsonDataByKeyRoute, getSchemaByIndexRoute, indexRoute2keyRoute, json2schema, metaElemAnalyzer, oldSchemaToNewSchema, schema2json, schemaMetaList, dynamicDataAnalyzer, objClone, isEqual, exitPropertie, getParentKeyRoute, getParentKeyRoute_CurKey, getCurrentFormat, isEmptySchema, isEmptyWidgetSchema, isUsedToWidgetConfig, isNewSchemaData, isBoxSchemaData, isFirstSchemaData, isSameParent, getCurPosition, getParentIndexRoute, getNextIndexRoute, getParentIndexRoute_CurIndex, moveForward, moveBackward, isURL, isString, isNumber, isBoolean, isDateStr, isDateTimeStr, isTimeStr, isArray, isSelect, isObject, isQuantity, isColor, isFunction, KeyWordList, TypeDataList, EventTypeDataList, DataSourceTypeList */
+/*! exports provided: getJsonDataByKeyRoute, getSchemaByIndexRoute, indexRoute2keyRoute, json2schema, metaElemAnalyzer, oldSchemaToNewSchema, schema2json, schemaMetaList, dynamicDataAnalyzer, dataRoute2dataPath, json2treeData, objClone, isEqual, exitPropertie, getParentKeyRoute, getParentKeyRoute_CurKey, getCurrentFormat, isEmptySchema, isEmptyWidgetSchema, isUsedToWidgetConfig, isNewSchemaData, isBoxSchemaData, isFirstSchemaData, isSameParent, getCurPosition, getParentIndexRoute, getNextIndexRoute, getParentIndexRoute_CurIndex, moveForward, moveBackward, isURL, isString, isNumber, isBoolean, isDateStr, isDateTimeStr, isTimeStr, isArray, isSelect, isObject, isQuantity, isColor, isFunction, KeyWordList, TypeDataList, EventTypeDataList, DataSourceTypeList */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2680,95 +2794,101 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _function_dynamicDataAnalyzer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./function/dynamicDataAnalyzer */ "./src/function/dynamicDataAnalyzer.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "dynamicDataAnalyzer", function() { return _function_dynamicDataAnalyzer__WEBPACK_IMPORTED_MODULE_8__["dynamicDataAnalyzer"]; });
 
-/* harmony import */ var _utils_index__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./utils/index */ "./src/utils/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "objClone", function() { return _utils_index__WEBPACK_IMPORTED_MODULE_9__["objClone"]; });
+/* harmony import */ var _function_json2treeData__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./function/json2treeData */ "./src/function/json2treeData.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "dataRoute2dataPath", function() { return _function_json2treeData__WEBPACK_IMPORTED_MODULE_9__["dataRoute2dataPath"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isEqual", function() { return _utils_index__WEBPACK_IMPORTED_MODULE_9__["isEqual"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "json2treeData", function() { return _function_json2treeData__WEBPACK_IMPORTED_MODULE_9__["json2treeData"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "exitPropertie", function() { return _utils_index__WEBPACK_IMPORTED_MODULE_9__["exitPropertie"]; });
+/* harmony import */ var _utils_index__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./utils/index */ "./src/utils/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "objClone", function() { return _utils_index__WEBPACK_IMPORTED_MODULE_10__["objClone"]; });
 
-/* harmony import */ var _utils_jsonData__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./utils/jsonData */ "./src/utils/jsonData.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getParentKeyRoute", function() { return _utils_jsonData__WEBPACK_IMPORTED_MODULE_10__["getParentKeyRoute"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isEqual", function() { return _utils_index__WEBPACK_IMPORTED_MODULE_10__["isEqual"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getParentKeyRoute_CurKey", function() { return _utils_jsonData__WEBPACK_IMPORTED_MODULE_10__["getParentKeyRoute_CurKey"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "exitPropertie", function() { return _utils_index__WEBPACK_IMPORTED_MODULE_10__["exitPropertie"]; });
 
-/* harmony import */ var _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./utils/jsonSchema */ "./src/utils/jsonSchema.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getCurrentFormat", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_11__["getCurrentFormat"]; });
+/* harmony import */ var _utils_jsonData__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./utils/jsonData */ "./src/utils/jsonData.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getParentKeyRoute", function() { return _utils_jsonData__WEBPACK_IMPORTED_MODULE_11__["getParentKeyRoute"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isEmptySchema", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_11__["isEmptySchema"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getParentKeyRoute_CurKey", function() { return _utils_jsonData__WEBPACK_IMPORTED_MODULE_11__["getParentKeyRoute_CurKey"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isEmptyWidgetSchema", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_11__["isEmptyWidgetSchema"]; });
+/* harmony import */ var _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./utils/jsonSchema */ "./src/utils/jsonSchema.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getCurrentFormat", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_12__["getCurrentFormat"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isUsedToWidgetConfig", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_11__["isUsedToWidgetConfig"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isEmptySchema", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_12__["isEmptySchema"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isNewSchemaData", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_11__["isNewSchemaData"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isEmptyWidgetSchema", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_12__["isEmptyWidgetSchema"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isBoxSchemaData", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_11__["isBoxSchemaData"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isUsedToWidgetConfig", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_12__["isUsedToWidgetConfig"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isFirstSchemaData", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_11__["isFirstSchemaData"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isNewSchemaData", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_12__["isNewSchemaData"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isSameParent", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_11__["isSameParent"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isBoxSchemaData", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_12__["isBoxSchemaData"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getCurPosition", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_11__["getCurPosition"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isFirstSchemaData", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_12__["isFirstSchemaData"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getParentIndexRoute", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_11__["getParentIndexRoute"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isSameParent", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_12__["isSameParent"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getNextIndexRoute", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_11__["getNextIndexRoute"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getCurPosition", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_12__["getCurPosition"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getParentIndexRoute_CurIndex", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_11__["getParentIndexRoute_CurIndex"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getParentIndexRoute", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_12__["getParentIndexRoute"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "moveForward", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_11__["moveForward"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getNextIndexRoute", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_12__["getNextIndexRoute"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "moveBackward", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_11__["moveBackward"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getParentIndexRoute_CurIndex", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_12__["getParentIndexRoute_CurIndex"]; });
 
-/* harmony import */ var _utils_typeof__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./utils/typeof */ "./src/utils/typeof.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isURL", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_12__["isURL"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "moveForward", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_12__["moveForward"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isString", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_12__["isString"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "moveBackward", function() { return _utils_jsonSchema__WEBPACK_IMPORTED_MODULE_12__["moveBackward"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isNumber", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_12__["isNumber"]; });
+/* harmony import */ var _utils_typeof__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./utils/typeof */ "./src/utils/typeof.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isURL", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_13__["isURL"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isBoolean", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_12__["isBoolean"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isString", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_13__["isString"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isDateStr", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_12__["isDateStr"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isNumber", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_13__["isNumber"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isDateTimeStr", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_12__["isDateTimeStr"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isBoolean", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_13__["isBoolean"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isTimeStr", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_12__["isTimeStr"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isDateStr", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_13__["isDateStr"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isArray", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_12__["isArray"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isDateTimeStr", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_13__["isDateTimeStr"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isSelect", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_12__["isSelect"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isTimeStr", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_13__["isTimeStr"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isObject", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_12__["isObject"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isArray", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_13__["isArray"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isQuantity", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_12__["isQuantity"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isSelect", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_13__["isSelect"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isColor", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_12__["isColor"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isObject", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_13__["isObject"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isFunction", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_12__["isFunction"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isQuantity", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_13__["isQuantity"]; });
 
-/* harmony import */ var _data_KeyWordList__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./data/KeyWordList */ "./src/data/KeyWordList.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "KeyWordList", function() { return _data_KeyWordList__WEBPACK_IMPORTED_MODULE_13__["KeyWordList"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isColor", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_13__["isColor"]; });
 
-/* harmony import */ var _data_TypeDataList__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./data/TypeDataList */ "./src/data/TypeDataList.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TypeDataList", function() { return _data_TypeDataList__WEBPACK_IMPORTED_MODULE_14__["TypeDataList"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isFunction", function() { return _utils_typeof__WEBPACK_IMPORTED_MODULE_13__["isFunction"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EventTypeDataList", function() { return _data_TypeDataList__WEBPACK_IMPORTED_MODULE_14__["EventTypeDataList"]; });
+/* harmony import */ var _data_KeyWordList__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./data/KeyWordList */ "./src/data/KeyWordList.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "KeyWordList", function() { return _data_KeyWordList__WEBPACK_IMPORTED_MODULE_14__["KeyWordList"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DataSourceTypeList", function() { return _data_TypeDataList__WEBPACK_IMPORTED_MODULE_14__["DataSourceTypeList"]; });
+/* harmony import */ var _data_TypeDataList__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./data/TypeDataList */ "./src/data/TypeDataList.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TypeDataList", function() { return _data_TypeDataList__WEBPACK_IMPORTED_MODULE_15__["TypeDataList"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EventTypeDataList", function() { return _data_TypeDataList__WEBPACK_IMPORTED_MODULE_15__["EventTypeDataList"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DataSourceTypeList", function() { return _data_TypeDataList__WEBPACK_IMPORTED_MODULE_15__["DataSourceTypeList"]; });
 
 /**
  * json-utils: json工具集合
  * 【提供的工具方法清单】
  *
- * 【9个主要的json工具方法】
+ * 【10个主要的json工具方法】
  * getJsonDataByKeyRoute: 根据key索引路径获取对应的数值
  * getSchemaByIndexRoute: 根据index索引路径获取对应的schema数据
  * indexRoute2keyRoute: 根据index索引路径获取对应的key值路径
  * json2schema: 根据json数据内容获取对应的schema数据
  * oldSchemaToNewSchema: 旧版jsonSchema转新版jsonSchema
  * schema2json: 根据schema数据内容生成一份对应的json数据
+ * dynamicDataAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的动态数据源情况
  * schemaMetaList: 当前JSON数据可视化提供的元数据清单
  * metaElemAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的元数据情况
  * dynamicDataAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的动态数据源情况
@@ -2816,6 +2936,7 @@ __webpack_require__.r(__webpack_exports__);
  * isFunction
  */
 //【8个主要的json工具方法】
+
 
 
 

@@ -2,13 +2,14 @@
  * json-utils: json工具集合
  * 【提供的工具方法清单】
  *
- * 【9个主要的json工具方法】
+ * 【10个主要的json工具方法】
  * getJsonDataByKeyRoute: 根据key索引路径获取对应的数值
  * getSchemaByIndexRoute: 根据index索引路径获取对应的schema数据
  * indexRoute2keyRoute: 根据index索引路径获取对应的key值路径
  * json2schema: 根据json数据内容获取对应的schema数据
  * oldSchemaToNewSchema: 旧版jsonSchema转新版jsonSchema
  * schema2json: 根据schema数据内容生成一份对应的json数据
+ * dynamicDataAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的动态数据源情况
  * schemaMetaList: 当前JSON数据可视化提供的元数据清单
  * metaElemAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的元数据情况
  * dynamicDataAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的动态数据源情况
@@ -66,6 +67,7 @@ export * from './function/oldSchemaToNewSchema';
 export * from './function/schema2json';
 export * from './function/schemaMetaList';
 export * from './function/dynamicDataAnalyzer';
+export * from './function/json2treeData';
 
 //【其他较小的json工具方法】
 export * from './utils/index'; // 纯工具方法
