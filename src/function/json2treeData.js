@@ -47,7 +47,7 @@ export function dataRoute2dataPath(dataRoute, baseDataPath) {
 }
 
 /**
- *  mockData转treeData
+ *  mockData转treeData（供antd的TreeSelect使用）
  * */
 export function json2treeData(mockData, parentDataRoute) {
   let treeData = [];

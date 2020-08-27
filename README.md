@@ -4,7 +4,7 @@
 
 ## json工具集合 / json工具方法清单
 
-### 7个通用的json工具方法
+### 8个通用的json工具方法
 - getJsonDataByKeyRoute: 根据key索引路径获取对应的json数值
 - getSchemaByIndexRoute: 根据index索引路径获取对应的schema数据
 - indexRoute2keyRoute: 根据index索引路径获取对应的key值路径
@@ -12,6 +12,7 @@
 - schema2json: 根据schema数据内容生成一份对应的json数据
 - schemaMetaList: 当前JSON数据可视化提供的元数据清单
 - metaElemAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的元数据情况
+- json2treeData: 根据当前的json生成对应的treeData（供antd的TreeSelect等使用）
 
 ### json数据内容相关的操作方法
 - getParentKeyRoute: 获取父元素的key路径值
