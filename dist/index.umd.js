@@ -1727,7 +1727,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! $utils/index */ "./src/utils/index.js");
 
 /**
- * getJSONDataByKeyRoute: 根据key索引路径获取对应的数值
+ * getJSONDataByKeyRoute: 根据key值路径获取对应的json数据
  * 【方法参数说明】
  * keyRoute: key值索引路径
  * targetJsonDataObj: json数据对象
@@ -1780,8 +1780,6 @@ __webpack_require__.r(__webpack_exports__);
  * targetJsonSchemaObj: schema数据对象
  * useObjClone: 是否进行深拷贝，避免影响原有数据。（默认不进行深拷贝）
  */
-
-/**   */
 
 function getSchemaByIndexRoute(indexRoute, targetJsonSchemaObj, useObjClone) {
   var curJsonSchemaObj = targetJsonSchemaObj;
@@ -2112,7 +2110,7 @@ function dataRoute2dataPath(dataRoute, baseDataPath) {
   return dataPath;
 }
 /**
- *  mockData转treeData
+ *  mockData转treeData（供antd的TreeSelect使用）
  * */
 
 function json2treeData(mockData, parentDataRoute) {

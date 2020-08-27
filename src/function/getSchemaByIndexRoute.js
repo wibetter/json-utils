@@ -6,7 +6,6 @@ import { objClone } from '$utils/index';
  * targetJsonSchemaObj: schema数据对象
  * useObjClone: 是否进行深拷贝，避免影响原有数据。（默认不进行深拷贝）
  */
-/**   */
 export function getSchemaByIndexRoute(
   indexRoute,
   targetJsonSchemaObj,
