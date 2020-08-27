@@ -1,10 +1,11 @@
 # json-utils
 > 提供JSON相关的各类工具方法，比如schema转json、json转schema、json元数据分析等
 
-## json工具集合 / json工具方法清单
 > json: JSON(JavaScript Object Notation, JS对象简谱) 是一种轻量级的数据交换格式。
 
-> schema: 此处特指JSON Schema，一般用来描述JSON的数据格式，常用于json数据格式的校验。（[json schema官网](http://json-schema.org/learn/getting-started-step-by-step.html#properties)）
+> schema: 一般用来描述JSON的数据格式，常用于json数据格式的校验。（[json schema官网](http://json-schema.org/learn/getting-started-step-by-step.html)）
+
+## json工具集合 / json工具方法清单
 
 ### 8个通用的json工具方法
 - getJsonDataByKeyRoute: 根据key值路径获取对应的json数值对象（比如用于获取json数据中'data-user-name'对应的数据）
