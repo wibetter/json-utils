@@ -3,6 +3,7 @@
 
 ## json工具集合 / json工具方法清单
 > json: JSON(JavaScript Object Notation, JS对象简谱) 是一种轻量级的数据交换格式。
+
 > schema: 此处特指JSON Schema，一般用来描述JSON的数据格式，常用于json数据格式的校验。（[json schema官网](http://json-schema.org/learn/getting-started-step-by-step.html#properties)）
 
 ### 8个通用的json工具方法
