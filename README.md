@@ -11,8 +11,8 @@
 - getJsonDataByKeyRoute: 根据key值路径获取对应的json数值对象（比如用于获取json数据中'data-user-name'对应的数据）
 - getSchemaByIndexRoute: 根据index索引路径获取对应的schema数据对象（比如通过'2-1'获取schema中第3个子对象中的第2个字段对应的数据）
 - indexRoute2keyRoute: 根据index索引路径转换对应的key值路径
-- json2schema: 根据json数据内容生成对应的schema数据
-- schema2json: 根据schema结构数据生成一份对应的json数据内容
+- json2schema([使用示例](https://github.com/wibetter/json-utils/blob/master/docs/schema2json.md)): 根据json数据内容生成对应的schema数据
+- schema2json([使用示例](https://github.com/wibetter/json-utils/blob/master/docs/json2schema.md)): 根据schema结构数据生成一份对应的json数据内容
 - schemaMetaList: 目前JSON数据可视化组件（JSONSchema、JSONEditor）提供的元数据类型清单
 - metaElemAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的各类元数据情况
 - json2treeData: 根据当前的json生成对应的treeData（供antd的TreeSelect等使用）

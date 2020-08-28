@@ -16,7 +16,7 @@ const jsonData = {
 const curJsonSchema = json2schema(jsonData);
 ```
 
-** node端使用方法 **
+**node端使用方法**
 
 ```js
 const { schema2json } = require('@wibetter/json-utils');
@@ -28,7 +28,7 @@ const jsonData = {
 const curJsonSchema = json2schema(jsonData);
 ```
 
-*** 输出的curJsonSchema数据 ***
+***输出的curJsonSchema数据***
 ```json
 {
   "type": "object",
