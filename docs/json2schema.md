@@ -2,7 +2,7 @@
 
 根据json内容数据生成对应的schema数据（json结构数据）
 
-- `jsonData` `<String>` json内容数据对象。
+- `jsonData` `<Object>` json内容数据对象。
 
 ## Example:
 

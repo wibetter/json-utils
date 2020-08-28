@@ -2,7 +2,7 @@
 
 根据当前的json数据，转换成treeData（供antd的TreeSelect使用）
 
-- `jsonData` `<String>` json内容数据对象。
+- `jsonData` `<Object>` json内容数据对象。
 
 ## Example:
 

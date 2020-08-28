@@ -3,7 +3,7 @@
 根据schema结构数据生成一份对应的json数据内容
 
 - `jsonSchema` `<Object>` 根据jsonSchema的json结构生成一份对应的json数据。
-- `jsonData` `<String>` 非必填，当jsonData不为空时，会优先使用jsonData中对应的数值（数据融合）。
+- `jsonData` `<Object>` 非必填，当jsonData不为空时，会优先使用jsonData中对应的数值（数据融合）。
 
 ## Example:
 
