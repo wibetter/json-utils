@@ -1,4 +1,4 @@
-# getJsonDataByKeyRoute(keyRoute, targetJsonDataObj[, useObjClone])
+## getJsonDataByKeyRoute(keyRoute, targetJsonDataObj[, useObjClone])
 
 根据key值路径获取对应的json数据
 

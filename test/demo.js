@@ -741,7 +741,7 @@ const jsonTestData = {
   },
 };
 
-const { getSchemaByIndexRoute } = require('../dist/index.umd');
+const { indexRoute2keyRoute } = require('../dist/index.umd');
 
 const jsonSchema = {
   type: 'object',
@@ -796,6 +796,6 @@ const jsonSchema = {
     },
   }
 };
-const curSchema = getSchemaByIndexRoute('1-2', jsonSchema);
-// console.log(curSchema)
-console2file(curSchema);
+const keyRoute = indexRoute2keyRoute('1-2', jsonSchema);
+console.log(keyRoute)
+// console2file(curSchema);

@@ -1,15 +1,14 @@
-## getSchemaByIndexRoute(indexRoute, targetJsonSchemaObj[, useObjClone])
+## indexRoute2keyRoute(indexRoute, targetJsonSchemaObj)
 
-根据key值路径获取对应的json数据
+根据index索引路径获取对应的key值路径
 
 - `indexRoute` `<String>` 必填项，index索引路径
 - `targetJsonSchemaObj` `<Object>` 必填项，schema数据对象
-- `useObjClone` `<Boolean>` 非必填项，是否进行深拷贝，避免影响原有数据。（默认为false，不进行深拷贝）
 
 ## Example:
 
 ```js
-import { getSchemaByIndexRoute } from '@wibetter/json-utils';
+import { indexRoute2keyRoute } from '@wibetter/json-utils';
 
 const jsonSchema = {
   type: 'object',
@@ -64,13 +63,13 @@ const jsonSchema = {
     },
   }
 };
-const curSchema = getSchemaByIndexRoute('1-2', jsonSchema);
+const keyRoute = indexRoute2keyRoute('1-2', jsonSchema); // keyRoute = field_29-filter
 ```
 
 **node端使用方法**
 
 ```js
-const { getSchemaByIndexRoute } = require('@wibetter/json-utils');
+const { indexRoute2keyRoute } = require('@wibetter/json-utils');
 
 const jsonSchema = {
   type: 'object',
@@ -125,15 +124,5 @@ const jsonSchema = {
     },
   }
 };
-const curSchema = getSchemaByIndexRoute('1-2', jsonSchema);
-```
-
-***输出的curSchema数据***
-```json
-{
-  "type": "string",
-  "format": "codearea",
-  "default": "return data;",
-  "title": "过滤器"
-}
+const keyRoute = indexRoute2keyRoute('1-2', jsonSchema); // keyRoute = field_29-filter
 ```
