@@ -1,5 +1,6 @@
 {
-  "a": "text1",
-  "field_2": "",
-  "field_3": "text13"
+  "type": "string",
+  "format": "codearea",
+  "default": "return data;",
+  "title": "过滤器"
 }

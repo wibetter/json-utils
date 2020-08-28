@@ -19,7 +19,7 @@ const curJsonSchema = json2schema(jsonData);
 **node端使用方法**
 
 ```js
-const { schema2json } = require('@wibetter/json-utils');
+const { json2schema } = require('@wibetter/json-utils');
 const jsonData = {
   a: 'text1',
   field_2: 'text2',
