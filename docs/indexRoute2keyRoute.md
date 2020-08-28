@@ -9,7 +9,6 @@
 
 ```js
 import { indexRoute2keyRoute } from '@wibetter/json-utils';
-
 const jsonSchema = {
   type: 'object',
   format: 'data',
@@ -70,7 +69,6 @@ const keyRoute = indexRoute2keyRoute('1-2', jsonSchema); // keyRoute = field_29-
 
 ```js
 const { indexRoute2keyRoute } = require('@wibetter/json-utils');
-
 const jsonSchema = {
   type: 'object',
   format: 'data',

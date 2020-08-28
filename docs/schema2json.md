@@ -53,6 +53,7 @@ const jsonSchema = {
   required: ['a', 'field_2', 'field_3'],
   propertyOrder: ['a', 'field_2', 'field_3'],
 };
+
 const jsonData = {
   a: 'text1',
   field_3: 'text13',
