@@ -27,7 +27,6 @@ import {
   initDataSourceData,
   initDataSourceDataV2,
   initDynamicData,
-  initDynamicDataV2,
 } from '$data/index';
 
 // 类型数据清单

@@ -2178,7 +2178,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * metaElemAnalyzer: 根据当前的schema，统计当前json里面用到的元数据情况
  * 【方法参数说明】
- * schemaData: schema数据，必填项。当为空时会自动根据jsonData生成一份对应的schemaData数据
+ * schemaData: 必填项，schema数据
  * 【返回数据格式说明】
  * metaElemAnalyzer: {
  *   input: 3,
