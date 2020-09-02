@@ -42,7 +42,7 @@ export const TypeDataList = {
   url: initURLData,
   textarea: initTextareaData,
   color: initColorData,
-  img: initIMGData,
+  image: initIMGData,
   number: initNumberData,
   json: initJsonData,
   codearea: initCodeAreaData,
