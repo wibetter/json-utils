@@ -72,6 +72,7 @@
 }
  */
 import { isArray, isObject } from '$utils/typeof';
+import { exitPropertie } from '$utils/index';
 
 export function dynamicDataAnalyzer(curJsonData, analyzerResult) {
   let curAnalyzerResult = analyzerResult || [];
@@ -85,8 +86,8 @@ export function dynamicDataAnalyzer(curJsonData, analyzerResult) {
         curJsonData.type === 'remote' &&
         curJsonData.config &&
         isObject(curJsonData.config) &&
-        curJsonData.localFilter &&
-        curJsonData.data
+        exitPropertie(curJsonData.localFilter) &&
+        exitPropertie(curJsonData.data)
       ) {
         let apiParams = curJsonData.config.body;
         if (apiParams && !isObject(apiParams)) {

@@ -1598,6 +1598,7 @@ var initURLData = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dynamicDataAnalyzer", function() { return dynamicDataAnalyzer; });
 /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! $utils/typeof */ "./src/utils/typeof.js");
+/* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! $utils/index */ "./src/utils/index.js");
 /**
  * dynamicDataAnalyzer: 根据当前的json，统计当前json里面用到的动态数据源情况
  * 【方法参数说明】
@@ -1672,6 +1673,7 @@ __webpack_require__.r(__webpack_exports__);
 }
  */
 
+
 function dynamicDataAnalyzer(curJsonData, analyzerResult) {
   var curAnalyzerResult = analyzerResult || []; // 根据当前schem数据分析使用到的元数据情况
 
@@ -1680,7 +1682,7 @@ function dynamicDataAnalyzer(curJsonData, analyzerResult) {
       var curJsonMap = Object.keys(curJsonData); // 动态数据类型的jsonData包含四个数值：type、config（dataName/body/filter）、data、localFilter
       // 判断是否是动态数据类型
 
-      if (curJsonData.type && curJsonData.type === 'remote' && curJsonData.config && Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isObject"])(curJsonData.config) && curJsonData.localFilter && curJsonData.data) {
+      if (curJsonData.type && curJsonData.type === 'remote' && curJsonData.config && Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isObject"])(curJsonData.config) && Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(curJsonData.localFilter) && Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(curJsonData.data)) {
         var apiParams = curJsonData.config.body;
 
         if (apiParams && !Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isObject"])(apiParams)) {

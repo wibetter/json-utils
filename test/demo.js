@@ -741,243 +741,129 @@ const jsonTestData = {
   },
 };
 
-const { metaElemAnalyzer } = require('../dist/index.umd');
+const { dynamicDataAnalyzer } = require('../dist/index.umd');
 const jsonSchema = {
-  type: 'object',
-  format: 'func',
-  title: '功能设置',
-  readOnly: false,
-  properties: {
-    field_1: {
-      type: 'string',
-      title: '单文本框',
-      format: 'input',
-      isRequired: false,
-      default: '',
-      description: '',
-      placeholder: '',
-      readOnly: false,
-    },
-    field_2: {
-      type: 'boolean',
-      title: '布尔值',
-      format: 'boolean',
-      isRequired: false,
-      default: true,
-      description: '',
-      placeholder: '',
-      readOnly: false,
-    },
-    field_3: {
-      type: 'string',
-      title: '日期',
-      format: 'date',
-      isRequired: false,
-      default: '',
-      description: '',
-      placeholder: '',
-      readOnly: false,
-    },
-    field_4: {
-      type: 'string',
-      title: '日期',
-      format: 'date-time',
-      isRequired: false,
-      default: '',
-      description: '',
-      placeholder: '',
-      readOnly: false,
-    },
-    field_5: {
-      type: 'string',
-      title: '时间',
-      format: 'time',
-      isRequired: false,
-      default: '',
-      description: '',
-      placeholder: '',
-      readOnly: false,
-    },
-    field_6: {
-      type: 'string',
-      title: 'URL',
-      format: 'url',
-      isRequired: false,
-      default: '',
-      description: '',
-      placeholder: '',
-      readOnly: false,
-    },
-    field_7: {
-      type: 'string',
-      title: '多行文本框',
-      format: 'textarea',
-      isRequired: false,
-      default: '',
-      description: '',
-      placeholder: '',
-      readOnly: false,
-    },
-    field_8: {
-      type: 'number',
-      title: '数值',
-      format: 'number',
-      isRequired: false,
-      default: 50,
-      description: '',
-      placeholder: '',
-      readOnly: false,
-      minimum: 0,
-      maximum: 100,
-    },
-    field_9: {
-      type: 'string',
-      title: '单选',
-      format: 'radio',
-      isRequired: false,
-      default: '',
-      description: '',
-      placeholder: '',
-      readOnly: false,
-      items: {
-        type: 'string',
-        enum: ['a', 'b', 'c'],
-        enumextra: ['选项a', '选项b', '选项c'],
-        format: 'string',
-      },
-    },
-    field_10: {
-      type: 'array',
-      title: '多选',
-      format: 'select',
-      isRequired: false,
-      default: '',
-      description: '',
-      placeholder: '',
-      readOnly: false,
-      items: {
-        type: 'string',
-        enum: ['a', 'b', 'c'],
-        enumextra: ['选项a', '选项b', '选项c'],
-        format: 'string',
-      },
-    },
-    field_11: {
-      type: 'array',
-      title: '数组',
-      format: 'array',
-      isRequired: false,
-      default: '',
-      description: '',
-      placeholder: '',
-      readOnly: false,
-      items: {
-        type: 'object',
-        format: 'object',
-        title: '数组项',
-        readOnly: false,
-        isRequired: false,
-        description: '',
-        properties: {
-          name: {
-            type: 'string',
-            format: 'input',
-            title: '名字',
-            isRequired: false,
-            default: '',
-            description: '',
-            placeholder: '',
-            readOnly: false,
-          },
-          field_1: {
-            type: 'string',
-            title: '单文本框',
-            format: 'input',
-            default: '',
-            description: '',
-            placeholder: '',
-            isRequired: false,
-            readOnly: false,
-          },
-        },
-        required: ['name', 'field_1'],
-        propertyOrder: ['name', 'field_1'],
-      },
-    },
-    field_12: {
-      type: 'object',
-      title: '对象类型',
-      format: 'object',
-      isRequired: false,
-      default: '',
-      description: '',
-      placeholder: '',
-      readOnly: false,
-      properties: {
-        a: {
-          type: 'string',
-          title: '单文本框',
-          format: 'input',
-          isRequired: false,
-          default: '',
-          description: '',
-          placeholder: '',
-          readOnly: false,
-        },
-        field_2: {
-          type: 'string',
-          title: '单文本框',
-          format: 'input',
-          default: '',
-          description: '',
-          placeholder: '',
-          isRequired: false,
-          readOnly: false,
-        },
-        field_3: {
-          type: 'string',
-          title: '单文本框',
-          format: 'input',
-          default: '',
-          description: '',
-          placeholder: '',
-          isRequired: false,
-          readOnly: false,
-        },
-      },
-      required: ['a', 'field_2', 'field_3'],
-      propertyOrder: ['a', 'field_2', 'field_3'],
-    },
+  "func": {
+    "field_1": "",
+    "field_2": ""
   },
-  required: [
-    'field_1',
-    'field_2',
-    'field_3',
-    'field_4',
-    'field_5',
-    'field_6',
-    'field_7',
-    'field_8',
-    'field_9',
-    'field_10',
-    'field_11',
-    'field_12',
-  ],
-  propertyOrder: [
-    'field_1',
-    'field_2',
-    'field_3',
-    'field_4',
-    'field_5',
-    'field_6',
-    'field_7',
-    'field_8',
-    'field_9',
-    'field_10',
-    'field_11',
-    'field_12',
-  ],
+  "style": {
+    "field_18": "#ffffff"
+  },
+  "data": {
+    "field_28": {
+      "type": "remote",
+      "config": {
+        "id": 3,
+        "url": "http://dev.jd.com:4000/project_datasource",
+        "method": "GET",
+        "headers": "{\"user-agent\":\"UA/chrome\",\"content-type\":\"application/json\"}",
+        "options": "{\"cache\":\"no-cache\",\"credentials\":\"*\",\"mode\":\"cors\",\"redirect\":\"follow\"}",
+        "dataName": "getProjectDataSource",
+        "body": {
+          "param5": {
+            "title": "参数名称",
+            "scope": "url",
+            "name": "pageId",
+            "value": "111"
+          },
+          "param7": {
+            "title": "参数名称",
+            "scope": "dynamic",
+            "dataName": "api3",
+            "body": {
+              "param2": {
+                "title": "参数名称",
+                "scope": "static",
+                "value": "222"
+              },
+              "param3": {
+                "title": "参数名称",
+                "scope": "static",
+                "value": "333"
+              }
+            }
+          }
+        },
+        "filter": "return data;"
+      },
+      "data": "",
+      "localFilter": ""
+    },
+    "field_4": {
+      "type": "remote",
+      "config": {
+        "id": 4,
+        "url": "http://yapi.jd.com/mock/522/test",
+        "method": "POST",
+        "headers": null,
+        "options": null,
+        "dataName": "getAttr2",
+        "body": {
+          "param1": {
+            "title": "参数名称",
+            "scope": "static",
+            "value": "111"
+          },
+          "param2": {
+            "title": "参数名称",
+            "scope": "window",
+            "name": "PARAM1",
+            "value": "111"
+          },
+          "pageId": {
+            "title": "页面id",
+            "scope": "hash",
+            "name": "pId",
+            "value": "111"
+          }
+        },
+        "filter": "return data;"
+      },
+      "data": "{}",
+      "localFilter": "return data;"
+    },
+    "field_4_5": {
+      "type": "remote",
+      "config": {
+        "id": 3,
+        "url": "http://dev.jd.com:4000/project_datasource",
+        "method": "GET",
+        "headers": "{\"user-agent\":\"UA/chrome\",\"content-type\":\"application/json\"}",
+        "options": "{\"cache\":\"no-cache\",\"credentials\":\"*\",\"mode\":\"cors\",\"redirect\":\"follow\"}",
+        "dataName": "getProjectDataSource",
+        "body": {
+          "param5": {
+            "title": "参数名称",
+            "scope": "url",
+            "name": "pageId",
+            "value": "111"
+          },
+          "param7": {
+            "title": "参数名称",
+            "scope": "dynamic",
+            "dataName": "api3",
+            "body": {
+              "param2": {
+                "title": "参数名称",
+                "scope": "static",
+                "value": "222"
+              },
+              "param3": {
+                "title": "参数名称",
+                "scope": "static",
+                "value": "333"
+              }
+            }
+          }
+        },
+        "filter": "return data;"
+      },
+      "data": "{}",
+      "localFilter": "return data;"
+    }
+  }
 };
-const result = metaElemAnalyzer(jsonSchema);
+const result = dynamicDataAnalyzer(jsonSchema);
 // console.log(keyRoute)
 console2file(result);
