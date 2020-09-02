@@ -164,7 +164,7 @@ var TypeDataList = {
   url: $data_index__WEBPACK_IMPORTED_MODULE_0__["initURLData"],
   textarea: $data_index__WEBPACK_IMPORTED_MODULE_0__["initTextareaData"],
   color: $data_index__WEBPACK_IMPORTED_MODULE_0__["initColorData"],
-  img: $data_index__WEBPACK_IMPORTED_MODULE_0__["initIMGData"],
+  image: $data_index__WEBPACK_IMPORTED_MODULE_0__["initIMGData"],
   number: $data_index__WEBPACK_IMPORTED_MODULE_0__["initNumberData"],
   json: $data_index__WEBPACK_IMPORTED_MODULE_0__["initJsonData"],
   codearea: $data_index__WEBPACK_IMPORTED_MODULE_0__["initCodeAreaData"],
