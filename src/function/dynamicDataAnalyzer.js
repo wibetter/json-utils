@@ -79,13 +79,14 @@ export function dynamicDataAnalyzer(curJsonData, analyzerResult) {
   // 根据当前schem数据分析使用到的元数据情况
   if (curJsonData && JSON.stringify(curJsonData) !== '{}') {
     if (isObject(curJsonData)) {
-      const curJsonMap = Object.keys(curJsonData); // 动态数据类型的jsonData包含四个数值：type、config（dataName/body/filter）、data、localFilter
+      // const curJsonMap = Object.keys(curJsonData); // 动态数据类型的jsonData包含四个数值：type、config（dataName/body/filter）、data、localFilter
       // 判断是否是动态数据类型
       if (
         curJsonData.type &&
         curJsonData.type === 'remote' &&
         curJsonData.config &&
         isObject(curJsonData.config) &&
+        curJsonData.config.dataName &&
         exitPropertie(curJsonData.localFilter) &&
         exitPropertie(curJsonData.data)
       ) {

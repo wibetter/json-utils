@@ -1679,10 +1679,9 @@ function dynamicDataAnalyzer(curJsonData, analyzerResult) {
 
   if (curJsonData && JSON.stringify(curJsonData) !== '{}') {
     if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isObject"])(curJsonData)) {
-      var curJsonMap = Object.keys(curJsonData); // 动态数据类型的jsonData包含四个数值：type、config（dataName/body/filter）、data、localFilter
+      // const curJsonMap = Object.keys(curJsonData); // 动态数据类型的jsonData包含四个数值：type、config（dataName/body/filter）、data、localFilter
       // 判断是否是动态数据类型
-
-      if (curJsonData.type && curJsonData.type === 'remote' && curJsonData.config && Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isObject"])(curJsonData.config) && Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(curJsonData.localFilter) && Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(curJsonData.data)) {
+      if (curJsonData.type && curJsonData.type === 'remote' && curJsonData.config && Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isObject"])(curJsonData.config) && curJsonData.config.dataName && Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(curJsonData.localFilter) && Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(curJsonData.data)) {
         var apiParams = curJsonData.config.body;
 
         if (apiParams && !Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isObject"])(apiParams)) {
