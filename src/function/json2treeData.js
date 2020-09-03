@@ -73,17 +73,18 @@ export function json2treeData(mockData, parentDataRoute) {
     });
   } else if (isArray(mockData)) {
     mockData.map((mockDataItem, index) => {
-      const curDataRoute = parentDataRoute ? `${parentDataRoute}-${index}` : index;
+      const indexStr = index.toString();
+      const curDataRoute = parentDataRoute ? `${parentDataRoute}-${index}` : indexStr;
       if (isObject(mockDataItem) || isArray(mockDataItem)) {
         treeData.push({
-          title: index,
+          title: indexStr,
           value: curDataRoute,
           key: curDataRoute,
           children: json2treeData(mockDataItem, curDataRoute)
         });
       } else {
         treeData.push({
-          title: index,
+          title: indexStr,
           value: curDataRoute,
           key: curDataRoute,
         });

@@ -2141,18 +2141,19 @@ function json2treeData(mockData, parentDataRoute) {
     });
   } else if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isArray"])(mockData)) {
     mockData.map(function (mockDataItem, index) {
-      var curDataRoute = parentDataRoute ? "".concat(parentDataRoute, "-").concat(index) : index;
+      var indexStr = index.toString();
+      var curDataRoute = parentDataRoute ? "".concat(parentDataRoute, "-").concat(index) : indexStr;
 
       if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isObject"])(mockDataItem) || Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isArray"])(mockDataItem)) {
         treeData.push({
-          title: index,
+          title: indexStr,
           value: curDataRoute,
           key: curDataRoute,
           children: json2treeData(mockDataItem, curDataRoute)
         });
       } else {
         treeData.push({
-          title: index,
+          title: indexStr,
           value: curDataRoute,
           key: curDataRoute
         });
