@@ -331,7 +331,7 @@ __webpack_require__.r(__webpack_exports__);
 var initArrayData = {
   type: 'array',
   format: 'array',
-  title: '数组',
+  title: '数组Array',
   description: '',
   // 字段项的说明和描述
   isRequired: false,
@@ -460,7 +460,7 @@ __webpack_require__.r(__webpack_exports__);
  * */
 var initColorData = {
   type: 'string',
-  title: '颜色值',
+  title: '颜色color',
   format: 'color',
   default: '#ffffff',
   // 默认值
@@ -594,7 +594,7 @@ __webpack_require__.r(__webpack_exports__);
  * */
 var initDateData = {
   type: 'string',
-  title: '日期',
+  title: '日期Date',
   format: 'date',
   default: '',
   // 默认值
@@ -631,7 +631,7 @@ __webpack_require__.r(__webpack_exports__);
  * */
 var initDateTimeData = {
   type: 'string',
-  title: '日期',
+  title: '日期时间',
   format: 'date-time',
   default: '',
   // 默认值
@@ -669,7 +669,7 @@ __webpack_require__.r(__webpack_exports__);
 var initDynamicData = {
   type: 'object',
   format: 'dynamic-data',
-  title: '动态数据',
+  title: '动态数据源',
   readOnly: false,
   properties: {
     type: {
@@ -833,7 +833,7 @@ __webpack_require__.r(__webpack_exports__);
 var EmptyArray = {
   type: 'array',
   format: 'array',
-  title: '数组',
+  title: '数组Array',
   description: '',
   items: {
     type: 'object',
@@ -860,7 +860,7 @@ __webpack_require__.r(__webpack_exports__);
 var EmptyObject = {
   type: 'object',
   format: 'object',
-  title: '对象类型',
+  title: '对象Object',
   description: '',
   properties: {}
 };
@@ -1031,7 +1031,7 @@ __webpack_require__.r(__webpack_exports__);
  * */
 var initHtmlAreaData = {
   type: 'string',
-  title: '富文本类型',
+  title: '富文本',
   format: 'htmlarea',
   placeholder: '请输入html代码片段',
   default: '<p>hello,world!</p>',
@@ -1059,11 +1059,11 @@ __webpack_require__.r(__webpack_exports__);
  * */
 var initIMGData = {
   type: 'string',
-  title: 'IMG',
+  title: '图片',
   format: 'image',
   default: '',
   // 默认值
-  description: '点击上传图片',
+  description: '上传图片',
   // 字段项的说明和描述
   imgWidth: 200,
   // 图片默认的宽度，单位默认px
@@ -1239,7 +1239,7 @@ __webpack_require__.r(__webpack_exports__);
  * */
 var initJsonData = {
   type: 'string',
-  title: 'json数据项',
+  title: 'json数据',
   format: 'json',
   default: '{}',
   // 默认值
@@ -1275,7 +1275,7 @@ __webpack_require__.r(__webpack_exports__);
  * */
 var initNumberData = {
   type: 'number',
-  title: '数值',
+  title: '数量number',
   format: 'number',
   default: 1,
   // 默认值
@@ -1314,7 +1314,7 @@ __webpack_require__.r(__webpack_exports__);
 var initObjectData = {
   type: 'object',
   format: 'object',
-  title: '对象类型',
+  title: '对象Object',
   description: '',
   // 字段项的说明和描述
   isRequired: false,
@@ -1363,7 +1363,7 @@ __webpack_require__.r(__webpack_exports__);
 var initQuantityData = {
   type: 'object',
   format: 'quantity',
-  title: '单位计量输入',
+  title: '单位计量',
   isRequired: false,
   readOnly: false,
   properties: {
@@ -1536,7 +1536,7 @@ __webpack_require__.r(__webpack_exports__);
  * */
 var initTimeData = {
   type: 'string',
-  title: '时间',
+  title: '时间Time',
   format: 'time',
   default: '',
   // 默认值
@@ -1573,7 +1573,7 @@ __webpack_require__.r(__webpack_exports__);
  * */
 var initURLData = {
   type: 'string',
-  title: 'URL',
+  title: '链接地址url',
   format: 'url',
   default: '',
   // 默认值
