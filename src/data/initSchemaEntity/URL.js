@@ -11,7 +11,7 @@
  * */
 export const initURLData = {
   type: 'string',
-  title: 'URL',
+  title: '链接地址url',
   format: 'url',
   default: '', // 默认值
   description: '', // 字段项的说明和描述

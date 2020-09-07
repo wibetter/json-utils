@@ -11,7 +11,7 @@
  * */
 export const initJsonData = {
   type: 'string',
-  title: 'json数据项',
+  title: 'json数据',
   format: 'json',
   default: '{}', // 默认值
   description: '', // 字段项的说明和描述

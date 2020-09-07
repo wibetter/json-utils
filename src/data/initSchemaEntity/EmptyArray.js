@@ -2,7 +2,7 @@
 export const EmptyArray = {
   type: 'array',
   format: 'array',
-  title: '数组',
+  title: '数组Array',
   description: '',
   items: {
     type: 'object',

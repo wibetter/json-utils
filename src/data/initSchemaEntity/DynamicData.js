@@ -11,7 +11,7 @@
 export const initDynamicData = {
   type: 'object',
   format: 'dynamic-data',
-  title: '动态数据',
+  title: '动态数据源',
   readOnly: false,
   properties: {
     type: {

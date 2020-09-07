@@ -11,7 +11,7 @@
 export const initObjectData = {
   type: 'object',
   format: 'object',
-  title: '对象类型',
+  title: '对象Object',
   description: '', // 字段项的说明和描述
   isRequired: false,
   readOnly: false,

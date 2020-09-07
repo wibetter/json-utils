@@ -12,7 +12,7 @@
  * */
 export const initNumberData = {
   type: 'number',
-  title: '数值',
+  title: '数量number',
   format: 'number',
   default: 1, // 默认值
   minimum: 0, // 在高级设置中配置

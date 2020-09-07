@@ -11,7 +11,7 @@
  * */
 export const initTimeData = {
   type: 'string',
-  title: '时间',
+  title: '时间Time',
   format: 'time',
   default: '', // 默认值
   description: '', // 字段项的说明和描述

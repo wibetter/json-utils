@@ -11,7 +11,7 @@
  * */
 export const initDateData = {
   type: 'string',
-  title: '日期',
+  title: '日期Date',
   format: 'date',
   default: '', // 默认值
   description: '', // 字段项的说明和描述

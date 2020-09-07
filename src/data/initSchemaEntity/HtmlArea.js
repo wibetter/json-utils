@@ -11,7 +11,7 @@
  * */
 export const initHtmlAreaData = {
   type: 'string',
-  title: '富文本类型',
+  title: '富文本',
   format: 'htmlarea',
   placeholder: '请输入html代码片段',
   default: '<p>hello,world!</p>', // 默认值

@@ -11,7 +11,7 @@
 export const initQuantityData = {
   type: 'object',
   format: 'quantity',
-  title: '单位计量输入',
+  title: '单位计量',
   isRequired: false,
   readOnly: false,
   properties: {

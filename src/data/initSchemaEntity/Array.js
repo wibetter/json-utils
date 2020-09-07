@@ -11,7 +11,7 @@
 export const initArrayData = {
   type: 'array',
   format: 'array',
-  title: '数组',
+  title: '数组Array',
   description: '', // 字段项的说明和描述
   isRequired: false,
   readOnly: false,

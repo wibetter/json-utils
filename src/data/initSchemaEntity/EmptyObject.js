@@ -2,7 +2,7 @@
 export const EmptyObject = {
   type: 'object',
   format: 'object',
-  title: '对象类型',
+  title: '对象Object',
   description: '',
   properties: {},
 };
