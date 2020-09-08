@@ -1069,12 +1069,9 @@ var initIMGData = {
   // 图片默认的宽度，单位默认px
   imgHeight: 200,
   // 图片默认的高度，单位默认px
-  imgRatio: 1,
-  // 图片宽高比例是否可调整
   imgRatioReadOnly: false,
   // 图片宽高比例是否可调整
-  isRequired: false,
-  readOnly: false
+  isRequired: false
 };
 
 /***/ }),
