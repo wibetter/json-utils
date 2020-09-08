@@ -2987,7 +2987,7 @@ function isEqual(targetObj, nextTargetObj) {
 function exitPropertie(targetPropertie) {
   var exitPropertie = false;
 
-  if (targetPropertie !== undefined) {
+  if (targetPropertie !== undefined || targetPropertie !== null) {
     // targetPropertie 等于""、0、false时均认为是存在的属性
     exitPropertie = true;
   }
