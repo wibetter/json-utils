@@ -1071,6 +1071,8 @@ var initIMGData = {
   // 图片默认的高度，单位默认px
   imgRatioReadOnly: false,
   // 图片宽高比例是否可调整
+  templateId: '',
+  // 图片模板ID，用于玲珑制图中选择使用对应的图片模板
   isRequired: false
 };
 
@@ -2987,7 +2989,7 @@ function isEqual(targetObj, nextTargetObj) {
 function exitPropertie(targetPropertie) {
   var exitPropertie = false;
 
-  if (targetPropertie !== undefined || targetPropertie !== null) {
+  if (targetPropertie !== undefined && targetPropertie !== null) {
     // targetPropertie 等于""、0、false时均认为是存在的属性
     exitPropertie = true;
   }
