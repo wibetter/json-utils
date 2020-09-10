@@ -1069,7 +1069,7 @@ var initIMGData = {
   // 图片默认的宽度，单位默认px
   imgHeight: 200,
   // 图片默认的高度，单位默认px
-  imgRatioReadOnly: false,
+  imgRatioReadOnly: true,
   // 图片宽高比例是否可调整
   templateId: '',
   // 图片模板ID，用于玲珑制图中选择使用对应的图片模板
