@@ -16,6 +16,7 @@
   "scripts": {
     "dev": "akfun dev",
     "build2lib": "akfun build2lib",
+    "build2esm": "akfun build2esm -n=index",
     "format": "prettier --write \"src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\""
   },
   "files": [
@@ -43,7 +44,7 @@
     "@babel/polyfill": "^7.10.1"
   },
   "devDependencies": {
-    "akfun": "^1.5.1",
+    "akfun": "^1.5.3",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
     "husky": "^4.2.5",
@@ -51,14 +52,7 @@
     "prettier": "^2.0.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "@wibetter/json-editor": "^3.3.27",
-    "rollup": "^2.26.5",
-    "rollup-plugin-terser": "^7.0.0",
-    "@rollup/plugin-alias": "^3.1.1",
-    "@rollup/plugin-babel": "^5.2.0",
-    "@rollup/plugin-commonjs": "^15.0.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^9.0.0"
+    "@wibetter/json-editor": "^3.3.27"
   },
   "engines": {
     "node": ">= 10.13.0",
