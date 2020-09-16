@@ -54,4 +54,8 @@ module.exports = {
     productionGzipExtensions: ['js', 'css', 'json'],
     bundleAnalyzerReport: false,
   },
+  build2esm: {
+    input: resolve('src/main.js'),
+    fileName: 'index',
+  }
 };

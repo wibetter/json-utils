@@ -5,13 +5,11 @@ function objClone(targetObj) {
 }
 /** 对比两个json数据是否相等 */
 
-
 function isEqual(targetObj, nextTargetObj) {
   return JSON.stringify(targetObj) === JSON.stringify(nextTargetObj);
 }
 /** 判断当前属性是否存在
  * 备注：要识别boolean类型的数值 */
-
 
 function exitPropertie(targetPropertie) {
   var exitPropertie = false;
@@ -23,6 +21,7 @@ function exitPropertie(targetPropertie) {
 
   return exitPropertie;
 }
+
 /**
  * getJSONDataByKeyRoute: 根据key值路径获取对应的json数据
  * 【方法参数说明】
@@ -30,7 +29,6 @@ function exitPropertie(targetPropertie) {
  * targetJsonDataObj: json数据对象
  * useObjClone: 是否进行深拷贝，避免影响原有数据。（默认不进行深拷贝）
  */
-
 
 function getJsonDataByKeyRoute(keyRoute, targetJsonDataObj, useObjClone) {
   var curJsonDataObj = targetJsonDataObj;
@@ -56,6 +54,7 @@ function getJsonDataByKeyRoute(keyRoute, targetJsonDataObj, useObjClone) {
 
   return curJsonDataObj;
 }
+
 /**
  * getSchemaByIndexRoute: 根据index索引路径获取对应的schema数据
  * 【方法参数说明】
@@ -63,7 +62,6 @@ function getJsonDataByKeyRoute(keyRoute, targetJsonDataObj, useObjClone) {
  * targetJsonSchemaObj: schema数据对象
  * useObjClone: 是否进行深拷贝，避免影响原有数据。（默认不进行深拷贝）
  */
-
 
 function getSchemaByIndexRoute(indexRoute, targetJsonSchemaObj, useObjClone) {
   var curJsonSchemaObj = targetJsonSchemaObj;
@@ -100,14 +98,13 @@ function getSchemaByIndexRoute(indexRoute, targetJsonSchemaObj, useObjClone) {
 
   return curJsonSchemaObj;
 }
+
 /**
  * indexRoute2keyRoute：根据index索引路径获取对应的key值路径
  * 【方法参数说明】
  * indexRoute: index索引路径
  * targetJsonSchemaObj: schema数据对象
  * */
-
-
 function indexRoute2keyRoute(indexRoute, targetJsonSchemaObj) {
   var curJsonSchemaObj = targetJsonSchemaObj;
   var curKeyRoute = '';
@@ -142,6 +139,7 @@ function indexRoute2keyRoute(indexRoute, targetJsonSchemaObj) {
 
   return curKeyRoute;
 }
+
 /** 新版JSONSchema一级字段项
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -152,8 +150,6 @@ function indexRoute2keyRoute(indexRoute, targetJsonSchemaObj) {
  *  required：存放所有子字段的key值，用于验证子字段项是否存在，同时required可充当排序功能
  *  propertyOrder：按序存放所有子字段的key值（排序功能）
  * */
-
-
 var initJSONSchemaData = {
   type: 'object',
   title: 'jsonSchemaObject',
@@ -231,6 +227,7 @@ var initJSONSchemaData = {
   required: ['func', 'style', 'data'],
   propertyOrder: ['func', 'style', 'data']
 };
+
 /* input类型字段
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -242,7 +239,6 @@ var initJSONSchemaData = {
  *  placeholder：输入提示
  *  readOnly：字段项可设置是否可编辑
  * */
-
 var initInputData = {
   type: 'string',
   title: '单文本框',
@@ -256,6 +252,7 @@ var initInputData = {
   isRequired: false,
   readOnly: false
 };
+
 /* boolean类型字段
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number），字段值的数据类型
@@ -266,7 +263,6 @@ var initInputData = {
  *  description：字段说明&描述
  *  readOnly：字段项可设置是否可编辑
  * */
-
 var initBooleanData = {
   type: 'boolean',
   title: '布尔值',
@@ -278,6 +274,7 @@ var initBooleanData = {
   isRequired: false,
   readOnly: false
 };
+
 /* textarea类型字段
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -289,7 +286,6 @@ var initBooleanData = {
  *  placeholder：输入提示
  *  readOnly：字段项可设置是否可编辑
  * */
-
 var initTextareaData = {
   type: 'string',
   title: '多行文本框',
@@ -303,6 +299,7 @@ var initTextareaData = {
   isRequired: false,
   readOnly: false
 };
+
 /* number类型字段
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number），字段值的数据类型
@@ -315,7 +312,6 @@ var initTextareaData = {
  *  description：字段说明&描述
  *  readOnly：字段项可设置是否可编辑
  * */
-
 var initNumberData = {
   type: 'number',
   title: '数量number',
@@ -331,6 +327,7 @@ var initNumberData = {
   isRequired: false,
   readOnly: false
 };
+
 /* radio类型字段
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -341,7 +338,6 @@ var initNumberData = {
  *  description：字段说明&描述
  *  readOnly：字段项可设置是否可编辑
  * */
-
 var initRadioData = {
   type: 'string',
   title: '单选',
@@ -357,6 +353,7 @@ var initRadioData = {
   isRequired: false,
   readOnly: false
 };
+
 /* select类型字段
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -367,7 +364,6 @@ var initRadioData = {
  *  description：字段说明&描述
  *  readOnly：字段项可设置是否可编辑
  * */
-
 var initSelectData = {
   type: 'array',
   title: '多选',
@@ -383,6 +379,7 @@ var initSelectData = {
   isRequired: false,
   readOnly: false
 };
+
 /* DateTime类型字段
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -394,7 +391,6 @@ var initSelectData = {
  *  placeholder：输入提示
  *  readOnly：字段项可设置是否可编辑
  * */
-
 var initDateTimeData = {
   type: 'string',
   title: '日期时间',
@@ -408,6 +404,7 @@ var initDateTimeData = {
   isRequired: false,
   readOnly: false
 };
+
 /* Date类型字段
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -419,7 +416,6 @@ var initDateTimeData = {
  *  placeholder：输入提示
  *  readOnly：字段项可设置是否可编辑
  * */
-
 var initDateData = {
   type: 'string',
   title: '日期Date',
@@ -433,6 +429,7 @@ var initDateData = {
   isRequired: false,
   readOnly: false
 };
+
 /* Time类型字段
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -444,7 +441,6 @@ var initDateData = {
  *  placeholder：输入提示
  *  readOnly：字段项可设置是否可编辑
  * */
-
 var initTimeData = {
   type: 'string',
   title: '时间Time',
@@ -458,6 +454,7 @@ var initTimeData = {
   isRequired: false,
   readOnly: false
 };
+
 /* color类型字段
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -468,7 +465,6 @@ var initTimeData = {
  *  description：字段说明&描述
  *  readOnly：字段项可设置是否可编辑
  * */
-
 var initColorData = {
   type: 'string',
   title: '颜色color',
@@ -480,6 +476,7 @@ var initColorData = {
   isRequired: false,
   readOnly: false
 };
+
 /* URL类型字段
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -491,7 +488,6 @@ var initColorData = {
  *  placeholder：输入提示
  *  readOnly：字段项可设置是否可编辑
  * */
-
 var initURLData = {
   type: 'string',
   title: '链接地址url',
@@ -505,10 +501,10 @@ var initURLData = {
   isRequired: false,
   readOnly: false
 };
+
 /** image图片类型字段
  *  用户可以使用此组件上传图片，最后返回对应的图片资源地址
  * */
-
 var initIMGData = {
   type: 'string',
   title: '图片',
@@ -527,6 +523,7 @@ var initIMGData = {
   // 图片模板ID，用于玲珑制图中选择使用对应的图片模板
   isRequired: false
 };
+
 /* array类型字段
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -537,7 +534,6 @@ var initIMGData = {
  *  description：字段说明&描述
  *  readOnly：字段项可设置是否可编辑
  * */
-
 var initArrayData = {
   type: 'array',
   format: 'array',
@@ -574,6 +570,7 @@ var initArrayData = {
     propertyOrder: ['name']
   }
 };
+
 /** Object字段项
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -584,7 +581,6 @@ var initArrayData = {
  *  required：存放所有子字段的key值，用于验证子字段项是否存在，同时required可充当排序功能
  *  propertyOrder：按序存放所有子字段的key值（排序功能）
  * */
-
 var initObjectData = {
   type: 'object',
   format: 'object',
@@ -610,8 +606,9 @@ var initObjectData = {
   },
   required: ['a'],
   propertyOrder: ['a']
-}; // 空数组的schema数据
+};
 
+// 空数组的schema数据
 var EmptyArray = {
   type: 'array',
   format: 'array',
@@ -624,8 +621,9 @@ var EmptyArray = {
     description: '',
     properties: {}
   }
-}; // 空对象的schema数据
+};
 
+// 空对象的schema数据
 var EmptyObject = {
   type: 'object',
   format: 'object',
@@ -633,6 +631,7 @@ var EmptyObject = {
   description: '',
   properties: {}
 };
+
 /** quantity字段项
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -643,7 +642,6 @@ var EmptyObject = {
  *  required：存放所有子字段的key值，用于验证子字段项是否存在，同时required可充当排序功能
  *  propertyOrder：按序存放所有子字段的key值（排序功能）
  * */
-
 var initQuantityData = {
   type: 'object',
   format: 'quantity',
@@ -681,6 +679,7 @@ var initQuantityData = {
   required: ['unit', 'quantity'],
   propertyOrder: ['unit', 'quantity']
 };
+
 /* json类型字段
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -692,7 +691,6 @@ var initQuantityData = {
  *  placeholder：输入提示
  *  readOnly：字段项可设置是否可编辑
  * */
-
 var initJsonData = {
   type: 'string',
   title: 'json数据',
@@ -704,6 +702,7 @@ var initJsonData = {
   isRequired: false,
   readOnly: false
 };
+
 /* CodeArea类型字段
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -715,7 +714,6 @@ var initJsonData = {
  *  placeholder：输入提示
  *  readOnly：字段项可设置是否可编辑
  * */
-
 var initCodeAreaData = {
   type: 'string',
   title: '函数类型',
@@ -729,6 +727,7 @@ var initCodeAreaData = {
   isRequired: false,
   readOnly: false
 };
+
 /* HtmlArea类型字段
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -740,7 +739,6 @@ var initCodeAreaData = {
  *  placeholder：输入提示
  *  readOnly：字段项可设置是否可编辑
  * */
-
 var initHtmlAreaData = {
   type: 'string',
   title: '富文本',
@@ -753,6 +751,7 @@ var initHtmlAreaData = {
   isRequired: false,
   readOnly: false
 };
+
 /** event字段项
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -763,7 +762,6 @@ var initHtmlAreaData = {
  *  required：存放所有子字段的key值，用于验证子字段项是否存在，同时required可充当排序功能
  *  propertyOrder：按序存放所有子字段的key值（排序功能）
  * */
-
 /** 新版EventData
  * type: emit 的默认数据 */
 
@@ -854,6 +852,7 @@ var initEventDataTypeON = {
   required: ['type', 'register', 'actionFunc'],
   propertyOrder: ['type', 'register', 'actionFunc']
 };
+
 /** dataSource字段项
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -864,7 +863,6 @@ var initEventDataTypeON = {
  *  required：存放所有子字段的key值，用于验证子字段项是否存在，同时required可充当排序功能
  *  propertyOrder：按序存放所有子字段的key值（排序功能）
  * */
-
 var initDataSourceData = {
   type: 'object',
   format: 'datasource',
@@ -940,6 +938,7 @@ var initDataSourceDataV2 = {
   required: ['type', 'data', 'filter'],
   propertyOrder: ['type', 'data', 'filter']
 };
+
 /** dynamic-data: 动态数据
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -950,7 +949,6 @@ var initDataSourceDataV2 = {
  *  required：存放所有子字段的key值，用于验证子字段项是否存在，同时required可充当排序功能
  *  propertyOrder：按序存放所有子字段的key值（排序功能）
  * */
-
 var initDynamicData = {
   type: 'object',
   format: 'dynamic-data',
@@ -1033,7 +1031,7 @@ var EmptyDynamicDataCont = {
   data: '{}',
   // 用于存储结果数据
   localFilter: 'return data;'
-}; // 类型数据清单
+}; // 示例对象: 动态数据类型-接口数据 对应的json数据内容
 
 var TypeDataList = {
   jsonschema: initJSONSchemaData,
@@ -1070,37 +1068,31 @@ var EventTypeDataList = {
 var DataSourceTypeList = {
   local: initDataSourceData,
   remote: initDataSourceDataV2
-}; // 判断是否是URL地址类型
+};
 
 function isURL(s) {
   return /^http[s]?:\/\/.*/.test(s);
 } // 判断是否是字符串类型
 
-
 function isString(o) {
   return Object.prototype.toString.call(o).slice(8, -1) === 'String';
 } // 判断是否是数字类型
-
 
 function isNumber(value) {
   return typeof value === 'number' || Object.prototype.toString.call(value) === '[object Number]';
 } // 判断是否是Boolean类型
 
-
 function isBoolean(o) {
   return Object.prototype.toString.call(o).slice(8, -1) === 'Boolean';
 } // 判断是否是年月日的时间类型
-
 
 function isDateStr(dateStr) {
   return /^\d{4}-\d{2}-\d{2}$/.test(dateStr);
 } // 判断是否是年月日时分的时间类型
 
-
 function isDateTimeStr(dateStr) {
   return /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}$/.test(dateStr) || /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/.test(dateStr);
 } // 判断是否是时分的时间类型
-
 
 function isTimeStr(dateStr) {
   return /^\d{2}:\d{2}:\d{2}$/.test(dateStr) || /^\d{2}:\d{2}$/.test(dateStr);
@@ -1108,7 +1100,6 @@ function isTimeStr(dateStr) {
 /**
  *  判断是否是数组类型
  * */
-
 
 function isArray(curObj) {
   var isArray = false;
@@ -1123,7 +1114,6 @@ function isArray(curObj) {
  *  判断是否是select多选类型(基础类型的array)
  *  select类型一定是一个array类型
  * */
-
 
 function isSelect(curObj) {
   if (!isArray(curObj)) {
@@ -1145,7 +1135,6 @@ function isSelect(curObj) {
  *  判断是否是对象类型
  * */
 
-
 function isObject(curObj) {
   var isObject = false;
 
@@ -1158,7 +1147,6 @@ function isObject(curObj) {
 /**
  *  判断是否是单位类型
  * */
-
 
 function isQuantity(val) {
   var isObject = false; // 获取当前计量单位元素可选的单位类型
@@ -1175,14 +1163,12 @@ function isQuantity(val) {
  *  判断是否是颜色值
  * */
 
-
 function isColor(colorVal) {
   return /^#[0-9a-f]{6}$/.test(colorVal) || /^#[0-9a-f]{3}$/.test(colorVal);
 }
 /**
  *  判断是否是函数类型
  * */
-
 
 function isFunction(curObj) {
   var isFunction = false;
@@ -1193,17 +1179,16 @@ function isFunction(curObj) {
 
   return isFunction;
 }
+
 /**
  * json2schema：根据json数据内容获取对应的schema数据
  * 当前包含三个转换方法：baseJson2Schema、objectJson2Schema、arrayJson2Schema
  * */
-
 /**
  * 基础类型的jsonData转schema
  * 备注：目前可转换Boolean、Number、URL、Date、DateTime、Time、color、json类型
  * 其中textarea、radio、codearea和htmlarea的数值不好和input区分，故均转换为input类型
  * */
-
 
 function baseJson2Schema(jsonData) {
   var curJsonSchema = '';
@@ -1353,6 +1338,7 @@ function json2schema(jsonData) {
 
   return curJsonSchema;
 }
+
 /**
  * JSONSchema(json格式)对象的通用操作方法【非响应式数据操作方法集合】
  */
@@ -1361,8 +1347,6 @@ function json2schema(jsonData) {
  * 获取当前字段的类型（format）
  * 如果当前字段没有format字段，则根据type字段赋予默认的类型
  */
-
-
 function getCurrentFormat(targetJsonData) {
   var currentType = targetJsonData && targetJsonData.format;
 
@@ -1379,7 +1363,6 @@ function getCurrentFormat(targetJsonData) {
 /** 判断是否为空的Schema
  * 包括 通用schema和区块配置专用的schema
  * */
-
 
 function isEmptySchema(targetJsonSchema) {
   var isEmpty = true;
@@ -1407,7 +1390,6 @@ function isEmptySchema(targetJsonSchema) {
  * 备注：WidgetSchema 一级字段必须为object，且有三个子属性：func、style、data
  * */
 
-
 function isEmptyWidgetSchema(targetJsonSchema) {
   var isEmpty = true;
 
@@ -1432,7 +1414,6 @@ function isEmptyWidgetSchema(targetJsonSchema) {
  * 且具备固定的三个子属性（func、style、data）
  * */
 
-
 function isUsedToWidgetConfig(targetJsonSchema) {
   var isWidgetConfig = false;
 
@@ -1450,7 +1431,6 @@ function isUsedToWidgetConfig(targetJsonSchema) {
  *  判断是否是最新版的schema数据
  *  备注：确保当前schema数据是通过@wibetter/json-schema-editor生成的
  * */
-
 
 function isNewSchemaData(schemaData) {
   var isNewVersion = false;
@@ -1470,7 +1450,6 @@ function isNewSchemaData(schemaData) {
  *  备注：array类型字段只有固定的一个items属性，不能新增其他子元素。
  * */
 
-
 function isBoxSchemaData(format) {
   var isBoxSchema = false;
 
@@ -1485,7 +1464,6 @@ function isBoxSchemaData(format) {
  *  备注：一级类型字段不允许拖拽和复制
  * */
 
-
 function isFirstSchemaData(format) {
   var isFirstSchema = false;
 
@@ -1499,7 +1477,6 @@ function isFirstSchemaData(format) {
  * 判断是否是同一个父元素
  * 备注：用于判断两个元素是否在同一个父级容器中
  */
-
 
 function isSameParent(curIndex, targetIndex) {
   var curIndexArr = curIndex.split('-');
@@ -1516,7 +1493,6 @@ function isSameParent(curIndex, targetIndex) {
 /**
  * 判断当前元素在目标元素的位置 前 or 后（根据当前元素的位置和目标元素的位置）
  */
-
 
 function getCurPosition(curIndex, targetIndex) {
   var curIndexArr = curIndex.split('-');
@@ -1541,7 +1517,6 @@ function getCurPosition(curIndex, targetIndex) {
  * 获取父元素的路径值
  */
 
-
 function getParentIndexRoute(curIndexRoute) {
   var curIndexArr = curIndexRoute.split('-');
   curIndexArr.pop();
@@ -1550,7 +1525,6 @@ function getParentIndexRoute(curIndexRoute) {
 /**
  * 获取下一个兄弟元素的路径值
  */
-
 
 function getNextIndexRoute(curIndexRoute) {
   var curIndexArr = curIndexRoute.split('-');
@@ -1563,7 +1537,6 @@ function getNextIndexRoute(curIndexRoute) {
  * 获取父元素的路径值和当前index
  */
 
-
 function getParentIndexRoute_CurIndex(curIndexRoute) {
   var curIndexArr = curIndexRoute.split('-');
   var curIndex = curIndexArr.pop();
@@ -1572,7 +1545,6 @@ function getParentIndexRoute_CurIndex(curIndexRoute) {
 /**
  * 将当前路径值向前移动一位
  */
-
 
 function moveForward(curIndexRoute) {
   var curIndexArr = curIndexRoute.split('-');
@@ -1584,13 +1556,13 @@ function moveForward(curIndexRoute) {
  * 将当前路径值向后移动一位
  */
 
-
 function moveBackward(curIndexRoute) {
   var curIndexArr = curIndexRoute.split('-');
   var curIndex = curIndexArr.pop();
   curIndexArr.push(Number(curIndex) + 1);
   return curIndexArr.join('-');
 }
+
 /**
  * metaElemAnalyzer: 根据当前的schema，统计当前json里面用到的元数据情况
  * 【方法参数说明】
@@ -1610,11 +1582,9 @@ function moveBackward(curIndexRoute) {
  *   }
  * }
  */
-
 /**
  * Object类型的schema元数据分析
  * */
-
 
 function objectSchema2JsonData(jsonSchema, analyzerResult) {
   var curAnalyzerResult = analyzerResult || {};
@@ -1677,13 +1647,12 @@ function metaElemAnalyzer(curJsonSchemaObj, analyzerResult) {
 
   return curAnalyzerResult;
 }
+
 /**
  * oldSchemaToNewSchema：旧版jsonSchema转新版jsonSchema
  * 新版新增propertyOrder属性（排序展示需要），因此旧版的required需要根据properties生成对应的propertyOrder属性
  * 备注：新版的title需要从description中获取值（旧版的title值使用的是description字段的值）
  * */
-
-
 function oldSchemaToNewSchema(oldSchema) {
   var newJSONSchema = objClone(oldSchema); // 进行深拷贝，避免影响原有数据;
   // 1.根据原有的description值生成title值
@@ -1805,6 +1774,7 @@ function oldSchemaToNewSchema(oldSchema) {
 
   return newJSONSchema;
 }
+
 /**
  * schema2Json：根据schema数据内容生成一份对应的json数据
  * 当前包含三个转换方法：baseSchema2JsonData、objectSchema2JsonData、arraySchema2JsonData
@@ -1812,13 +1782,11 @@ function oldSchemaToNewSchema(oldSchema) {
  * jsonSchema: schema数据对象，主要根据此对象生成对应的json数据
  * jsonData: json数据对象，会优先使用此jsonData对应的数值
  * */
-
 /**
  * 基础类型的schema转jsonData
  * 根据jsonSchema和旧版的jsonData生成一份对应的jsonData
  * 备注：使用旧版数据，以便进行新旧数据融合
  * */
-
 
 function baseSchema2JsonData(jsonSchema, jsonData) {
   var curJsonData = '';
@@ -2104,15 +2072,15 @@ function schema2json(jsonSchema, jsonData) {
 
   return curJsonData;
 }
+
 /**
  * schemaMetaList: 当前JSON数据可视化提供的元数据清单
  * 11种基础类型组件（input、boolean、 date、date-time、 time、 url、 textarea、number、color、img、radio、 select）
  * 9个特殊类型组件（Object、Array、Json、datasource、DynamicData、Event、CodeArea、htmlArea、quantity）
  */
-// 类型数据清单
-
 
 var schemaMetaList = TypeDataList;
+
 /**
  * dynamicDataAnalyzer: 根据当前的json，统计当前json里面用到的动态数据源情况
  * 【方法参数说明】
@@ -2186,7 +2154,6 @@ var schemaMetaList = TypeDataList;
   ]
 }
  */
-
 function dynamicDataAnalyzer(curJsonData, analyzerResult) {
   var curAnalyzerResult = analyzerResult || []; // 根据当前schem数据分析使用到的元数据情况
 
@@ -2225,6 +2192,7 @@ function dynamicDataAnalyzer(curJsonData, analyzerResult) {
 
   return curAnalyzerResult;
 }
+
 /**
  * json2treeData: 根据当前的json数据，转换成treeData（供antd的TreeSelect使用）
  * 【方法参数说明】
@@ -2255,11 +2223,9 @@ function dynamicDataAnalyzer(curJsonData, analyzerResult) {
   },
  ];
  */
-
 /**
  *  DataRoute转真实数据路径
  * */
-
 
 function dataRoute2dataPath(dataRoute, baseDataPath) {
   var dataPath = baseDataPath || 'data'; // 默认数据根路径值为data
@@ -2277,7 +2243,6 @@ function dataRoute2dataPath(dataRoute, baseDataPath) {
 /**
  *  mockData转treeData（供antd的TreeSelect使用）
  * */
-
 
 function json2treeData(mockData, parentDataRoute) {
   var treeData = [];
@@ -2327,11 +2292,10 @@ function json2treeData(mockData, parentDataRoute) {
 
   return treeData;
 }
+
 /**
  * 获取父元素的key路径值
  */
-
-
 function getParentKeyRoute(curKeyRoute) {
   var curKeyArr = curKeyRoute.split('-');
   curKeyArr.pop();
@@ -2341,13 +2305,13 @@ function getParentKeyRoute(curKeyRoute) {
  * 获取父元素的key路径值和当前key
  */
 
-
 function getParentKeyRoute_CurKey(curKeyRoute) {
   var curKeyArr = curKeyRoute.split('-');
   var curKey = curKeyArr.pop();
   return [curKeyArr.join('-'), curKey];
-} // JSONSchema关键字清单
+}
 
-
+// JSONSchema关键字清单
 var KeyWordList = ['key', 'enum', 'enumextra', 'items', 'input', 'boolean', 'number', 'color', 'url', 'textarea', 'radio', 'select', 'date', 'date-time', 'time', 'json', 'codearea', 'htmlarea', 'quantity', 'dynamic-data', 'datasource', 'event', 'array', 'object'];
+
 export { DataSourceTypeList, EventTypeDataList, KeyWordList, TypeDataList, dataRoute2dataPath, dynamicDataAnalyzer, exitPropertie, getCurPosition, getCurrentFormat, getJsonDataByKeyRoute, getNextIndexRoute, getParentIndexRoute, getParentIndexRoute_CurIndex, getParentKeyRoute, getParentKeyRoute_CurKey, getSchemaByIndexRoute, indexRoute2keyRoute, isArray, isBoolean, isBoxSchemaData, isColor, isDateStr, isDateTimeStr, isEmptySchema, isEmptyWidgetSchema, isEqual, isFirstSchemaData, isFunction, isNewSchemaData, isNumber, isObject, isQuantity, isSameParent, isSelect, isString, isTimeStr, isURL, isUsedToWidgetConfig, json2schema, json2treeData, metaElemAnalyzer, moveBackward, moveForward, objClone, oldSchemaToNewSchema, schema2json, schemaMetaList };

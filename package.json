@@ -1,6 +1,6 @@
 {
   "name": "@wibetter/json-utils",
-  "version": "1.2.7",
+  "version": "1.2.9",
   "description": "提供JSON相关的各类工具方法，比如schema转json、json转schema、json元数据分析等",
   "keywords": [
     "json工具包",
@@ -13,6 +13,7 @@
   "author": "ldan@wibetter",
   "license": "MIT",
   "main": "dist/index.umd.js",
+  "module": "dist/index.esm.min.js",
   "scripts": {
     "dev": "akfun dev",
     "build2lib": "akfun build2lib",
@@ -44,7 +45,7 @@
     "@babel/polyfill": "^7.10.1"
   },
   "devDependencies": {
-    "akfun": "^1.5.3",
+    "akfun": "^1.5.6",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
     "husky": "^4.2.5",

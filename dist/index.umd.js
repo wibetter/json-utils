@@ -96,33 +96,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/@babel/runtime/helpers/typeof.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    module.exports = _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    module.exports = _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-module.exports = _typeof;
-
-/***/ }),
-
 /***/ "./src/data/KeyWordList.js":
 /*!*********************************!*\
   !*** ./src/data/KeyWordList.js ***!
@@ -1848,7 +1821,7 @@ function indexRoute2keyRoute(indexRoute, targetJsonSchemaObj) {
       // 从items中获取数据
       curJsonSchemaObj = curJsonSchemaObj.items; // 对象类型数据引用
 
-      curKeyRoute = curKeyRoute ? "".concat(curKeyRoute, "-items") : 'items';
+      curKeyRoute = curKeyRoute ? curKeyRoute + "-items" : 'items';
     } else if (curIndex) {
       // 1、先根据路径值获取key值
       var curKey = '0'; // 1、先根据路径值获取key值
@@ -1863,7 +1836,7 @@ function indexRoute2keyRoute(indexRoute, targetJsonSchemaObj) {
 
       curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
 
-      curKeyRoute = curKeyRoute ? "".concat(curKeyRoute, "-").concat(curKey) : curKey;
+      curKeyRoute = curKeyRoute ? curKeyRoute + "-" + curKey : curKey;
     }
   }
 
@@ -2013,7 +1986,7 @@ function arrayJson2Schema(jsonData) {
       if (arrLength > enumextraLength) {
         // 如果当前jsonDats的数值个数大于selectSchemaData的选项个数，则需要进行补充
         for (var ind = enumextraLength, size = arrLength; ind < size; ind++) {
-          curJsonSchema.items.enumextra.push("\u9009\u9879".concat(jsonData(ind)));
+          curJsonSchema.items.enumextra.push("\u9009\u9879" + jsonData(ind));
         }
       }
     } else {
@@ -2102,9 +2075,9 @@ function dataRoute2dataPath(dataRoute, baseDataPath) {
   var dataRouteArr = dataRoute.split('-');
   dataRouteArr.map(function (path) {
     if (/^\d+$/.test(path)) {
-      dataPath = "".concat(dataPath, "[").concat(path, "]");
+      dataPath = dataPath + "[" + path + "]";
     } else {
-      dataPath = "".concat(dataPath, ".").concat(path);
+      dataPath = dataPath + "." + path;
     }
   });
   return dataPath;
@@ -2120,7 +2093,7 @@ function json2treeData(mockData, parentDataRoute) {
     var mockDataProps = Object.keys(mockData);
     mockDataProps.map(function (propKey) {
       var mockDataItem = mockData[propKey];
-      var curDataRoute = parentDataRoute ? "".concat(parentDataRoute, "-").concat(propKey) : propKey;
+      var curDataRoute = parentDataRoute ? parentDataRoute + "-" + propKey : propKey;
 
       if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isObject"])(mockDataItem) || Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isArray"])(mockDataItem)) {
         treeData.push({
@@ -2140,7 +2113,7 @@ function json2treeData(mockData, parentDataRoute) {
   } else if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isArray"])(mockData)) {
     mockData.map(function (mockDataItem, index) {
       var indexStr = index.toString();
-      var curDataRoute = parentDataRoute ? "".concat(parentDataRoute, "-").concat(index) : indexStr;
+      var curDataRoute = parentDataRoute ? parentDataRoute + "-" + index : indexStr;
 
       if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isObject"])(mockDataItem) || Object($utils_typeof__WEBPACK_IMPORTED_MODULE_0__["isArray"])(mockDataItem)) {
         treeData.push({
@@ -2422,14 +2395,10 @@ function oldSchemaToNewSchema(oldSchema) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "schema2json", function() { return schema2json; });
-/* harmony import */ var _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "./node_modules/@babel/runtime/helpers/typeof.js");
-/* harmony import */ var _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! $utils/index */ "./src/utils/index.js");
-/* harmony import */ var $utils_jsonSchema__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! $utils/jsonSchema */ "./src/utils/jsonSchema.js");
-/* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! $utils/typeof */ "./src/utils/typeof.js");
-/* harmony import */ var $data_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! $data/index */ "./src/data/index.js");
-
-
+/* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! $utils/index */ "./src/utils/index.js");
+/* harmony import */ var $utils_jsonSchema__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! $utils/jsonSchema */ "./src/utils/jsonSchema.js");
+/* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! $utils/typeof */ "./src/utils/typeof.js");
+/* harmony import */ var $data_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! $data/index */ "./src/data/index.js");
 /**
  * schema2Json：根据schema数据内容生成一份对应的json数据
  * 当前包含三个转换方法：baseSchema2JsonData、objectSchema2JsonData、arraySchema2JsonData
@@ -2452,14 +2421,14 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
   var curJsonData = '';
   var oldValue = jsonData;
 
-  if (Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(oldValue) && Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(jsonSchema.default) && _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0___default()(oldValue) !== _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0___default()(jsonSchema.default)) {
+  if (Object($utils_index__WEBPACK_IMPORTED_MODULE_0__["exitPropertie"])(oldValue) && Object($utils_index__WEBPACK_IMPORTED_MODULE_0__["exitPropertie"])(jsonSchema.default) && typeof oldValue !== typeof jsonSchema.default) {
     // 表示当前数据类型发生变化，则丢弃旧版数据
     oldValue = undefined;
   }
   /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
 
 
-  var curValue = Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(oldValue) ? oldValue : jsonSchema.default;
+  var curValue = Object($utils_index__WEBPACK_IMPORTED_MODULE_0__["exitPropertie"])(oldValue) ? oldValue : jsonSchema.default;
 
   switch (jsonSchema.type) {
     case 'string':
@@ -2478,9 +2447,9 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
         var curJsonItemData = ''; // 字符串类型的json数据
         // 判断当前jsonData是否是对象类型
 
-        if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_3__["isObject"])(jsonData) || Object($utils_typeof__WEBPACK_IMPORTED_MODULE_3__["isArray"])(jsonData)) {
+        if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_2__["isObject"])(jsonData) || Object($utils_typeof__WEBPACK_IMPORTED_MODULE_2__["isArray"])(jsonData)) {
           curJsonItemData = jsonData;
-        } else if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_3__["isFunction"])(jsonData) || jsonData === '') {
+        } else if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_2__["isFunction"])(jsonData) || jsonData === '') {
           // 函数类型自动替换成默认的json数据"{}"
           curJsonItemData = {};
         } else {
@@ -2499,21 +2468,21 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
         curJsonData = curJsonItemData;
       } else {
         // 其他类型允许出现空字符串
-        curJsonData = Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(curValue) ? curValue : '';
+        curJsonData = Object($utils_index__WEBPACK_IMPORTED_MODULE_0__["exitPropertie"])(curValue) ? curValue : '';
       }
 
       break;
 
     case 'boolean':
-      curJsonData = Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(curValue) ? curValue : false;
+      curJsonData = Object($utils_index__WEBPACK_IMPORTED_MODULE_0__["exitPropertie"])(curValue) ? curValue : false;
       break;
 
     case 'number':
-      curJsonData = Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(curValue) ? curValue : 1;
+      curJsonData = Object($utils_index__WEBPACK_IMPORTED_MODULE_0__["exitPropertie"])(curValue) ? curValue : 1;
       break;
 
     default:
-      curJsonData = Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(curValue) ? curValue : '';
+      curJsonData = Object($utils_index__WEBPACK_IMPORTED_MODULE_0__["exitPropertie"])(curValue) ? curValue : '';
   }
 
   return curJsonData;
@@ -2527,26 +2496,26 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
 
 function objectSchema2JsonData(jsonSchema, jsonData) {
   var curJsonData = {};
-  var curType = Object($utils_jsonSchema__WEBPACK_IMPORTED_MODULE_2__["getCurrentFormat"])(jsonSchema);
+  var curType = Object($utils_jsonSchema__WEBPACK_IMPORTED_MODULE_1__["getCurrentFormat"])(jsonSchema);
 
-  if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_3__["isObject"])(jsonSchema) && jsonSchema.type === 'object') {
+  if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_2__["isObject"])(jsonSchema) && jsonSchema.type === 'object') {
     var jsonItem = jsonSchema;
     var oldValue = jsonData;
 
-    if (Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(oldValue) && Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(jsonItem.default) && _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0___default()(oldValue) !== _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0___default()(jsonItem.default)) {
+    if (Object($utils_index__WEBPACK_IMPORTED_MODULE_0__["exitPropertie"])(oldValue) && Object($utils_index__WEBPACK_IMPORTED_MODULE_0__["exitPropertie"])(jsonItem.default) && typeof oldValue !== typeof jsonItem.default) {
       // 表示当前数据类型发生变化，则丢弃旧版数据
       oldValue = undefined;
     }
     /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
 
 
-    var curValue = Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(oldValue) ? oldValue : jsonItem.default;
+    var curValue = Object($utils_index__WEBPACK_IMPORTED_MODULE_0__["exitPropertie"])(oldValue) ? oldValue : jsonItem.default;
 
     if (curType === 'dynamic-data') {
       // 动态数据源类型（固定格式的Object类型）
-      curJsonData = Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["objClone"])($data_index__WEBPACK_IMPORTED_MODULE_4__["EmptyDynamicDataCont"]);
+      curJsonData = Object($utils_index__WEBPACK_IMPORTED_MODULE_0__["objClone"])($data_index__WEBPACK_IMPORTED_MODULE_3__["EmptyDynamicDataCont"]);
 
-      if (curValue && Object($utils_typeof__WEBPACK_IMPORTED_MODULE_3__["isObject"])(curValue) && JSON.stringify(curValue) !== '{}') {
+      if (curValue && Object($utils_typeof__WEBPACK_IMPORTED_MODULE_2__["isObject"])(curValue) && JSON.stringify(curValue) !== '{}') {
         curJsonData = Object.assign(curJsonData, curValue);
       }
     } else if (curType === 'datasource') {
@@ -2687,17 +2656,17 @@ function arraySchema2JsonData(jsonSchema, jsonData) {
     // Array数据对象类型
     var oldValue = jsonData;
 
-    if (Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(oldValue) && Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(jsonSchema.default) && _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0___default()(oldValue) !== _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0___default()(jsonSchema.default)) {
+    if (Object($utils_index__WEBPACK_IMPORTED_MODULE_0__["exitPropertie"])(oldValue) && Object($utils_index__WEBPACK_IMPORTED_MODULE_0__["exitPropertie"])(jsonSchema.default) && typeof oldValue !== typeof jsonSchema.default) {
       // 表示当前数据类型发生变化，则丢弃旧版数据
       oldValue = undefined;
     }
     /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
 
 
-    var curValue = Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(oldValue) ? oldValue : jsonSchema.default;
+    var curValue = Object($utils_index__WEBPACK_IMPORTED_MODULE_0__["exitPropertie"])(oldValue) ? oldValue : jsonSchema.default;
 
     if (jsonSchema.format === 'array') {
-      if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_3__["isArray"])(curValue)) {
+      if (Object($utils_typeof__WEBPACK_IMPORTED_MODULE_2__["isArray"])(curValue)) {
         curValue.map(function (arrItem) {
           curJsonData.push(objectSchema2JsonData(jsonSchema.items, arrItem));
         });
@@ -2707,7 +2676,7 @@ function arraySchema2JsonData(jsonSchema, jsonData) {
       }
     } else {
       // 考虑select类型（多选的数值也是以array对象记录）
-      curJsonData = Object($utils_index__WEBPACK_IMPORTED_MODULE_1__["exitPropertie"])(curValue) ? curValue : [];
+      curJsonData = Object($utils_index__WEBPACK_IMPORTED_MODULE_0__["exitPropertie"])(curValue) ? curValue : [];
     }
   }
 
@@ -3244,7 +3213,7 @@ function getNextIndexRoute(curIndexRoute) {
   var curIndexArr = curIndexRoute.split('-');
   var lastIndex = curIndexArr.pop();
   var endIndex = Number(lastIndex) + 1;
-  curIndexArr.push("".concat(endIndex));
+  curIndexArr.push("" + endIndex);
   return curIndexArr.join('-');
 }
 /**
