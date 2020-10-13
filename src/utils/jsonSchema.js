@@ -127,6 +127,7 @@ export function isBoxSchemaData(format) {
     format === 'func' ||
     format === 'style' ||
     format === 'data' ||
+    format === 'widgets' ||
     format === 'object'
   ) {
     isBoxSchema = true;
@@ -140,7 +141,12 @@ export function isBoxSchemaData(format) {
  * */
 export function isFirstSchemaData(format) {
   let isFirstSchema = false;
-  if (format === 'func' || format === 'style' || format === 'data') {
+  if (
+    format === 'func' ||
+    format === 'style' ||
+    format === 'data' ||
+    format === 'widgets'
+  ) {
     isFirstSchema = true;
   }
   return isFirstSchema;

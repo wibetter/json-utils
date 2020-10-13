@@ -24,4 +24,5 @@ export const KeyWordList = [
   'event',
   'array',
   'object',
+  'widget',
 ];

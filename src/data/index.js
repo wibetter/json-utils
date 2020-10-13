@@ -27,3 +27,4 @@ export * from './initSchemaEntity/HtmlArea';
 export * from './initSchemaEntity/Event';
 export * from './initSchemaEntity/DataSource';
 export * from './initSchemaEntity/DynamicData';
+export * from './initSchemaEntity/Widget';

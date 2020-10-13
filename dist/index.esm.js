@@ -1033,6 +1033,30 @@ var EmptyDynamicDataCont = {
   localFilter: 'return data;'
 }; // 示例对象: 动态数据类型-接口数据 对应的json数据内容
 
+/* widget类型字段
+ * 【字段属性说明】
+ *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
+ *  title：字段项的label值
+ *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  isRequired：是否是必填项
+ *  default：默认值
+ *  description：字段说明&描述
+ *  placeholder：输入提示
+ *  readOnly：字段项可设置是否可编辑
+ * */
+var initWidgetData = {
+  type: 'string',
+  title: '内嵌区块数据',
+  format: 'widget',
+  default: '{}',
+  // 默认值
+  description: '用于存放内嵌区块的渲染相关数据',
+  // 字段项的说明和描述
+  isRequired: false,
+  readOnly: true // 默认只读
+
+};
+
 var TypeDataList = {
   jsonschema: initJSONSchemaData,
   input: initInputData,
@@ -1057,7 +1081,8 @@ var TypeDataList = {
   select: initSelectData,
   'dynamic-data': initDynamicData,
   datasource: initDataSourceData,
-  event: initEventData
+  event: initEventData,
+  widget: initWidgetData
 }; // 事件类型数据
 
 var EventTypeDataList = {
@@ -1453,7 +1478,7 @@ function isNewSchemaData(schemaData) {
 function isBoxSchemaData(format) {
   var isBoxSchema = false;
 
-  if (format === 'func' || format === 'style' || format === 'data' || format === 'object') {
+  if (format === 'func' || format === 'style' || format === 'data' || format === 'widgets' || format === 'object') {
     isBoxSchema = true;
   }
 
@@ -1467,7 +1492,7 @@ function isBoxSchemaData(format) {
 function isFirstSchemaData(format) {
   var isFirstSchema = false;
 
-  if (format === 'func' || format === 'style' || format === 'data') {
+  if (format === 'func' || format === 'style' || format === 'data' || format === 'widgets') {
     isFirstSchema = true;
   }
 
@@ -1812,7 +1837,7 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
         }
 
         curJsonData = curValue || '#ffffff';
-      } else if (jsonSchema.format === 'json') {
+      } else if (jsonSchema.format === 'json' || jsonSchema.format === 'widget') {
         /** 转成json类型进行特殊处理
          * 需要保证json类型的数值是json对象 */
         var curJsonItemData = ''; // 字符串类型的json数据
@@ -2076,7 +2101,7 @@ function schema2json(jsonSchema, jsonData) {
 /**
  * schemaMetaList: 当前JSON数据可视化提供的元数据清单
  * 11种基础类型组件（input、boolean、 date、date-time、 time、 url、 textarea、number、color、img、radio、 select）
- * 9个特殊类型组件（Object、Array、Json、datasource、DynamicData、Event、CodeArea、htmlArea、quantity）
+ * 10个特殊类型组件（Object、Array、Json、datasource、DynamicData、Event、CodeArea、htmlArea、quantity、widget）
  */
 
 var schemaMetaList = TypeDataList;
@@ -2312,6 +2337,6 @@ function getParentKeyRoute_CurKey(curKeyRoute) {
 }
 
 // JSONSchema关键字清单
-var KeyWordList = ['key', 'enum', 'enumextra', 'items', 'input', 'boolean', 'number', 'color', 'url', 'textarea', 'radio', 'select', 'date', 'date-time', 'time', 'json', 'codearea', 'htmlarea', 'quantity', 'dynamic-data', 'datasource', 'event', 'array', 'object'];
+var KeyWordList = ['key', 'enum', 'enumextra', 'items', 'input', 'boolean', 'number', 'color', 'url', 'textarea', 'radio', 'select', 'date', 'date-time', 'time', 'json', 'codearea', 'htmlarea', 'quantity', 'dynamic-data', 'datasource', 'event', 'array', 'object', 'widget'];
 
 export { DataSourceTypeList, EventTypeDataList, KeyWordList, TypeDataList, dataRoute2dataPath, dynamicDataAnalyzer, exitPropertie, getCurPosition, getCurrentFormat, getJsonDataByKeyRoute, getNextIndexRoute, getParentIndexRoute, getParentIndexRoute_CurIndex, getParentKeyRoute, getParentKeyRoute_CurKey, getSchemaByIndexRoute, indexRoute2keyRoute, isArray, isBoolean, isBoxSchemaData, isColor, isDateStr, isDateTimeStr, isEmptySchema, isEmptyWidgetSchema, isEqual, isFirstSchemaData, isFunction, isNewSchemaData, isNumber, isObject, isQuantity, isSameParent, isSelect, isString, isTimeStr, isURL, isUsedToWidgetConfig, json2schema, json2treeData, metaElemAnalyzer, moveBackward, moveForward, objClone, oldSchemaToNewSchema, schema2json, schemaMetaList };

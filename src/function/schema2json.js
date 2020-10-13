@@ -39,7 +39,10 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
           curValue = '#ffffff'; // 避免出现#fff类型的值，type=color不能识别
         }
         curJsonData = curValue || '#ffffff';
-      } else if (jsonSchema.format === 'json') {
+      } else if (
+        jsonSchema.format === 'json' ||
+        jsonSchema.format === 'widget'
+      ) {
         /** 转成json类型进行特殊处理
          * 需要保证json类型的数值是json对象 */
         let curJsonItemData = ''; // 字符串类型的json数据
