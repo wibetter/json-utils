@@ -2337,6 +2337,6 @@ function getParentKeyRoute_CurKey(curKeyRoute) {
 }
 
 // JSONSchema关键字清单
-var KeyWordList = ['key', 'enum', 'enumextra', 'items', 'input', 'boolean', 'number', 'color', 'url', 'textarea', 'radio', 'select', 'date', 'date-time', 'time', 'json', 'codearea', 'htmlarea', 'quantity', 'dynamic-data', 'datasource', 'event', 'array', 'object', 'widget'];
+var KeyWordList = ['key', 'enum', 'enumextra', 'items', 'input', 'boolean', 'number', 'color', 'url', 'textarea', 'radio', 'select', 'date', 'date-time', 'time', 'json', 'codearea', 'htmlarea', 'quantity', 'dynamic-data', 'datasource', 'event', 'array', 'object', 'widget', 'widgets', 'widgetUUID', 'embedWidgetList'];
 
 export { DataSourceTypeList, EventTypeDataList, KeyWordList, TypeDataList, dataRoute2dataPath, dynamicDataAnalyzer, exitPropertie, getCurPosition, getCurrentFormat, getJsonDataByKeyRoute, getNextIndexRoute, getParentIndexRoute, getParentIndexRoute_CurIndex, getParentKeyRoute, getParentKeyRoute_CurKey, getSchemaByIndexRoute, indexRoute2keyRoute, isArray, isBoolean, isBoxSchemaData, isColor, isDateStr, isDateTimeStr, isEmptySchema, isEmptyWidgetSchema, isEqual, isFirstSchemaData, isFunction, isNewSchemaData, isNumber, isObject, isQuantity, isSameParent, isSelect, isString, isTimeStr, isURL, isUsedToWidgetConfig, json2schema, json2treeData, metaElemAnalyzer, moveBackward, moveForward, objClone, oldSchemaToNewSchema, schema2json, schemaMetaList };
