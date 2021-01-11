@@ -10,6 +10,7 @@ export const KeyWordList = [
   'color',
   'url',
   'textarea',
+  'text-editor',
   'radio',
   'select',
   'date',

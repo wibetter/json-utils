@@ -300,6 +300,31 @@ var initTextareaData = {
   readOnly: false
 };
 
+/* 富文本类型字段
+ * 【字段属性说明】
+ *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
+ *  title：字段项的label值
+ *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  isRequired：是否是必填项
+ *  default：默认值
+ *  description：字段说明&描述
+ *  placeholder：输入提示
+ *  readOnly：字段项可设置是否可编辑
+ * */
+var initTextEditorData = {
+  type: 'string',
+  title: '富文本',
+  format: 'text-editor',
+  default: '',
+  // 默认值
+  description: '',
+  // 字段项的说明和描述
+  placeholder: '',
+  // 输入提示
+  isRequired: false,
+  readOnly: false
+};
+
 /* number类型字段
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number），字段值的数据类型
@@ -1073,6 +1098,7 @@ var TypeDataList = {
   json: initJsonData,
   codearea: initCodeAreaData,
   htmlarea: initHtmlAreaData,
+  'text-editor': initTextEditorData,
   date: initDateData,
   'date-time': initDateTimeData,
   time: initTimeData,
@@ -2337,6 +2363,6 @@ function getParentKeyRoute_CurKey(curKeyRoute) {
 }
 
 // JSONSchema关键字清单
-var KeyWordList = ['key', 'enum', 'enumextra', 'items', 'input', 'boolean', 'number', 'color', 'url', 'textarea', 'radio', 'select', 'date', 'date-time', 'time', 'json', 'codearea', 'htmlarea', 'quantity', 'dynamic-data', 'datasource', 'event', 'array', 'object', 'widget', 'widgets', 'widgetUUID', 'embedWidgetList'];
+var KeyWordList = ['key', 'enum', 'enumextra', 'items', 'input', 'boolean', 'number', 'color', 'url', 'textarea', 'text-editor', 'radio', 'select', 'date', 'date-time', 'time', 'json', 'codearea', 'htmlarea', 'quantity', 'dynamic-data', 'datasource', 'event', 'array', 'object', 'widget', 'widgets', 'widgetUUID', 'embedWidgetList'];
 
 export { DataSourceTypeList, EventTypeDataList, KeyWordList, TypeDataList, dataRoute2dataPath, dynamicDataAnalyzer, exitPropertie, getCurPosition, getCurrentFormat, getJsonDataByKeyRoute, getNextIndexRoute, getParentIndexRoute, getParentIndexRoute_CurIndex, getParentKeyRoute, getParentKeyRoute_CurKey, getSchemaByIndexRoute, indexRoute2keyRoute, isArray, isBoolean, isBoxSchemaData, isColor, isDateStr, isDateTimeStr, isEmptySchema, isEmptyWidgetSchema, isEqual, isFirstSchemaData, isFunction, isNewSchemaData, isNumber, isObject, isQuantity, isSameParent, isSelect, isString, isTimeStr, isURL, isUsedToWidgetConfig, json2schema, json2treeData, metaElemAnalyzer, moveBackward, moveForward, objClone, oldSchemaToNewSchema, schema2json, schemaMetaList };

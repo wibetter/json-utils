@@ -3,6 +3,7 @@ export * from './initSchemaEntity/JSONSchema';
 export * from './initSchemaEntity/Input';
 export * from './initSchemaEntity/Boolean';
 export * from './initSchemaEntity/Textarea';
+export * from './initSchemaEntity/TextEditor';
 export * from './initSchemaEntity/Number';
 export * from './initSchemaEntity/Radio';
 export * from './initSchemaEntity/Select';
