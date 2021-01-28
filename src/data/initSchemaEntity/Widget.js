@@ -11,10 +11,10 @@
  * */
 export const initWidgetData = {
   type: 'string',
-  title: '内嵌区块数据',
+  title: '内嵌组件数据',
   format: 'widget',
   default: '{}', // 默认值
-  description: '用于存放内嵌区块的渲染相关数据', // 字段项的说明和描述
+  description: '用于存放内嵌组件的渲染相关数据', // 字段项的说明和描述
   isRequired: false,
   readOnly: true, // 默认只读
 };

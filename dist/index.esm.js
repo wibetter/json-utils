@@ -1071,11 +1071,11 @@ var EmptyDynamicDataCont = {
  * */
 var initWidgetData = {
   type: 'string',
-  title: '内嵌区块数据',
+  title: '内嵌组件数据',
   format: 'widget',
   default: '{}',
   // 默认值
-  description: '用于存放内嵌区块的渲染相关数据',
+  description: '用于存放内嵌组件的渲染相关数据',
   // 字段项的说明和描述
   isRequired: false,
   readOnly: true // 默认只读
@@ -1412,7 +1412,7 @@ function getCurrentFormat(targetJsonData) {
   return currentType;
 }
 /** 判断是否为空的Schema
- * 包括 通用schema和区块配置专用的schema
+ * 包括 通用schema和组件配置专用的schema
  * */
 
 function isEmptySchema(targetJsonSchema) {
@@ -1430,7 +1430,7 @@ function isEmptySchema(targetJsonSchema) {
   } else if (curType === 'array' && targetJsonSchema.items && targetJsonSchema.items.properties && targetJsonSchema.items.propertyOrder && targetJsonSchema.items.propertyOrder.length > 0) {
     // Array数组类型
     isEmpty = false;
-  } else if (targetJsonSchema.type || targetJsonSchema.format) {
+  } else if (targetJsonSchema.type && targetJsonSchema.type !== 'array' && targetJsonSchema.type !== 'object' || targetJsonSchema.format) {
     // 其他基本类型
     isEmpty = false;
   }
@@ -1460,7 +1460,7 @@ function isEmptyWidgetSchema(targetJsonSchema) {
 
   return isEmpty;
 }
-/** 判断是否为用于区块配置的jsonSchema数据
+/** 判断是否为用于组件配置的jsonSchema数据
  * 备注：一级字段必须为object（用于规避非法的jsonSchema数据，以及结构单一的jsonSchema数据）
  * 且具备固定的三个子属性（func、style、data）
  * */

@@ -830,16 +830,16 @@ class IndexDemo extends React.PureComponent {
           widgets: {
             type: 'object',
             format: 'widgets',
-            title: '嵌套区块',
+            title: '嵌套组件',
             readOnly: false,
             properties: {
               widgetUUID: {
                 type: 'string',
-                title: '嵌套区块UUID',
+                title: '嵌套组件UUID',
                 format: 'input',
                 isRequired: false,
                 default: 'box-widget-e33b3258-6d73-4c07-a6e1-4f67457dafd3',
-                description: '唯一标识，用于标记当前可嵌套区块',
+                description: '唯一标识，用于标记当前可嵌套组件',
                 placeholder: '',
                 readOnly: false,
               },
@@ -1131,34 +1131,34 @@ class IndexDemo extends React.PureComponent {
           widgets: {
             type: 'object',
             format: 'widgets',
-            title: '嵌套区块',
+            title: '嵌套组件',
             readOnly: false,
             properties: {
               widgetUUID: {
                 type: 'string',
-                title: '嵌套区块UUID',
+                title: '嵌套组件UUID',
                 format: 'input',
                 isRequired: false,
                 default: 'box-widget-e33b3258-6d73-4c07-a6e1-4f67457dafd3',
-                description: '唯一标识，用于标记当前可嵌套区块',
+                description: '唯一标识，用于标记当前可嵌套组件',
                 placeholder: '',
                 readOnly: false,
               },
               embedWidgetA: {
                 type: 'string',
-                title: '内嵌区块A',
+                title: '内嵌组件A',
                 format: 'widget',
                 default: '{}',
-                description: '用于存放内嵌区块的渲染数据',
+                description: '用于存放内嵌组件的渲染数据',
                 isRequired: false,
                 readOnly: true,
               },
               embedWidgetB: {
                 type: 'string',
-                title: '内嵌区块B',
+                title: '内嵌组件B',
                 format: 'widget',
                 default: '{}',
-                description: '用于存放内嵌区块的渲染数据',
+                description: '用于存放内嵌组件的渲染数据',
                 isRequired: false,
                 readOnly: true,
               },
@@ -1171,7 +1171,7 @@ class IndexDemo extends React.PureComponent {
         format: 'object',
         propertyOrder: ['func', 'style', 'data', 'widgets'],
         lastUpdateTime: '2020-10-13T09:19:20.980Z',
-      }, // 用于区块配置的schema  显示 ok / update ok
+      }, // 用于组件配置的schema  显示 ok / update ok
       jsonData: {
         func: {},
         style: {
@@ -1215,10 +1215,6 @@ class IndexDemo extends React.PureComponent {
 
   render() {
     const { jsonSchema, jsonData, wideScreen, jsonView } = this.state;
-
-    const testData = schema2json(jsonSchema, jsonData);
-
-    console.log(testData);
 
     return (
       <>

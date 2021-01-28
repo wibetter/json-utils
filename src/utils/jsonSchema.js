@@ -19,7 +19,7 @@ export function getCurrentFormat(targetJsonData) {
 }
 
 /** 判断是否为空的Schema
- * 包括 通用schema和区块配置专用的schema
+ * 包括 通用schema和组件配置专用的schema
  * */
 export function isEmptySchema(targetJsonSchema) {
   let isEmpty = true;
@@ -44,7 +44,12 @@ export function isEmptySchema(targetJsonSchema) {
   ) {
     // Array数组类型
     isEmpty = false;
-  } else if (targetJsonSchema.type || targetJsonSchema.format) {
+  } else if (
+    (targetJsonSchema.type &&
+      targetJsonSchema.type !== 'array' &&
+      targetJsonSchema.type !== 'object') ||
+    targetJsonSchema.format
+  ) {
     // 其他基本类型
     isEmpty = false;
   }
@@ -79,7 +84,7 @@ export function isEmptyWidgetSchema(targetJsonSchema) {
   return isEmpty;
 }
 
-/** 判断是否为用于区块配置的jsonSchema数据
+/** 判断是否为用于组件配置的jsonSchema数据
  * 备注：一级字段必须为object（用于规避非法的jsonSchema数据，以及结构单一的jsonSchema数据）
  * 且具备固定的三个子属性（func、style、data）
  * */
