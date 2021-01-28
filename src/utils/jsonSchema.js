@@ -157,6 +157,36 @@ export function isFirstSchemaData(format) {
   return isFirstSchema;
 }
 
+/** 判断是否是结构化的schema数据，
+ *  判定条件：一级schema为object类型，其所有二级schema也为object类型
+ * */
+export function isStructuredSchema(jsonSchema) {
+  let isStructured = true;
+  const currentType = jsonSchema.type || getCurrentFormat(jsonSchema);
+  if (
+    currentType !== 'object' ||
+    !jsonSchema.propertyOrder ||
+    !jsonSchema.properties
+  ) {
+    isStructured = false;
+  } else {
+    jsonSchema.propertyOrder.map((key) => {
+      /** 1. 获取当前schema对象 */
+      const curSchemaData = jsonSchema.properties[key];
+      /** 2. 判断是否是容器类型元素，如果是则禁止选中 */
+      const curType = jsonSchema.type || getCurrentFormat(curSchemaData);
+      if (
+        curType !== 'object' ||
+        !curSchemaData.propertyOrder ||
+        !curSchemaData.properties
+      ) {
+        isStructured = false;
+      }
+    });
+  }
+  return isStructured;
+}
+
 /**
  * 判断是否是同一个父元素
  * 备注：用于判断两个元素是否在同一个父级容器中

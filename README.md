@@ -28,6 +28,7 @@
 - moveForward: 将当前路径值向前移动一位
 - moveBackward: 将当前路径值向后移动一位
 - getCurPosition: 判断当前元素在目标元素的位置 前 or 后（根据当前元素的位置和目标元素的位置）
+- isStructuredSchema: 判断是否为结构化schema数据（一级schema为object类型，其所有二级schema为object类型）
 
 ### 纯工具方法
 - objClone: js对象数据深拷贝，避免数据联动
