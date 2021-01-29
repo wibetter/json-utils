@@ -134,12 +134,11 @@ export function isBoxSchemaData(format) {
     format === 'style' ||
     format === 'data' ||
     format === 'widgets' ||
-    format === 'event' ||
     format === 'func-schema' ||
     format === 'style-schema' ||
     format === 'data-schema' ||
-    format === 'widgets-schema' ||
-    format === 'event-schema'
+    format === 'event-schema' ||
+    format === 'widgets-schema'
   ) {
     isBoxSchema = true;
   }
