@@ -1504,7 +1504,7 @@ function isNewSchemaData(schemaData) {
 function isBoxSchemaData(format) {
   var isBoxSchema = false;
 
-  if (format === 'func' || format === 'style' || format === 'data' || format === 'widgets' || format === 'object') {
+  if (format === 'object' || format === 'func' || format === 'style' || format === 'data' || format === 'widgets' || format === 'event' || format === 'func-schema' || format === 'style-schema' || format === 'data-schema' || format === 'widgets-schema' || format === 'event-schema') {
     isBoxSchema = true;
   }
 
@@ -1518,7 +1518,7 @@ function isBoxSchemaData(format) {
 function isFirstSchemaData(format) {
   var isFirstSchema = false;
 
-  if (format === 'func' || format === 'style' || format === 'data' || format === 'widgets') {
+  if (format === 'func' || format === 'style' || format === 'data' || format === 'event-schema' || format === 'widgets') {
     isFirstSchema = true;
   }
 

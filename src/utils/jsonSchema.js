@@ -129,11 +129,17 @@ export function isNewSchemaData(schemaData) {
 export function isBoxSchemaData(format) {
   let isBoxSchema = false;
   if (
+    format === 'object' ||
     format === 'func' ||
     format === 'style' ||
     format === 'data' ||
     format === 'widgets' ||
-    format === 'object'
+    format === 'event' ||
+    format === 'func-schema' ||
+    format === 'style-schema' ||
+    format === 'data-schema' ||
+    format === 'widgets-schema' ||
+    format === 'event-schema'
   ) {
     isBoxSchema = true;
   }
@@ -150,6 +156,7 @@ export function isFirstSchemaData(format) {
     format === 'func' ||
     format === 'style' ||
     format === 'data' ||
+    format === 'event-schema' ||
     format === 'widgets'
   ) {
     isFirstSchema = true;
