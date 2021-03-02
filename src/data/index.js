@@ -22,6 +22,7 @@ export * from './initSchemaEntity/EmptyArray';
 export * from './initSchemaEntity/EmptyObject';
 
 export * from './initSchemaEntity/Quantity';
+export * from './initSchemaEntity/BoxStyle';
 export * from './initSchemaEntity/Json';
 export * from './initSchemaEntity/CodeArea';
 export * from './initSchemaEntity/HtmlArea';

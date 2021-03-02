@@ -16,6 +16,7 @@ import {
   initIMGData,
   /* 9种特殊类型 */
   initQuantityData,
+  initBoxStyleData,
   initJsonData,
   initCodeAreaData,
   initHtmlAreaData,
@@ -36,7 +37,6 @@ export const TypeDataList = {
   jsonschema: initJSONSchemaData,
   input: initInputData,
   boolean: initBooleanData,
-
   object: initObjectData,
   array: initArrayData,
   'empty-array': EmptyArray,
@@ -54,6 +54,7 @@ export const TypeDataList = {
   'date-time': initDateTimeData,
   time: initTimeData,
   quantity: initQuantityData,
+  'box-style': initBoxStyleData,
   radio: initRadioData,
   select: initSelectData,
   'dynamic-data': initDynamicData,
