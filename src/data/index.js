@@ -6,6 +6,7 @@ export * from './initSchemaEntity/Textarea';
 export * from './initSchemaEntity/TextEditor';
 export * from './initSchemaEntity/Number';
 export * from './initSchemaEntity/Radio';
+export * from './initSchemaEntity/SingleSelect'; // 下拉单选
 export * from './initSchemaEntity/Select';
 
 export * from './initSchemaEntity/DateTime';
