@@ -77,7 +77,7 @@ function getSchemaByIndexRoute(indexRoute, targetJsonSchemaObj, useObjClone) {
       // 获取指定路径的json数据对象，需要按以下步骤（备注：确保是符合规则的json格式数据）
       var curIndex = indexRouteArr[index];
 
-      if (curIndex === '0' && (curJsonSchemaObj.format === 'array' || curJsonSchemaObj.format === 'radio' || curJsonSchemaObj.format === 'select') && curJsonSchemaObj.items) {
+      if (curIndex === '0' && (curJsonSchemaObj.format === 'array' || curJsonSchemaObj.format === 'radio' || curJsonSchemaObj.format === 'single-select' || curJsonSchemaObj.format === 'select') && curJsonSchemaObj.items) {
         // 从items中获取数据
         curJsonSchemaObj = curJsonSchemaObj.items;
       } else if (curIndex) {

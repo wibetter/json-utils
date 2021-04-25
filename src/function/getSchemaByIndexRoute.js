@@ -24,6 +24,7 @@ export function getSchemaByIndexRoute(
         curIndex === '0' &&
         (curJsonSchemaObj.format === 'array' ||
           curJsonSchemaObj.format === 'radio' ||
+          curJsonSchemaObj.format === 'single-select' ||
           curJsonSchemaObj.format === 'select') &&
         curJsonSchemaObj.items
       ) {
