@@ -2,9 +2,10 @@
  * json-utils: json工具集合
  * 【提供的工具方法清单】
  *
- * 【10个主要的json工具方法】
+ * 【11个主要的json工具方法】
  * getJsonDataByKeyRoute: 根据key索引路径获取对应的数值
  * getSchemaByIndexRoute: 根据index索引路径获取对应的schema数据
+ * getSchemaByKeyRoute: 根据key值路径获取对应的schema数据
  * indexRoute2keyRoute: 根据index索引路径获取对应的key值路径
  * json2schema: 根据json数据内容获取对应的schema数据
  * oldSchemaToNewSchema: 旧版jsonSchema转新版jsonSchema
@@ -61,6 +62,7 @@
 //【8个主要的json工具方法】
 export * from './function/getJsonDataByKeyRoute';
 export * from './function/getSchemaByIndexRoute';
+export * from './function/getSchemaByKeyRoute';
 export * from './function/indexRoute2keyRoute';
 export * from './function/json2schema';
 export * from './function/metaElemAnalyzer';

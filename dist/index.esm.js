@@ -100,6 +100,38 @@ function getSchemaByIndexRoute(indexRoute, targetJsonSchemaObj, useObjClone) {
 }
 
 /**
+ * getSchemaByKeyRoute: 根据key值路径获取对应的schema数据
+ * 【方法参数说明】
+ * keyRoute: key值路径
+ * targetJsonSchemaObj: schema数据对象
+ * useObjClone: 是否进行深拷贝，避免影响原有数据。（默认不进行深拷贝）
+ */
+
+function getSchemaByKeyRoute(keyRoute, targetJsonSchemaObj, useObjClone) {
+  var curJsonSchemaObj = targetJsonSchemaObj;
+
+  if (useObjClone) {
+    curJsonSchemaObj = objClone(targetJsonSchemaObj); // 进行深拷贝，避免影响原有数据
+  }
+
+  if (keyRoute && curJsonSchemaObj) {
+    var keyRouteArr = keyRoute.split('-');
+
+    for (var index = 0, size = keyRouteArr.length; index < size; index++) {
+      // 获取指定路径的json数据对象，需要按以下步骤（备注：确保是符合规则的json格式数据）
+      var curKey = keyRouteArr[index];
+
+      if (curKey && curJsonSchemaObj.properties) {
+        // 根据key值获取对应的json数据对象
+        curJsonSchemaObj = curJsonSchemaObj.properties[curKey];
+      }
+    }
+  }
+
+  return curJsonSchemaObj;
+}
+
+/**
  * indexRoute2keyRoute：根据index索引路径获取对应的key值路径
  * 【方法参数说明】
  * indexRoute: index索引路径
@@ -2463,4 +2495,4 @@ function getParentKeyRoute_CurKey(curKeyRoute) {
 // JSONSchema关键字清单
 var KeyWordList = ['key', 'enum', 'enumextra', 'items', 'input', 'boolean', 'number', 'color', 'url', 'textarea', 'text-editor', 'radio', 'single-select', 'select', 'date', 'date-time', 'time', 'json', 'codearea', 'htmlarea', 'quantity', 'box-style', 'dynamic-data', 'datasource', 'event', 'array', 'object', 'widget', 'widgets', 'widgetUUID', 'embedWidgetList'];
 
-export { DataSourceTypeList, EventTypeDataList, KeyWordList, TypeDataList, dataRoute2dataPath, dynamicDataAnalyzer, exitPropertie, getCurPosition, getCurrentFormat, getJsonDataByKeyRoute, getNextIndexRoute, getParentIndexRoute, getParentIndexRoute_CurIndex, getParentKeyRoute, getParentKeyRoute_CurKey, getSchemaByIndexRoute, indexRoute2keyRoute, isArray, isBoolean, isBoxSchemaData, isColor, isDateStr, isDateTimeStr, isEmptySchema, isEmptyWidgetSchema, isEqual, isFirstSchemaData, isFunction, isNewSchemaData, isNumber, isObject, isQuantity, isSameParent, isSelect, isString, isStructuredSchema, isTimeStr, isURL, isUsedToWidgetConfig, json2schema, json2treeData, metaElemAnalyzer, moveBackward, moveForward, objClone, oldSchemaToNewSchema, schema2json, schemaMetaList };
+export { DataSourceTypeList, EventTypeDataList, KeyWordList, TypeDataList, dataRoute2dataPath, dynamicDataAnalyzer, exitPropertie, getCurPosition, getCurrentFormat, getJsonDataByKeyRoute, getNextIndexRoute, getParentIndexRoute, getParentIndexRoute_CurIndex, getParentKeyRoute, getParentKeyRoute_CurKey, getSchemaByIndexRoute, getSchemaByKeyRoute, indexRoute2keyRoute, isArray, isBoolean, isBoxSchemaData, isColor, isDateStr, isDateTimeStr, isEmptySchema, isEmptyWidgetSchema, isEqual, isFirstSchemaData, isFunction, isNewSchemaData, isNumber, isObject, isQuantity, isSameParent, isSelect, isString, isStructuredSchema, isTimeStr, isURL, isUsedToWidgetConfig, json2schema, json2treeData, metaElemAnalyzer, moveBackward, moveForward, objClone, oldSchemaToNewSchema, schema2json, schemaMetaList };
