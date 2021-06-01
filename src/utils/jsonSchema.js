@@ -146,7 +146,7 @@ export function isBoxSchemaData(format) {
 }
 
 /** 根据format判断是否是一级类型字段
- *  一级类型字段：func、style、data
+ *  一级类型字段：func、style、data、props、event-schema、widgets
  *  备注：一级类型字段不允许拖拽和复制
  * */
 export function isFirstSchemaData(format) {
@@ -155,6 +155,7 @@ export function isFirstSchemaData(format) {
     format === 'func' ||
     format === 'style' ||
     format === 'data' ||
+    format === 'props' ||
     format === 'event-schema' ||
     format === 'widgets'
   ) {
