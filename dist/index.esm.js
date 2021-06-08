@@ -172,6 +172,41 @@ function indexRoute2keyRoute(indexRoute, targetJsonSchemaObj) {
   return curKeyRoute;
 }
 
+/**
+ * keyRoute2indexRoute：根据key值路径获取对应的index索引路径
+ * 【方法参数说明】
+ * keyRoute: key值路径
+ * targetJsonSchemaObj: schema数据对象
+ * */
+function keyRoute2indexRoute(keyRoute, targetJsonSchemaObj) {
+  var curJsonSchemaObj = targetJsonSchemaObj;
+  var curIndexRoute = '';
+  var keyRouteArr = keyRoute.split('-');
+
+  for (var index = 0, size = keyRouteArr.length; index < size; index++) {
+    var curKey = keyRouteArr[index];
+
+    if (curKey) {
+      // 1、先根据路径值获取key值
+      var curIndex = '0'; // 1、先根据路径值获取key值
+
+      if (curJsonSchemaObj.propertyOrder) {
+        curIndex = curJsonSchemaObj.propertyOrder.indexOf(curKey);
+      } else if (curJsonSchemaObj.properties) {
+        var propertyOrder = Object.keys(curJsonSchemaObj.properties);
+        curIndex = propertyOrder.indexOf(curKey);
+      } // 2、根据key值获取对应的json数据对象
+
+
+      curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
+
+      curIndexRoute = curIndexRoute ? curIndexRoute + "-" + curIndex : curIndex.toString();
+    }
+  }
+
+  return curIndexRoute;
+}
+
 /** 新版JSONSchema一级字段项
  * 【字段属性说明】
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
@@ -1615,14 +1650,14 @@ function isBoxSchemaData(format) {
   return isBoxSchema;
 }
 /** 根据format判断是否是一级类型字段
- *  一级类型字段：func、style、data
+ *  一级类型字段：func、style、data、props、event-schema、widgets
  *  备注：一级类型字段不允许拖拽和复制
  * */
 
 function isFirstSchemaData(format) {
   var isFirstSchema = false;
 
-  if (format === 'func' || format === 'style' || format === 'data' || format === 'event-schema' || format === 'widgets') {
+  if (format === 'func' || format === 'style' || format === 'data' || format === 'props' || format === 'event-schema' || format === 'widgets') {
     isFirstSchema = true;
   }
 
@@ -2495,4 +2530,4 @@ function getParentKeyRoute_CurKey(curKeyRoute) {
 // JSONSchema关键字清单
 var KeyWordList = ['key', 'enum', 'enumextra', 'items', 'input', 'boolean', 'number', 'color', 'url', 'textarea', 'text-editor', 'radio', 'single-select', 'select', 'date', 'date-time', 'time', 'json', 'codearea', 'htmlarea', 'quantity', 'box-style', 'dynamic-data', 'datasource', 'event', 'array', 'object', 'widget', 'widgets', 'widgetUUID', 'embedWidgetList'];
 
-export { DataSourceTypeList, EventTypeDataList, KeyWordList, TypeDataList, dataRoute2dataPath, dynamicDataAnalyzer, exitPropertie, getCurPosition, getCurrentFormat, getJsonDataByKeyRoute, getNextIndexRoute, getParentIndexRoute, getParentIndexRoute_CurIndex, getParentKeyRoute, getParentKeyRoute_CurKey, getSchemaByIndexRoute, getSchemaByKeyRoute, indexRoute2keyRoute, isArray, isBoolean, isBoxSchemaData, isColor, isDateStr, isDateTimeStr, isEmptySchema, isEmptyWidgetSchema, isEqual, isFirstSchemaData, isFunction, isNewSchemaData, isNumber, isObject, isQuantity, isSameParent, isSelect, isString, isStructuredSchema, isTimeStr, isURL, isUsedToWidgetConfig, json2schema, json2treeData, metaElemAnalyzer, moveBackward, moveForward, objClone, oldSchemaToNewSchema, schema2json, schemaMetaList };
+export { DataSourceTypeList, EventTypeDataList, KeyWordList, TypeDataList, dataRoute2dataPath, dynamicDataAnalyzer, exitPropertie, getCurPosition, getCurrentFormat, getJsonDataByKeyRoute, getNextIndexRoute, getParentIndexRoute, getParentIndexRoute_CurIndex, getParentKeyRoute, getParentKeyRoute_CurKey, getSchemaByIndexRoute, getSchemaByKeyRoute, indexRoute2keyRoute, isArray, isBoolean, isBoxSchemaData, isColor, isDateStr, isDateTimeStr, isEmptySchema, isEmptyWidgetSchema, isEqual, isFirstSchemaData, isFunction, isNewSchemaData, isNumber, isObject, isQuantity, isSameParent, isSelect, isString, isStructuredSchema, isTimeStr, isURL, isUsedToWidgetConfig, json2schema, json2treeData, keyRoute2indexRoute, metaElemAnalyzer, moveBackward, moveForward, objClone, oldSchemaToNewSchema, schema2json, schemaMetaList };
