@@ -188,17 +188,22 @@ function keyRoute2indexRoute(keyRoute, targetJsonSchemaObj) {
 
     if (curKey) {
       // 1、先根据路径值获取key值
-      var curIndex = '0'; // 1、先根据路径值获取key值
+      var curIndex = -1; // 1、先根据路径值获取key值
 
       if (curJsonSchemaObj.propertyOrder) {
-        curIndex = curJsonSchemaObj.propertyOrder.indexOf(curKey);
+        curIndex = curJsonSchemaObj.propertyOrder.indexOf(curKey); // 2、根据key值获取对应的json数据对象
+
+        curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
       } else if (curJsonSchemaObj.properties) {
         var propertyOrder = Object.keys(curJsonSchemaObj.properties);
-        curIndex = propertyOrder.indexOf(curKey);
-      } // 2、根据key值获取对应的json数据对象
+        curIndex = propertyOrder.indexOf(curKey); // 2、根据key值获取对应的json数据对象
 
-
-      curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
+        curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
+      } else if (curJsonSchemaObj.items) {
+        // 兼容数据类型
+        curIndex = curKey;
+        curJsonSchemaObj = curJsonSchemaObj.items; // 对象类型数据引用
+      }
 
       curIndexRoute = curIndexRoute ? curIndexRoute + "-" + curIndex : curIndex.toString();
     }
@@ -1802,7 +1807,7 @@ function moveBackward(curIndexRoute) {
  * Object类型的schema元数据分析
  * */
 
-function objectSchema2JsonData(jsonSchema, analyzerResult) {
+function objectSchema2JsonData$1(jsonSchema, analyzerResult) {
   var curAnalyzerResult = analyzerResult || {};
 
   if (isObject(jsonSchema) && jsonSchema.type === 'object' && jsonSchema.properties) {
@@ -1841,7 +1846,7 @@ function metaElemAnalyzer(curJsonSchemaObj, analyzerResult) {
         curAnalyzerResult['object'] = 1;
       }
 
-      curAnalyzerResult = objectSchema2JsonData(curJsonSchemaObj, curAnalyzerResult);
+      curAnalyzerResult = objectSchema2JsonData$1(curJsonSchemaObj, curAnalyzerResult);
     } else if (curFormat === 'array') {
       // 最外层的schema类型不进行统计
       if (!isFirstAnalyzer && curAnalyzerResult['array']) {
@@ -1851,7 +1856,7 @@ function metaElemAnalyzer(curJsonSchemaObj, analyzerResult) {
       }
 
       curJsonSchemaObj = curJsonSchemaObj.items;
-      curAnalyzerResult = objectSchema2JsonData(curJsonSchemaObj, curAnalyzerResult);
+      curAnalyzerResult = objectSchema2JsonData$1(curJsonSchemaObj, curAnalyzerResult);
     } else {
       if (!isFirstAnalyzer && curAnalyzerResult[curFormat]) {
         curAnalyzerResult[curFormat] += 1;
@@ -2081,7 +2086,7 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
  * */
 
 
-function objectSchema2JsonData$1(jsonSchema, jsonData) {
+function objectSchema2JsonData(jsonSchema, jsonData) {
   var curJsonData = {};
   var curType = getCurrentFormat(jsonSchema);
 
@@ -2216,7 +2221,7 @@ function objectSchema2JsonData$1(jsonSchema, jsonData) {
 
           case 'object':
             // 普通对象类型
-            curJsonData[jsonKey] = objectSchema2JsonData$1(curJsonItem, curOldValue);
+            curJsonData[jsonKey] = objectSchema2JsonData(curJsonItem, curOldValue);
             break;
 
           default:
@@ -2255,10 +2260,10 @@ function arraySchema2JsonData(jsonSchema, jsonData) {
     if (jsonSchema.format === 'array') {
       if (isArray(curValue)) {
         curValue.map(function (arrItem) {
-          curJsonData.push(objectSchema2JsonData$1(jsonSchema.items, arrItem));
+          curJsonData.push(objectSchema2JsonData(jsonSchema.items, arrItem));
         });
       } else {
-        var childItems = objectSchema2JsonData$1(jsonSchema.items, curValue);
+        var childItems = objectSchema2JsonData(jsonSchema.items, curValue);
         curJsonData.push(childItems);
       }
     } else {
@@ -2279,7 +2284,7 @@ function schema2json(jsonSchema, jsonData) {
   var curJsonData = {};
 
   if (jsonSchema.type === 'object') {
-    curJsonData = objectSchema2JsonData$1(jsonSchema, jsonData);
+    curJsonData = objectSchema2JsonData(jsonSchema, jsonData);
   } else if (jsonSchema.type === 'array') {
     curJsonData = arraySchema2JsonData(jsonSchema, jsonData);
   } else {

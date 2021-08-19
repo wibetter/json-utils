@@ -12,16 +12,22 @@ export function keyRoute2indexRoute(keyRoute, targetJsonSchemaObj) {
     const curKey = keyRouteArr[index];
     if (curKey) {
       // 1、先根据路径值获取key值
-      let curIndex = '0';
+      let curIndex = -1;
       // 1、先根据路径值获取key值
       if (curJsonSchemaObj.propertyOrder) {
         curIndex = curJsonSchemaObj.propertyOrder.indexOf(curKey);
+        // 2、根据key值获取对应的json数据对象
+        curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
       } else if (curJsonSchemaObj.properties) {
         const propertyOrder = Object.keys(curJsonSchemaObj.properties);
         curIndex = propertyOrder.indexOf(curKey);
+        // 2、根据key值获取对应的json数据对象
+        curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
+      } else if (curJsonSchemaObj.items) {
+        // 兼容数据类型
+        curIndex = curKey;
+        curJsonSchemaObj = curJsonSchemaObj.items; // 对象类型数据引用
       }
-      // 2、根据key值获取对应的json数据对象
-      curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
       curIndexRoute = curIndexRoute
         ? `${curIndexRoute}-${curIndex}`
         : curIndex.toString();
