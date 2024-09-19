@@ -200,8 +200,9 @@ function keyRoute2indexRoute(keyRoute, targetJsonSchemaObj) {
 
         curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
       } else if (curJsonSchemaObj.items) {
-        // 兼容数据类型
-        curIndex = curKey;
+        // 兼容数组类型
+        curIndex = 0; // curKey;
+
         curJsonSchemaObj = curJsonSchemaObj.items; // 对象类型数据引用
       }
 
